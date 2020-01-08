@@ -72,8 +72,6 @@ class Request {
         const { onSuccess } = this.main.props;
         const process = { ...processes[uuid] };
 
-        console.log(uuid, process, process.xhr) // eslint-disable-line
-
         if (process.xhr.readyState !== 4 || process.xhr.status !== 200) {
             return;
         }
@@ -119,7 +117,7 @@ class Request {
         const { onProgress } = this.main.props;
         const process = {
             ...processes[uuid],
-            progress: Math.floor(e.loaded / e.total)
+            progress: Math.floor(e.loaded / e.total * 100)
         };
 
         if (onProgress) {

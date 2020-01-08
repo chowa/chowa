@@ -1,2 +1,71 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixin.scss";
+
+.#{$prefix}upload {
+    margin: 0;
+    box-sizing: border-box;
+    padding: ($base-padding * 0.8) 0;
+}
+
+.#{$prefix}upload-file-list {
+    margin: 0;
+    padding: ($base-padding * 0.8) 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.#{$prefix}upload-file-item {
+    margin: 0;
+    padding: ($base-padding * 0.8) ($base-padding * 1.2);
+    box-sizing: border-box;
+    transition: background-color $anim-duration ease-in-out;
+
+    &:hover {
+        background-color: $background-color-active;
+
+        .#{$prefix}upload-file-delete-btn {
+            opacity: 1;
+        }
+    }
+}
+
+.#{$prefix}upload-file-info {
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 0 $font-size-base 0;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    height: 22px;
+    line-height: 22px;
+}
+
+.#{$prefix}upload-file-name {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 0 0 ($base-padding * 0.6);
+    @include text-overflow();
+}
+
+.#{$prefix}upload-file-delete-btn {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: $font-size-base;
+    height: $font-size-base;
+    line-height: 1;
+    text-align: center;
+    top: 0;
+    right: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: color $anim-duration ease-in-out, opacity $anim-duration linear;
+    opacity: 0;
+
+    &:hover {
+        color: $text-color-base;
+    }
+}
