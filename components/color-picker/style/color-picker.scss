@@ -1,0 +1,322 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}color-saturation {
+    width: 220px;
+    height: 220px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}color-saturation-light,
+.#{$prefix}color-saturation-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}color-saturation-light {
+    background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0));
+    z-index: 1;
+}
+
+.#{$prefix}color-saturation-dark {
+    background: linear-gradient(0deg, #000, transparent);
+    z-index: 2;
+}
+
+.#{$prefix}color-saturation-pointer {
+    position: absolute;
+    z-index: 5;
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    margin: 0 0 -4px -4px;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.15);
+    background: transparent;
+}
+
+.#{$prefix}color-hue {
+    height: 220px;
+    width: 22px;
+    margin: 0 0 0 2px;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.#{$prefix}color-hue-range {
+    height: 100%;
+    width: 14px;
+    margin: 0 0 0 8px;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(to top, #f00 0, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00);
+    cursor: pointer;
+}
+
+.#{$prefix}color-hue-selector {
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 12px;
+    margin: 0 0 -6px 0;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+}
+
+.#{$prefix}color-hue-selector-left-arrow,
+.#{$prefix}color-hue-selector-right-arrow,
+.#{$prefix}color-alpha-selector-top-arrow,
+.#{$prefix}color-alpha-selector-down-arrow {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: $text-color-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.#{$prefix}color-hue-selector-left-arrow {
+    left: 0;
+}
+
+.#{$prefix}color-hue-selector-right-arrow {
+    right: 0;
+}
+
+.#{$prefix}color-alpha-selector-top-arrow {
+    top: 0;
+}
+
+.#{$prefix}color-alpha-selector-down-arrow {
+    bottom: 0;
+}
+
+.#{$prefix}color-adjustment {
+    width: 268px;
+    margin: 0;
+    padding: $base-padding * 1.2;
+    box-sizing: border-box;
+}
+
+.#{$prefix}color-hsb {
+    margin: 0 0 ($base-padding * 1.2) 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.#{$prefix}color-alpha-wrapper {
+    margin: 0 0 ($base-padding * 1.2) 0;
+    padding: 8px 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.#{$prefix}color-alpha-bg {
+    height: 14px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}color-alpha-range {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.#{$prefix}color-alpha-selector {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    margin: 0 0 0 -6px;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+}
+
+.#{$prefix}color-recommend-wrapper {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.#{$prefix}color-recommend {
+    padding: 0;
+    margin: 0 0 ($base-padding * 1.2) 0;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    flex: none;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+    cursor: pointer;
+    position: relative;
+
+    + .#{$prefix}color-recommend {
+        margin-left: 12px;
+    }
+
+    &:nth-child(8n + 1) {
+        margin-left: 0;
+    }
+}
+
+.#{$prefix}color-active:before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    margin: 0 0 -3px -3px;
+    padding: 0;
+    left: 50%;
+    bottom: 50%;
+    position: absolute;
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.15);
+}
+
+.#{$prefix}color-input {
+    width: 100%;
+    height: 26px;
+    border-radius: $border-radius-base;
+    border: 1px solid $border-color;
+    font-size: $font-size-small;
+    outline: none;
+    transition: all $anim-duration ease-in-out;
+    box-sizing: border-box;
+    padding: 0 ($base-padding * 0.8);
+    margin: 0;
+    color: $text-color-gray;
+
+    &:hover {
+        @include io-hover();
+    }
+
+    &:focus {
+        @include io-focus();
+    }
+}
+
+.#{$prefix}color-btns {
+    padding: 0;
+    margin: ($base-padding * 1.2) 0 0 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.#{$prefix}color-picker {
+    height: $io-height-base;
+    width: 120px;
+    border: 1px solid $border-color;
+    background-color: $background-color-light;
+    border-radius: $border-radius-base;
+    margin: 0;
+    padding: 0 0 0 ($base-padding * 1.4);
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all $anim-duration ease-in;
+    outline: none;
+    position: relative;
+
+    &:not(.#{$prefix}color-picker-disabled):hover {
+        @include io-hover();
+    }
+
+    &.#{$prefix}color-picker-focused,
+    &:not(.#{$prefix}color-picker-disabled):focus {
+        @include io-focus();
+    }
+
+    &.#{$prefix}has-error {
+        @include has-error();
+    }
+}
+
+.#{$prefix}color-arrow {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-color-light;
+    width: $io-height-base - 2px;
+    height: $io-height-base - 2px;
+    line-height: $io-height-base - 2px;
+    font-size: $font-size-small;
+    transition: all $anim-duration ease-in;
+}
+
+.#{$prefix}color-arrow-active {
+    transform: rotate(-180deg);
+    color: $primary-color;
+}
+
+.#{$prefix}color-result {
+    width: 60px;
+    height: 20px;
+    margin: ($io-height-base - 22px) / 2 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}color-empty-result {
+    text-align: center;
+    color: $text-color-light;
+    font-size: $font-size-base;
+    border: 1px solid $border-color;
+}
+
+.#{$prefix}color-display {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.#{$prefix}color-picker-disabled {
+    background-color: $disabled-color;
+    @include disabled();
+}
+
+.#{$prefix}color-alpha-bg,
+.#{$prefix}color-with-alpah {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+}

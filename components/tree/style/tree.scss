@@ -1,0 +1,208 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+@import "../../styles/transition/slide-down.scss";
+
+.#{$prefix}tree {
+    margin: 0;
+    padding: ($base-padding * 1.2) ($base-padding * 0.4);
+    box-sizing: border-box;
+    font-size: $font-size-base;
+}
+
+.#{$prefix}tree-node-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}tree-child-node {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 22px;
+
+    .#{$prefix}tree-node-list {
+        padding-left: 22px;
+    }
+}
+
+.#{$prefix}tree-node-wrapper {
+    margin: 1px 0;
+    padding: 0 0 0 22px;
+    box-sizing: border-box;
+    line-height: 22px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.#{$prefix}tree-node-drop-self:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px dashed $primary-color;
+    border-radius: $border-radius-base;
+    box-sizing: border-box;
+}
+
+.#{$prefix}tree-node-drop-bottom:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 2px dashed $primary-color;
+    box-sizing: border-box;
+}
+
+.#{$prefix}tree-node-drop-top:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+    border-bottom: 2px dashed $primary-color;
+    box-sizing: border-box;
+}
+
+.#{$prefix}tree-checkbox {
+    line-height: 22px;
+    height: 22px;
+    margin-right: $base-padding * 0.4;
+
+    .#{$prefix}checkbox {
+        margin-top: 3px;
+    }
+}
+
+.#{$prefix}tree-fetching,
+.#{$prefix}tree-arrow {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    z-index: 2;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    display: inline-block;
+    margin: -8px 0 0 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    transition: all $anim-duration ease-in-out;
+}
+
+.#{$prefix}tree-arrow {
+    cursor: pointer;
+    color: $text-color-light;
+
+    &:hover {
+        color: $text-color-gray;
+    }
+}
+
+.#{$prefix}tree-arrow-active {
+    transform: rotate(90deg);
+}
+
+.#{$prefix}tree-title {
+    margin: 0;
+    padding: 0 ($base-padding * 0.6);
+    border-radius: $border-radius-base;
+    box-sizing: border-box;
+    color: $text-color-gray;
+    transition: all $anim-duration ease-in-out;
+    @include text-overflow();
+}
+
+.#{$prefix}tree-custom-icon {
+    margin: 0 ($base-padding * 0.4) 0 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}tree-selectable {
+    cursor: pointer;
+
+    &:not(.#{$prefix}tree-selected):not(.#{$prefix}tree-disabled):hover {
+        background-color: $background-color-active;
+    }
+}
+
+.#{$prefix}tree-disabled {
+    cursor: not-allowed;
+    color: $text-color-light;
+}
+
+.#{$prefix}tree-selected {
+    background-color: $primary-color;
+    color: $dark-text-color-base;
+}
+
+.#{$prefix}tree-disabled {
+    color: $dark-text-color-light;
+    cursor: not-allowed;
+}
+
+.#{$prefix}tree-block-node .#{$prefix}tree-title {
+    flex: auto;
+}
+
+.#{$prefix}tree-expand-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.#{$prefix}tree-with-line {
+    .#{$prefix}tree-node-list {
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            border-left: 1px dashed $border-color;
+            top: 0;
+            bottom: 11px;
+            left: 11px;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+    }
+
+    .#{$prefix}tree-child-node .#{$prefix}tree-node-list:before {
+        left: 33px;
+    }
+
+    .#{$prefix}tree-child-node {
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 11px;
+            top: 11px;
+            left: 11px;
+            bottom: 0;
+            border-top: 1px dashed $border-color;
+            z-index: 1;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.#{$prefix}tree-search {
+    margin-bottom: $base-padding * 0.8;
+}
+
+.#{$prefix}tree-hightlight {
+    color: $error-color;
+}
+
+.#{$prefix}tree-draggable .#{$prefix}tree-node-wrapper {
+    cursor: move;
+}

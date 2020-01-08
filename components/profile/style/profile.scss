@@ -1,0 +1,122 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}profile {
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.#{$prefix}profile-avatar {
+    flex: none;
+}
+
+.#{$prefix}profile-title {
+    padding: 0;
+    color: $text-color-gray;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.#{$prefix}profile-introduce {
+    color: $text-color-light;
+    padding: 0;
+}
+
+.#{$prefix}profile-actions-wrapper {
+    list-style: none;
+    margin: 0;
+    box-sizing: border-box;
+    color: $text-color-light;
+    display: flex;
+    flex: none;
+    flex-direction: row;
+}
+
+.#{$prefix}profile-action {
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.#{$prefix}profile-simple {
+    padding: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .#{$prefix}profile-info {
+        padding: 0;
+        box-sizing: border-box;
+        margin-left: ($base-padding * 1.2);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        min-height: 32px;
+    }
+
+    .#{$prefix}profile-title {
+        margin: 0;
+        font-size: $font-size-base;
+    }
+
+    .#{$prefix}profile-introduce {
+        font-size: $font-size-small;
+        line-height: 1;
+    }
+
+    .#{$prefix}profile-actions-wrapper {
+        padding: 0 0 0 ($base-padding * 0.8);
+        height: 32px;
+        font-size: $font-size-small;
+        color: $text-color-light;
+    }
+
+    .#{$prefix}profile-action {
+        padding: 0 ($base-padding * 0.6);
+    }
+}
+
+.#{$prefix}profile-complete {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: ($base-padding * 1.8) ($base-padding * 1.6);
+
+    .#{$prefix}profile-avatar {
+        width: 94px;
+        height: 94px;
+    }
+
+    .#{$prefix}profile-title {
+        margin: ($base-padding * 1.6) 0 0 0;
+        font-size: $font-size-base  + 4px;
+        line-height: 18px;
+        text-align: center;
+    }
+
+    .#{$prefix}profile-introduce {
+        font-size: $font-size-base;
+        line-height: 1.5;
+        margin: ($base-padding * 1.2) 0 0 0;
+    }
+
+    .#{$prefix}profile-actions-wrapper {
+        width: 100%;
+        padding: ($base-padding * 1.2) 0 0 0;
+        height: 68px;
+        font-size: $font-size-base;
+    }
+
+    .#{$prefix}profile-action {
+        flex: auto;
+
+        + .#{$prefix}profile-action {
+            border-left: 1px solid $border-color;
+        }
+    }
+}

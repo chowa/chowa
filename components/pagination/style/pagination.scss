@@ -1,0 +1,209 @@
+@import "../../styles/variables.scss";
+
+.#{$prefix}pagination {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    min-height: $io-height-base;
+}
+
+.#{$prefix}pagination-start {
+    justify-content: flex-start;
+}
+
+.#{$prefix}pagination-end {
+    justify-content: flex-end;
+}
+
+.#{$prefix}pagination-center {
+    justify-content: center;
+}
+
+.#{$prefix}pagination-wrapper {
+    flex: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.#{$prefix}pagination-btn {
+    margin: 0;
+    padding: 0 ($base-padding * 0.8);
+    flex: none;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: $font-size-base;
+    min-width: $io-height-base;
+    height: $io-height-base;
+    line-height: $io-height-base - 2px;
+    cursor: pointer;
+    color: $text-color-gray;
+    border-radius: $border-radius-base;
+    transition: all $anim-duration ease-in;
+
+    &:not(.#{$prefix}pagination-disabled):not(.#{$prefix}pagination-selected):hover {
+        color: $primary-color;
+    }
+
+    + .#{$prefix}pagination-btn {
+        margin-left: ($base-padding * 0.8);
+    }
+}
+
+.#{$prefix}pagination-forward-btn {
+    .#{$prefix}icon {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        transition: color $anim-duration ease-in-out;
+        line-height: $io-height-base;
+        z-index: 10;
+
+        &:first-child {
+            top: 0;
+        }
+
+        &:last-child {
+            opacity: 0;
+        }
+    }
+
+    &:hover .#{$prefix}icon {
+        &:first-child {
+            opacity: 0;
+        }
+
+        &:last-child {
+            opacity: 1;
+        }
+    }
+}
+
+.#{$prefix}pagination-input {
+    text-align: center;
+}
+
+.#{$prefix}pagination-simple-jumper {
+    margin: 0;
+    padding: 0 ($base-padding * 0.8);
+    flex: none;
+    width: 90px;
+    display: inline-flex;
+    flex-direction: row;
+    font-size: $font-size-base;
+    line-height: $io-height-base;
+    color: $text-color-gray;
+}
+
+.#{$prefix}pagination-simple-separator {
+    margin: 0;
+    padding: 0 ($base-padding * 0.8);
+}
+
+.#{$prefix}pagination-quick-jumper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 130px;
+    flex-direction: row;
+    font-size: $font-size-base;
+    line-height: $io-height-base;
+    color: $text-color-gray;
+}
+
+.#{$prefix}pagination-text {
+    flex: none;
+    margin: 0;
+    padding: 0 ($base-padding * 0.8);
+}
+
+.#{$prefix}pagination-page-size {
+    margin: 0 0 0 ($base-padding * 0.8);
+    padding: 0;
+}
+
+.#{$prefix}pagination-disabled {
+    cursor: not-allowed;
+    color: $text-color-light;
+}
+
+.#{$prefix}pagination-selected {
+    cursor: default;
+    color: $primary-color;
+}
+
+.#{$prefix}pagination-bordered {
+    .#{$prefix}pagination-btn {
+        background-color: $background-color-light;
+        border-color: $border-color;
+
+        &:not(.#{$prefix}pagination-disabled):not(.#{$prefix}pagination-selected):hover {
+            border-color: $primary-color;
+        }
+    }
+
+    .#{$prefix}pagination-disabled {
+        color: $text-color-light;
+        background-color: $disabled-color;
+    }
+
+    .#{$prefix}pagination-selected {
+        color: $dark-text-color-base;
+        background-color: $primary-active-color;
+        border-color: $primary-color;
+    }
+}
+
+.#{$prefix}pagination-compact {
+    .#{$prefix}pagination-btn {
+        border-radius: 0;
+        margin-left: 0;
+        border-right-width: 0;
+
+        &:first-child {
+            border-top-left-radius: $border-radius-base;
+            border-bottom-left-radius: $border-radius-base;
+        }
+
+        &:last-child {
+            border-top-right-radius: $border-radius-base;
+            border-bottom-right-radius: $border-radius-base;
+            border-right-width: 1px;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 999;
+            transition: border-color $anim-duration ease-in;
+            bottom: -1px;
+            top: -1px;
+            right: -1px;
+            border-right: 1px solid transparent;
+        }
+    }
+
+    &:not(.#{$prefix}pagination-bordered) .#{$prefix}pagination-btn {
+        min-width: $font-size-base;
+        padding: 0 ($base-padding * 0.4);
+    }
+
+    &.#{$prefix}pagination-bordered .#{$prefix}pagination-btn:not(:last-child) {
+        &:not(.#{$prefix}pagination-disabled):hover:before,
+        &.#{$prefix}pagination-selected:before {
+            border-color: $primary-color;
+        }
+    }
+}

@@ -1,0 +1,281 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+@import "../../styles/animation/fade.scss";
+
+@mixin modal-align-layout {
+    .#{$prefix}modal {
+        margin-top: $base-padding * 1.8;
+        margin-bottom: $base-padding * 1.8;
+    }
+}
+
+@mixin justify-layout {
+    .#{$prefix}modal {
+        margin-left: $base-padding * 1.8;
+        margin-right: $base-padding * 1.8;
+    }
+}
+
+.#{$prefix}modal-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $mask-color;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.#{$prefix}modal-middle {
+    align-items: center;
+}
+
+.#{$prefix}modal-top {
+    align-items: flex-start;
+    @include modal-align-layout;
+}
+
+.#{$prefix}modal-bottom {
+    align-items: flex-end;
+    @include modal-align-layout;
+}
+
+.#{$prefix}modal-center {
+    justify-content: center;
+}
+
+.#{$prefix}modal-start {
+    justify-content: flex-start;
+    @include justify-layout;
+}
+
+.#{$prefix}modal-end {
+    justify-content: flex-end;
+    @include justify-layout;
+}
+
+.#{$prefix}modal {
+    background-color: $background-color-light;
+    border-radius: $border-radius-base;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 580px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.15);
+}
+
+.#{$prefix}modal-header {
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    padding: 0 ($base-padding * 1.8);
+    font-size: $font-size-base;
+    height: 48px;
+    line-height: 48px;
+}
+
+.#{$prefix}modal-header-title {
+    flex: auto;
+    color: $text-color-base;
+    margin: 0;
+    padding: 0;
+    @include text-overflow();
+}
+
+.#{$prefix}modal-header-close {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    background: transparent;
+    transition: color $anim-duration ease-in;
+    cursor: pointer;
+    color: $text-color-gray;
+
+    &:hover {
+        color: $text-color-base;
+    }
+}
+
+.#{$prefix}modal-body {
+    max-height: 70vh;
+    margin: 0;
+    box-sizing: border-box;
+    padding: ($base-padding * 1.6) ($base-padding * 1.8);
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    @include scrollbar(false, true);
+
+    &.#{$prefix}modal-body-media {
+        padding: 0;
+    }
+}
+
+.#{$prefix}modal-footer {
+    display: flex;
+    margin: 0;
+    padding: ($base-padding * 0.8) ($base-padding * 1.8);
+    line-height: 1;
+    box-sizing: border-box;
+    align-items: center;
+
+    &.#{$prefix}modal-footer-end {
+        justify-content: flex-end;
+    }
+
+    &.#{$prefix}modal-footer-start {
+        justify-content: flex-start;
+    }
+}
+
+.#{$prefix}modal-bordered {
+    .#{$prefix}modal-header {
+        border-bottom: 1px solid $border-color;
+    }
+
+    .#{$prefix}modal-footer {
+        border-top: 1px solid $border-color;
+    }
+}
+
+.#{$prefix}modal-alert,
+.#{$prefix}modal-confirm,
+.#{$prefix}modal-prompt {
+    width: 380px;
+}
+
+.#{$prefix}modal-alert-body,
+.#{$prefix}modal-confirm-body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: $base-padding;
+    box-sizing: border-box;
+}
+
+.#{$prefix}modal-prompt-body {
+    margin: 0;
+    padding: $base-padding;
+    box-sizing: border-box;
+}
+
+.#{$prefix}modal-prompt-title-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0 0 ($base-padding * 1.4) 0;
+}
+
+.#{$prefix}modal-alert-icon,
+.#{$prefix}modal-confirm-icon,
+.#{$prefix}modal-prompt-icon {
+    font-size: $font-size-base + 8px;
+    margin: 0 ($base-padding * 1.2) 0 0;
+    padding: 0;
+    flex: none;
+}
+
+.#{$prefix}modal-alert-info,
+.#{$prefix}modal-prompt-icon {
+    color: $info-color;
+}
+
+.#{$prefix}modal-alert-success {
+    color: $success-color;
+}
+
+.#{$prefix}modal-alert-error {
+    color: $error-color;
+}
+
+.#{$prefix}modal-confirm-icon,
+.#{$prefix}modal-alert-warning {
+    color: $warning-color;
+}
+
+.#{$prefix}modal-alert-message,
+.#{$prefix}modal-confirm-message {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex: auto;
+}
+
+.#{$prefix}modal-alert-title,
+.#{$prefix}modal-confirm-title,
+.#{$prefix}modal-prompt-title {
+    color: $text-color-base;
+    padding: ($base-padding * 0.8) 0;
+    margin: 0;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+.#{$prefix}modal-alert-content,
+.#{$prefix}modal-confirm-content,
+.#{$prefix}modal-prompt-content {
+    line-height: $line-height-base;
+    margin: ($base-padding * 0.6) 0 0 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}modal-alert-btns,
+.#{$prefix}modal-confirm-btns,
+.#{$prefix}modal-prompt-btns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    padding: ($base-padding * 0.8) $base-padding;
+}
+
+@keyframes #{$prefix}modal-trans {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.#{$prefix}modal-enter {
+    animation-name: #{$prefix}fade;
+
+    .#{$prefix}modal {
+        animation-name: #{$prefix}modal-trans;
+    }
+}
+
+.#{$prefix}modal-leave {
+    animation-name: #{$prefix}fade;
+    animation-direction: reverse;
+
+    .#{$prefix}modal {
+        animation-name: #{$prefix}modal-trans;
+        animation-direction: reverse;
+    }
+}
+
+.#{$prefix}modal-appear {
+    animation-duration: $anim-duration * 1.5;
+    animation-timing-function: ease-in-out;
+
+    .#{$prefix}modal {
+        animation-duration: $anim-duration * 1.5;
+        animation-timing-function: ease-in-out;
+    }
+}

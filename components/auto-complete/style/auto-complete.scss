@@ -1,0 +1,85 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}auto-complete-selector {
+    margin: 0;
+    padding: $base-padding 0;
+    list-style: none;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    box-sizing: border-box;
+    max-height: $dropdown-max-height;
+    outline: none;
+    @include scrollbar(false);
+}
+
+.#{$prefix}auto-complete-option-group {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+
+    + .#{$prefix}auto-complete-option-group {
+        border-top: 1px solid $border-color;
+    }
+}
+
+.#{$prefix}auto-complete-option-group-title-wrapper {
+    color: $text-color-light;
+    line-height: $io-height-base - 4px;
+    margin: 0;
+    padding: 0 ($base-padding * 1.2);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.#{$prefix}auto-complete-option-group-extra,
+.#{$prefix}auto-complete-option-group-title {
+    flex: none;
+    margin: 0;
+    padding: 0;
+    @include text-overflow();
+}
+
+.#{$prefix}auto-complete-option {
+    cursor: pointer;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all $anim-duration ease-in-out;
+    color: $text-color-gray;
+    line-height: $io-height-base;
+    padding: 0 ($base-padding * 2.2);
+}
+
+.#{$prefix}auto-complete-option-active {
+    background: $background-color-active;
+}
+
+.#{$prefix}auto-complete-selector-small {
+    font-size: $font-size-small;
+
+    .#{$prefix}auto-complete-option-group-title-wrapper {
+        line-height: $io-height-small - 4px;
+    }
+
+    .#{$prefix}auto-complete-option {
+        line-height: $io-height-small;
+        padding: 0 ($base-padding * 1.6);
+    }
+}
+
+.#{$prefix}auto-complete-selector-large {
+    font-size: $font-size-large;
+
+    .#{$prefix}auto-complete-option-group-title-wrapper {
+        line-height: $io-height-large - 4px;
+    }
+
+    .#{$prefix}auto-complete-option {
+        line-height: $io-height-large;
+        padding: 0 ($base-padding * 2.8);
+    }
+}

@@ -1,0 +1,108 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+@mixin tag-color($border-color, $background-color, $text-color) {
+    border-color: $border-color;
+    background-color: $background-color;
+    color: $text-color;
+
+    &.#{$prefix}tag-checked {
+        border-color: $text-color;
+        background-color: $text-color;
+        color: $dark-text-color-base;
+    }
+}
+
+.#{$prefix}tag {
+    margin: 0 ($base-padding * 0.6) 0 0;
+    padding: 0 ($base-padding * 0.4);
+    height: 22px;
+    line-height: 20px;
+    font-size: $font-size-small;
+    color: $text-color-gray;
+    border: 1px solid $border-color;
+    background-color: $background-color-base;
+    border-radius: $border-radius-base;
+    transition: all $anim-duration ease-in-out;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    @include text-overflow;
+}
+
+.#{$prefix}tag-close {
+    margin: 0 0 0 ($base-padding * 0.2);
+    padding: 0;
+    width: $font-size-small;
+    height: $font-size-small;
+    outline: none;
+    border: none;
+    background: transparent;
+    transition: all $anim-duration ease-in-out;
+    cursor: pointer;
+    color: $text-color-gray;
+
+    &:hover {
+        color: $text-color-base;
+    }
+}
+
+// 颜色
+.#{$prefix}tag-primary {
+    @include tag-color(lighten($primary-color, 15%), lighten($primary-color, 25%), $primary-color);
+}
+
+.#{$prefix}tag-info {
+    @include tag-color(lighten($info-color, 25%), lighten($info-color, 43%), $info-color);
+}
+
+.#{$prefix}tag-success {
+    @include tag-color(lighten($success-color, 25%), lighten($success-color, 52%), $success-color);
+}
+
+.#{$prefix}tag-error {
+    @include tag-color(lighten($error-color, 25%), lighten($error-color, 43%), $error-color);
+}
+
+.#{$prefix}tag-warning {
+    @include tag-color(lighten($warning-color, 25%), lighten($warning-color, 43%), $warning-color);
+}
+
+.#{$prefix}tag-cyan {
+    @include tag-color(lighten(#13c2c2, 25%), lighten(#13c2c2, 52%), #13c2c2);
+}
+
+.#{$prefix}tag-geekblue {
+    @include tag-color(lighten(#2f54eb, 25%), lighten(#2f54eb, 52%), #2f54eb);
+}
+
+.#{$prefix}tag-custom-color {
+    color: $dark-text-color-base;
+}
+
+.#{$prefix}tag-checkable {
+    position: relative;
+    cursor: pointer;
+    border-color: transparent;
+    background-color: transparent;
+    color: $text-color-gray;
+}
+
+.#{$prefix}tag-disabled {
+    color: $text-color-light;
+    background-color: $disabled-color;
+    cursor: not-allowed;
+}
+
+.#{$prefix}tag-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.#{$prefix}tag-checked {
+    border-color: $background-color-base;
+    background-color: $background-color-base;
+    color: $text-color-base;
+}

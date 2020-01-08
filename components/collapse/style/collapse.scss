@@ -1,0 +1,147 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+@import "../../styles/transition/slide-down.scss";
+
+.#{$prefix}collapse {
+    border-radius: $border-radius-base;
+    overflow: hidden;
+    transition: height $anim-duration linear;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}collapse-panel {
+    border-radius: $border-radius-base;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.#{$prefix}collapse-panel-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 ($base-padding * 2.2);
+    box-sizing: border-box;
+    height: 42px;
+    line-height: 42px;
+    font-size: $font-size-base;
+    color: $text-color-base;
+    cursor: pointer;
+    border-bottom: 1px solid $border-color;
+}
+
+.#{$prefix}collapse-panel-arrow {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all $anim-duration ease-in-out;
+}
+
+.#{$prefix}collapse-panel-arrow-active {
+    transform: rotate(90deg);
+}
+
+.#{$prefix}collapse-panel-title {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    @include text-overflow();
+}
+
+.#{$prefix}collapse-panel-extra {
+    margin: 0;
+    padding: 0 0 0 ($base-padding * 1.4);
+    box-sizing: border-box;
+    color: $text-color-light;
+    font-size: $font-size-small;
+
+    a {
+        @include link();
+    }
+}
+
+.#{$prefix}collapse-panel-header-left {
+    margin: 0;
+    padding: 0;
+    flex: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    .#{$prefix}collapse-panel-arrow {
+        margin-right: ($base-padding * 1.2);
+    }
+}
+
+.#{$prefix}collapse-panel-header-right {
+    margin: 0;
+    padding: 0;
+    flex: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    .#{$prefix}collapse-panel-arrow {
+        margin-left: ($base-padding * 1.2);
+    }
+}
+
+.#{$prefix}collapse-panel-body {
+    margin: 0;
+    padding: ($base-padding * 1.6) ($base-padding * 1.8);
+    display: block;
+    box-sizing: border-box;
+}
+
+.#{$prefix}collapse-panel-bordered {
+    border: 1px solid $border-color;
+
+    &:not(.#{$prefix}collapse-panel-active) {
+        border-bottom-width: 0;
+    }
+}
+
+.#{$prefix}collapse-panel-disabled {
+    cursor: not-allowed;
+
+    .#{$prefix}collapse-panel-header {
+        cursor: not-allowed;
+    }
+}
+
+// 手风琴的了
+.#{$prefix}collapse {
+    margin: 0;
+    padding: 0;
+
+    .#{$prefix}collapse-panel {
+        border-radius: 0;
+        border-width: 0;
+
+        &:first-child {
+            border-top-left-radius: $border-radius-base;
+            border-top-right-radius: $border-radius-base;
+        }
+
+        &:last-child {
+            border-bottom-left-radius: $border-radius-base;
+            border-bottom-right-radius: $border-radius-base;
+        }
+    }
+
+    .#{$prefix}collapse-panel-active {
+        border-bottom: 1px solid $border-color;
+    }
+
+    &.#{$prefix}collapse-bordered {
+        border-top: 1px solid $border-color;
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+    }
+}

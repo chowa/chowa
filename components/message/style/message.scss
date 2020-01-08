@@ -1,0 +1,106 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+@mixin message-type($color) {
+    .#{$prefix}message-icon {
+        color: $color;
+    }
+}
+
+.#{$prefix}message-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}message {
+    background-color: $background-color-light;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: $border-radius-base;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 ($base-padding * 1.2);
+    box-sizing: border-box;
+    max-width: 280px;
+}
+
+.#{$prefix}message-icon {
+    padding: 0;
+    margin: 0 ($base-padding * 0.6) 0 0;
+    font-size: $font-size-base + 2px;
+}
+
+.#{$prefix}message-text {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    flex: auto;
+    @include text-overflow();
+}
+
+.#{$prefix}message-close {
+    cursor: pointer;
+    font-size: $font-size-small;
+    padding: 0;
+    margin: 0 0 0 ($base-padding * 0.8);
+    color: $text-color-light;
+    transition: color $anim-duration ease-in;
+
+    &:hover {
+        color: $text-color-gray;
+    }
+}
+
+.#{$prefix}message-info,
+.#{$prefix}message-process {
+    @include message-type($info-color);
+}
+
+.#{$prefix}message-success {
+    @include message-type($success-color);
+}
+
+.#{$prefix}message-error {
+    @include message-type($error-color);
+}
+
+.#{$prefix}message-warning {
+    @include message-type($warning-color);
+}
+
+@keyframes #{$prefix}message-trans {
+    0% {
+        transform: translateY(-80px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.#{$prefix}message-appear {
+    animation-duration: $anim-duration;
+    animation-timing-function: ease-in-out;
+}
+
+.#{$prefix}message-enter {
+    animation-name: #{$prefix}message-trans;
+}
+
+.#{$prefix}message-leave {
+    animation-name: #{$prefix}message-trans;
+    animation-direction: reverse;
+}

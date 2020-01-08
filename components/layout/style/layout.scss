@@ -1,0 +1,110 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}layout {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.#{$prefix}layout-content {
+    flex: auto;
+    position: relative;
+    padding: $base-padding * 1.8;
+    margin: 0;
+    box-sizing: border-box;
+    z-index: 10;
+    overflow-x: hidden;
+}
+
+.#{$prefix}layout-header {
+    flex: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 $base-padding * 1.8;
+    justify-content: space-between;
+    margin: 0;
+    box-sizing: border-box;
+    z-index: 50;
+    min-height: $menu-size-base;
+}
+
+.#{$prefix}layout-footer {
+    flex: none;
+    text-align: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 10;
+    min-height: $menu-size-base + 10px;
+}
+
+.#{$prefix}layout-aside {
+    flex: none;
+    transition: all $anim-duration ease-in;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}layout-aside-dark {
+    background-color: $dark-background-color;
+}
+
+.#{$prefix}layout-with-aside {
+    flex-direction: row;
+}
+
+@media only screen and (max-width: #{$screen-small}) {
+    .#{$prefix}layout-aside {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 52px;
+        z-index: 500;
+        transform: translateX(-100%);
+    }
+
+    .#{$prefix}layout-aside-collapse {
+        flex-basis: auto;
+        transform: translateX(0);
+    }
+}
+
+@media only screen and (min-width: #{$screen-small}) and (max-width: #{$screen-medium}) {
+    .#{$prefix}layout-aside {
+        flex-basis: 160px + $menu-size-base;
+    }
+
+    .#{$prefix}layout-aside-collapse {
+        flex-basis: $menu-size-base - 10px;
+    }
+}
+
+@media only screen and (min-width: #{$screen-medium}) and (max-width: #{$screen-large}) {
+    .#{$prefix}layout-aside {
+        flex-basis: 180px + $menu-size-base;
+    }
+
+    .#{$prefix}layout-aside-collapse {
+        flex-basis: $menu-size-base - 10px;
+    }
+}
+
+@media only screen and (min-width: #{$screen-large}) {
+    .#{$prefix}layout-aside {
+        flex-basis: 200px + $menu-size-base;
+    }
+
+    .#{$prefix}layout-aside-collapse {
+        flex-basis: $menu-size-base;
+    }
+}

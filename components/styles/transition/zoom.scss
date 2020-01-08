@@ -1,0 +1,6 @@
+@import "../variables.scss";
+
+.#{$prefix}zoom-appear {
+    animation-timing-function: ease-in-out;
+    animation-duration: $anim-duration;
+}

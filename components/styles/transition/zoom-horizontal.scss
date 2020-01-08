@@ -1,0 +1,36 @@
+@import "../variables.scss";
+@import "./zoom.scss";
+
+@keyframes #{$prefix}zoom-horizontal {
+    0% {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+.#{$prefix}zoom-left-enter {
+    transform-origin: right;
+    animation-name: #{$prefix}zoom-horizontal;
+}
+
+.#{$prefix}zoom-left-leave {
+    transform-origin: right;
+    animation-name: #{$prefix}zoom-horizontal;
+    animation-direction: reverse;
+}
+
+.#{$prefix}zoom-right-enter {
+    transform-origin: left;
+    animation-name: #{$prefix}zoom-horizontal;
+}
+
+.#{$prefix}zoom-right-leave {
+    transform-origin: left;
+    animation-name: #{$prefix}zoom-horizontal;
+    animation-direction: reverse;
+}

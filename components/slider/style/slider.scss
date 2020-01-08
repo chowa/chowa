@@ -1,0 +1,227 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}slider {
+    position: relative;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+
+    &:not(.#{$prefix}slider-disabled):hover {
+        .#{$prefix}slider-track {
+            background-color: lighten($primary-color, 5%);
+        }
+    }
+
+    &.#{$prefix}has-error .#{$prefix}slider-thumb {
+        @include has-error();
+    }
+}
+
+.#{$prefix}slider-drag-wrapper {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.#{$prefix}slider-rail {
+    border-radius: $border-radius-base;
+    background-color: $background-color-base;
+    transition: background-color $anim-duration ease-in;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}slider-track {
+    position: absolute;
+    background-color: lighten($primary-color, 15%);
+    transition: background-color $anim-duration ease-in;
+    border-radius: $border-radius-base;
+    cursor: pointer;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}slider-thumb {
+    position: absolute;
+    z-index: 20;
+    border-radius: 50%;
+    border: 2px solid lighten($primary-color, 10%);
+    background-color: $background-color-light;
+    cursor: pointer;
+    transition: border-color $anim-duration ease-in-out, transform $anim-duration ease-in-out;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    width: $font-size-base;
+    height: $font-size-base;
+    box-sizing: border-box;
+
+    &:not(:disabled):focus,
+    &:not(:disabled):hover {
+        border-color: $primary-color;
+        transform: scale(1.2);
+    }
+}
+
+.#{$prefix}slider-step-wrapper {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+}
+
+.#{$prefix}slider-step {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: $primary-color;
+    cursor: pointer;
+}
+
+.#{$prefix}slider-step-label-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.#{$prefix}slider-step-label {
+    position: absolute;
+    text-align: center;
+    display: block;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}slider-step-detail {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.#{$prefix}slider-disabled {
+    color: $text-color-light;
+
+    .#{$prefix}slider-rail,
+    .#{$prefix}slider-step,
+    .#{$prefix}slider-step-detail,
+    .#{$prefix}slider-thumb,
+    .#{$prefix}slider-track {
+        cursor: not-allowed;
+    }
+
+    .#{$prefix}slider-track {
+        background-color: $disabled-color;
+    }
+
+    .#{$prefix}slider-thumb {
+        border-color: $disabled-color;
+    }
+}
+
+.#{$prefix}slider-horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: (($io-height-base - 4px) / 2) ($font-size-base / 2);
+    min-height: $io-height-base;
+
+    .#{$prefix}slider-drag-wrapper {
+        width: 100%;
+    }
+
+    .#{$prefix}slider-rail {
+        height: 4px;
+    }
+
+    .#{$prefix}slider-track {
+        top: 0;
+        height: 4px;
+    }
+
+    .#{$prefix}slider-thumb {
+        top: -($font-size-base - 4px) / 2;
+        margin-left: -($font-size-base / 2);
+    }
+
+    .#{$prefix}slider-step-wrapper {
+        top: ($io-height-base - 4px) / 2;
+        left: ($font-size-base / 2);
+        right: ($font-size-base / 2);
+        height: 4px;
+    }
+
+    .#{$prefix}slider-step-label-wrapper {
+        width: 100%;
+        margin-top: ($io-height-base - 4px) / 2;
+        height: $font-size-base;
+        line-height: 1;
+    }
+
+    .#{$prefix}slider-step-label {
+        top: 0;
+    }
+}
+
+.#{$prefix}slider-vertical {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    padding: ($font-size-base / 2) (($io-height-base - 4px) / 2);
+
+    .#{$prefix}slider-drag-wrapper {
+        height: 100%;
+    }
+
+    .#{$prefix}slider-rail {
+        width: 4px;
+        height: 100%;
+    }
+
+    .#{$prefix}slider-track {
+        left: 0;
+        width: 4px;
+    }
+
+    .#{$prefix}slider-thumb {
+        left: -($font-size-base - 4px) / 2;
+        margin-bottom: -($font-size-base / 2);
+    }
+
+    .#{$prefix}slider-step-wrapper {
+        left: ($io-height-base - 4px) / 2;
+        top: ($font-size-base / 2);
+        bottom: ($font-size-base / 2);
+        width: 4px;
+    }
+
+    .#{$prefix}slider-step-label-wrapper {
+        margin-left: ($io-height-base - 4px) / 2;
+        height: 100%;
+        line-height: 0.8;
+        width: 80px;
+    }
+
+    .#{$prefix}slider-step-label {
+        height: $font-size-base;
+        margin-bottom: -$font-size-base / 2;
+    }
+}

@@ -1,0 +1,94 @@
+// 类名前缀
+$prefix: 'cw-';
+
+// 栅格数
+$grid-span: 24;
+
+// 默认字体图标，相对components/icon/style
+$iconfont_dir_default: '../../../iconfonts/';
+
+// 默认字体
+$global-font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif !default;
+
+// iconfont
+$iconfont_dir: $iconfont_dir_default !default;
+
+// 适配能力
+$screen-small: 640px !default;
+$screen-medium: 1024px !default;
+$screen-large: 1280px !default;
+
+// 主题颜色
+// $primary-color: #2d8cf0 !default;
+// $primary-active-color: #57a3f3 !default;
+$primary-color: #7774e7 !default;
+$primary-active-color: #8c8aeb !default;
+
+// 危险颜色
+$danger-color: #ed4014 !default;
+$danger-active-color: #f16643 !default;
+
+// 提示颜色
+$info-color: #1890ff !default;
+$success-color: #52c41a !default;
+$error-color: #f5222d !default;
+$warning-color: #faad14 !default;
+
+// 边框颜色
+$border-color: #e6ecf5 !default;
+
+// 禁用颜色
+$disabled-color: #e9ecef !default;
+
+// 背景颜色
+$background-color-base: #f8f8f8 !default;
+$background-color-active: lighten($primary-color, 30%) !default;
+$background-color-light: #fff !default;
+
+// 文字颜色
+$text-color-base: #414a63 !default;
+$text-color-gray: #616a6e !default;
+$text-color-light: #888da8;
+
+// 深色
+$dark-border-color: #000 !default;
+$dark-disabled-color: #6b6e67 !default;
+$dark-background-color: #001529 !default;
+$dark-text-color-base: #fff !default;
+$dark-text-color-gray: #cdc7c7 !default;
+$dark-text-color-light: #7f7e7e !default;
+
+// 字体大小
+$font-size-base: 14px !default;
+$font-size-small: $font-size-base - 2px !default;
+$font-size-large: $font-size-base + 2px !default;
+
+// 菜单 layout.aside
+$menu-size-base: 58px !default;
+
+// 标准行高
+$line-height-base: 1.5 !default;
+
+// io组件基准高度
+$io-height-base: 32px !default;
+$io-height-small: 26px !default;
+$io-height-large: 38px !default;
+
+// 下拉组件最高高度
+$dropdown-max-height: 250px !default;
+
+// 全局圆角
+$border-radius-base: 3px !default;
+
+// 组件填充
+$base-padding: 10px !default;
+
+// 连接颜色
+$link-color: #2d8cf0 !default;
+$link-color-active: #57a3f3 !default;
+
+// 动画时间
+$anim-duration: 0.2s !default;
+
+// 遮罩背景颜色
+$mask-color: rgba(0, 0, 0, 0.45) !default;

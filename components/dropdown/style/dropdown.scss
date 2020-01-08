@@ -1,0 +1,266 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+@import "../../styles/transition/zoom-vertical.scss";
+@import "../../styles/transition/zoom-horizontal.scss";
+
+// button
+@mixin dropdown-btn-size($height, $text-size, $padding) {
+    height: $height;
+    line-height: $height - 2px;
+    font-size: $text-size;
+    padding: $padding;
+}
+
+.#{$prefix}dropdown-btn {
+    border-color: transparent;
+    color: $text-color-gray;
+    background-color: $background-color-light;
+    margin: 0;
+    @include dropdown-btn-size($io-height-base, $font-size-base, 0 ($base-padding + 5px));
+    @include btn();
+
+    &:not(.#{$prefix}dropdown-btn-disabled).#{$prefix}dropdown-btn-open,
+    &:not(.#{$prefix}dropdown-btn-disabled):hover {
+        color: $primary-color;
+    }
+
+    + .#{$prefix}dropdown-btn {
+        margin-left: $base-padding * 1.6;
+    }
+}
+
+.#{$prefix}dropdown-btn-icon {
+    margin: 0 0 0 $base-padding * 0.6;
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    transition: all $anim-duration linear;
+    height: 100%;
+}
+
+.#{$prefix}dropdown-btn-icon-active {
+    transform: rotate(-180deg);
+}
+
+.#{$prefix}dropdown-btn-bordered {
+    border-color: $border-color;
+
+    &:not(.#{$prefix}dropdown-btn-disabled).#{$prefix}dropdown-btn-open,
+    &:not(.#{$prefix}dropdown-btn-disabled):hover {
+        border-color: $primary-color;
+    }
+
+    &.#{$prefix}dropdown-btn-disabled {
+        background-color: $disabled-color;
+    }
+}
+
+.#{$prefix}dropdown-btn-disabled {
+    cursor: not-allowed;
+    color: $text-color-light;
+}
+
+.#{$prefix}dropdown-btn-large {
+    @include dropdown-btn-size($io-height-large, $font-size-large, 0 ($base-padding + 8px));
+}
+
+.#{$prefix}dropdown-btn-small {
+    @include dropdown-btn-size($io-height-small, $font-size-small, 0 ($base-padding + 5px));
+}
+
+// menu
+.#{$prefix}dropdown-menu {
+    margin: 0;
+    padding: ($base-padding * 0.8) 0;
+    list-style: none;
+    max-height: $dropdown-max-height;
+    min-width: 140px;
+
+    .#{$prefix}divider {
+        margin: 5px 0;
+    }
+}
+
+.#{$prefix}dropdown-menu-item {
+    color: $text-color-gray;
+    margin: 0;
+    transition: all $anim-duration ease-in;
+    cursor: pointer;
+    padding: ($base-padding * 0.6) ($base-padding * 1.2);
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+
+    a {
+        color: $text-color-gray;
+        display: block;
+    }
+
+    &:not(.#{$prefix}dropdown-menu-disabled):not(.#{$prefix}dropdown-menu-active):hover {
+        background-color: $background-color-active;
+    }
+}
+
+.#{$prefix}dropdown-submenu {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:not(.#{$prefix}dropdown-menu-disabled) .#{$prefix}dropdown-menu-title:hover {
+        background-color: $background-color-active;
+    }
+
+    &.#{$prefix}dropdown-submenu-disabled .#{$prefix}dropdown-submenu-title {
+        @include disabled();
+    }
+}
+
+.#{$prefix}dropdown-menu-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all $anim-duration ease-in;
+    color: $text-color-gray;
+    margin: 0;
+    padding: ($base-padding * 0.6) ($base-padding * 1.2);
+    font-size: $font-size-base;
+    box-sizing: border-box;
+    line-height: $line-height-base;
+
+    span {
+        flex: auto;
+        @include text-overflow();
+    }
+
+    .#{$prefix}icon {
+        flex: none;
+        margin-left: $base-padding;
+    }
+}
+
+.#{$prefix}dropdown-submenu-content {
+    min-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin: 0 0 0 2px;
+    padding: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.#{$prefix}dropdown-menu-active:not(.#{$prefix}dropdown-menu-disabled) {
+    background-color: $background-color-base;
+    cursor: default;
+}
+
+.#{$prefix}dropdown-menu-disabled {
+    background-color: $disabled-color;
+    cursor: not-allowed;
+    color: $text-color-light;
+}
+
+.#{$prefix}dropdown {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}dropdown-content {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    @include dropdown-content();
+}
+
+.#{$prefix}dropdown-arrow {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    transform: rotate(45deg);
+    display: inline-block;
+    position: absolute;
+}
+
+.#{$prefix}dropdown-top,
+.#{$prefix}dropdown-top-left,
+.#{$prefix}dropdown-top-right {
+    padding-bottom: 5px;
+    transform-origin: bottom;
+
+    .#{$prefix}dropdown-arrow {
+        box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.15);
+        bottom: 1px;
+        margin-left: -5px;
+    }
+}
+
+.#{$prefix}dropdown-bottom,
+.#{$prefix}dropdown-bottom-left,
+.#{$prefix}dropdown-bottom-right {
+    padding-top: 5px;
+    transform-origin: top;
+
+    .#{$prefix}dropdown-arrow {
+        box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.06);
+        top: 1px;
+        margin-left: -4px;
+    }
+}
+
+.#{$prefix}dropdown-bottom .#{$prefix}dropdown-arrow,
+.#{$prefix}dropdown-top .#{$prefix}dropdown-arrow {
+    left: 50%;
+}
+
+.#{$prefix}dropdown-left,
+.#{$prefix}dropdown-left-bottom,
+.#{$prefix}dropdown-left-top {
+    padding-right: 5px;
+    transform-origin: right;
+
+    .#{$prefix}dropdown-arrow {
+        box-shadow: 3px -3px 7px rgba(0, 0, 0, 0.15);
+        right: 1px;
+        margin-top: -4px;
+    }
+}
+
+.#{$prefix}dropdown-right,
+.#{$prefix}dropdown-right-bottom,
+.#{$prefix}dropdown-right-top {
+    padding-left: 5px;
+    transform-origin: left;
+
+    .#{$prefix}dropdown-arrow {
+        box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.15);
+        left: 1px;
+        margin-top: -4px;
+    }
+}
+
+.#{$prefix}dropdown-left .#{$prefix}dropdown-arrow,
+.#{$prefix}dropdown-right .#{$prefix}dropdown-arrow {
+    top: 50%;
+}
+
+.#{$prefix}dropdown-bottom-left .#{$prefix}dropdown-arrow,
+.#{$prefix}dropdown-top-left .#{$prefix}dropdown-arrow {
+    left: 15%;
+}
+
+.#{$prefix}dropdown-bottom-right .#{$prefix}dropdown-arrow,
+.#{$prefix}dropdown-top-right .#{$prefix}dropdown-arrow {
+    left: 85%;
+}
+
+.#{$prefix}dropdown-left-top .#{$prefix}dropdown-arrow,
+.#{$prefix}dropdown-right-top .#{$prefix}dropdown-arrow {
+    top: 25%;
+}
+
+.#{$prefix}dropdown-left-bottom .#{$prefix}dropdown-arrow,
+.#{$prefix}dropdown-right-bottom .#{$prefix}dropdown-arrow {
+    top: 85%;
+}

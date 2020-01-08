@@ -1,0 +1,136 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}card {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: $background-color-light;
+    border-radius: $border-radius-base;
+}
+
+.#{$prefix}card-header {
+    display: flex;
+    margin: 0;
+    padding: 0 ($base-padding * 1.8);
+    box-sizing: border-box;
+    height: 52px;
+    line-height: 52px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.#{$prefix}card-title {
+    flex: auto;
+    font-size: $font-size-large;
+    color: $text-color-base;
+    @include text-overflow();
+}
+
+.#{$prefix}card-extras-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex: none;
+    font-size: $font-size-small;
+    color: $text-color-light;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+}
+
+.#{$prefix}card-extra {
+    margin: 0 0 0 ($base-padding * 0.4);
+    padding: 0 ($base-padding * 0.6);
+    box-sizing: border-box;
+    border-radius: 11px;
+    transition: all $anim-duration ease-in-out;
+    flex: none;
+    line-height: 22px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $background-color-active;
+    }
+
+    a {
+        @include link();
+    }
+}
+
+.#{$prefix}card-body,
+.#{$prefix}card-description {
+    margin: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: $base-padding * 1.8;
+    color: $text-color-gray;
+    font-size: $font-size-base;
+    line-height: 1.5;
+}
+
+.#{$prefix}card-media .#{$prefix}card-body {
+    padding: 0;
+}
+
+.#{$prefix}card-shadow {
+    transition: all $anim-duration ease-in;
+
+    &:hover {
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.#{$prefix}card-actions {
+    margin: 0;
+    padding: ($base-padding * 0.8) ($base-padding * 1.8);
+    box-sizing: border-box;
+    height: 60px;
+    font-size: $font-size-base;
+    color: $text-color-light;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: flex-end;
+}
+
+.#{$prefix}card-action {
+    margin: 0 0 0 ($base-padding * 0.8);
+    padding: 0;
+    flex: none;
+    cursor: pointer;
+    transition: all $anim-duration linear;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+
+    &:hover {
+        background-color: $background-color-active;
+    }
+}
+
+.#{$prefix}card-bordered {
+    border: 1px solid $border-color;
+
+    .#{$prefix}card-header {
+        border-bottom: 1px solid $border-color;
+    }
+
+    .#{$prefix}card-actions {
+        border-top: 1px solid $border-color;
+    }
+}
+
+@media only screen and (max-width: #{$screen-small}) {
+    .#{$prefix}card {
+        border-radius: 0;
+        width: 100% !important;
+    }
+}

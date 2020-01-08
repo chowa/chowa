@@ -1,0 +1,99 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+// picker
+.#{$prefix}time-picker {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    transition: all $anim-duration linear;
+    border-radius: $border-radius-base;
+    background-color: $background-color-light;
+    height: $io-height-base;
+    width: 160px;
+    outline: none;
+    vertical-align: top;
+
+    &:not(.#{$prefix}time-picker-disabled):hover {
+        @include io-hover();
+    }
+
+    &.#{$prefix}time-picker-focused {
+        @include io-focus();
+    }
+
+    &.#{$prefix}has-error {
+        @include has-error();
+    }
+}
+
+.#{$prefix}time-picker-input {
+    position: absolute;
+    width: 100%;
+    border: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    outline: none;
+    margin: 0;
+    padding: 0 $io-height-base 0 ($base-padding * 1.2);
+    box-sizing: border-box;
+    color: $text-color-gray;
+    border-radius: $border-radius-base;
+    background: transparent;
+    font-size: $font-size-base;
+    cursor: inherit;
+}
+
+.#{$prefix}time-picker-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $text-color-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $anim-duration ease-in;
+    pointer-events: none;
+    width: $io-height-base - 2px;
+    height: $io-height-base - 2px;
+    font-size: $font-size-base;
+}
+
+.#{$prefix}time-picker-icon-active {
+    color: $primary-color;
+}
+
+.#{$prefix}time-picker-disabled {
+    background-color: $disabled-color;
+    cursor: not-allowed;
+}
+// 下拉
+.#{$prefix}time-picker-selector-wrapper {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}time-picker-header {
+    padding: $base-padding $base-padding $base-padding * 0.5;
+    box-sizing: border-box;
+    margin: 0;
+    text-align: center;
+    color: $text-color-base;
+    border-bottom: 1px solid $border-color;
+    font-size: $font-size-base;
+    min-height: 29px;
+}
+
+.#{$prefix}time-picker-footer {
+    display: flex;
+    padding: ($base-padding * 0.8) $base-padding;
+    box-sizing: border-box;
+    margin: 0;
+    border-top: 1px solid $border-color;
+    justify-content: flex-end;
+}

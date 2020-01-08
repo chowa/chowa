@@ -1,0 +1,125 @@
+@import "../../styles/variables.scss";
+
+.#{$prefix}divider {
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+}
+
+.#{$prefix}divider-horizontal {
+    display: block;
+    margin: ($base-padding * 1.8) 0;
+    border-top: 1px solid $border-color;
+
+    &.#{$prefix}divider-dashed {
+        border-top-style: dashed;
+    }
+
+    &.#{$prefix}divider-with-title {
+        height: $io-height-base;
+        line-height: $io-height-base;
+        border: none;
+        display: flex;
+        flex-direction: row;
+
+        &:before,
+        &:after {
+            content: '';
+            display: block;
+            height: 50%;
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid $border-color;
+        }
+
+        .#{$prefix}divider-title {
+            margin: 0;
+            padding: 0 ($base-padding * 1.2);
+            text-align: center;
+            white-space: nowrap;
+            flex: none;
+        }
+    }
+
+    &.#{$prefix}divider-align-center:before,
+    &.#{$prefix}divider-align-center:after {
+        width: 50%;
+    }
+
+    &.#{$prefix}divider-align-left:before {
+        width: 10%;
+    }
+
+    &.#{$prefix}divider-align-left:after {
+        width: 90%;
+    }
+
+    &.#{$prefix}divider-align-right:before {
+        width: 90%;
+    }
+
+    &.#{$prefix}divider-align-right:after {
+        width: 10%;
+    }
+}
+
+.#{$prefix}divider-vertical {
+    display: inline-block;
+    height: 55%;
+    margin: -2px ($base-padding * 0.8) 0;
+    border-left: 1px solid $border-color;
+    vertical-align: middle;
+
+    &.#{$prefix}divider-dashed {
+        border-left-style: dashed;
+    }
+
+    &.#{$prefix}divider-with-title {
+        height: 100%;
+        width: $io-height-base;
+        line-height: $io-height-base;
+        border: none;
+        display: inline-flex;
+        flex-direction: column;
+
+        &:before,
+        &:after {
+            content: '';
+            display: block;
+            width: 50%;
+            margin: 0;
+            padding: 0;
+            border-right: 1px solid $border-color;
+        }
+
+        .#{$prefix}divider-title {
+            writing-mode: vertical-lr;
+            margin: 0;
+            padding: ($base-padding * 1.2) 0;
+            text-align: center;
+            flex: none;
+        }
+    }
+
+    &.#{$prefix}divider-align-center:before,
+    &.#{$prefix}divider-align-center:after {
+        height: 50%;
+    }
+
+    &.#{$prefix}divider-align-top:before {
+        height: 10%;
+    }
+
+    &.#{$prefix}divider-align-top:after {
+        height: 90%;
+    }
+
+    &.#{$prefix}divider-align-bottom:before {
+        height: 90%;
+    }
+
+    &.#{$prefix}divider-align-bottom:after {
+        height: 10%;
+    }
+}

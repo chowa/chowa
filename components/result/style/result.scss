@@ -1,0 +1,62 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}result {
+    box-sizing: border-box;
+    margin: 0;
+    padding: ($base-padding * 4.6) ($base-padding * 2.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.#{$prefix}result-icon {
+    margin: 0 0 ($base-padding * 2.2) 0;
+    padding: 0;
+    width: $font-size-base + 40px;
+    height: $font-size-base + 40px;
+    line-height: 1;
+    font-size: $font-size-base + 40px;
+    box-sizing: border-box;
+
+    &.#{$prefix}result-icon-success {
+        color: $success-color;
+    }
+
+    &.#{$prefix}result-icon-info {
+        color: $info-color;
+    }
+
+    &.#{$prefix}result-icon-error {
+        color: $danger-color;
+    }
+
+    &.#{$prefix}result-icon-warning {
+        color: $warning-color;
+    }
+}
+
+.#{$prefix}result-title {
+    margin: 0 0 ($base-padding * 1.2) 0;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: $font-size-base + 8px;
+    color: $text-color-base;
+    line-height: $line-height-base;
+    font-weight: 400;
+}
+
+.#{$prefix}result-subtitle {
+    margin: 0 0 ($base-padding * 1.2) 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+}
+
+.#{$prefix}result-operation {
+    margin: ($base-padding * 3.2) 0 0 0;
+    padding: 0;
+    box-sizing: border-box;
+}

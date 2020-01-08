@@ -1,0 +1,175 @@
+@import "../../styles/variables.scss";
+
+@keyframes #{$prefix}progress-line-active {
+    0% {
+        width: 0;
+        opacity: 0.6;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes #{$prefix}progress-circle-active {
+    0% {
+        stroke: $primary-color;
+    }
+
+    50% {
+        stroke: lighten($primary-color, 15%);
+    }
+
+    100% {
+        stroke: $primary-color;
+    }
+}
+
+.#{$prefix}progress {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+// 线
+.#{$prefix}progress-line {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: $io-height-base;
+}
+
+.#{$prefix}progress-inner {
+    flex: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: $background-color-base;
+}
+
+.#{$prefix}progress-bg {
+    margin: 0;
+    padding: 0;
+    background-color: $primary-color;
+    width: 0;
+    transition: all $anim-duration ease;
+}
+
+.#{$prefix}progress-line-status,
+.#{$prefix}progress-line-percent {
+    color: $text-color-gray;
+    margin: 0;
+    padding: 0 0 0 ($base-padding * 1.2);
+}
+
+.#{$prefix}progress-line-percent {
+    font-size: $font-size-base;
+}
+
+.#{$prefix}progress-line-status {
+    font-size: $font-size-large;
+}
+
+// 圆
+.#{$prefix}progress-circle {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    padding: $base-padding * 0.4;
+}
+
+.#{$prefix}progress-svg {
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}progress-circle-track {
+    stroke: $background-color-base;
+}
+
+.#{$prefix}progress-circle-fill {
+    transition: all $anim-duration ease;
+    stroke: $primary-color;
+
+    &.#{$prefix}progress-circle-gradient {
+        stroke: url(#circle-gradient);
+    }
+}
+
+.#{$prefix}progress-circle-percent,
+.#{$prefix}progress-circle-status {
+    color: $text-color-gray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: $base-padding * 1.2;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.#{$prefix}progress-circle-percent {
+    font-size: $font-size-base + 2px;
+}
+
+.#{$prefix}progress-circle-status {
+    font-size: $font-size-base + 20px;
+}
+
+// 状态区分
+.#{$prefix}progress-active {
+    .#{$prefix}progress-bg {
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            display: block;
+            background-color: $background-color-light;
+            animation: #{$prefix}progress-line-active $anim-duration * 5 ease-in-out infinite;
+        }
+    }
+
+    .#{$prefix}progress-circle-fill {
+        animation: #{$prefix}progress-circle-active $anim-duration * 10 ease-in-out infinite;
+    }
+}
+
+.#{$prefix}progress-success {
+    .#{$prefix}progress-bg {
+        background-color: $success-color;
+    }
+
+    .#{$prefix}progress-circle-fill {
+        stroke: $success-color;
+    }
+
+    .#{$prefix}progress-line-status,
+    .#{$prefix}progress-circle-status {
+        color: $success-color;
+    }
+}
+
+.#{$prefix}progress-exception {
+    .#{$prefix}progress-bg {
+        background-color: $danger-color;
+    }
+
+    .#{$prefix}progress-circle-fill {
+        stroke: $danger-color;
+    }
+
+    .#{$prefix}progress-line-status,
+    .#{$prefix}progress-circle-status {
+        color: $danger-color;
+    }
+}

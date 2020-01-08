@@ -1,0 +1,94 @@
+@import "../../styles/variables.scss";
+@import "../../styles/transition/zoom-center.scss";
+
+.#{$prefix}tooltip {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}tooltip-top {
+    transform-origin: bottom;
+}
+
+.#{$prefix}tooltip-bottom {
+    transform-origin: top;
+}
+
+.#{$prefix}tooltip-left {
+    transform-origin: right;
+}
+
+.#{$prefix}tooltip-right {
+    transform-origin: left;
+}
+
+.#{$prefix}tooltip-with-arrow {
+    &:before {
+        content: '';
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border: 5px solid transparent;
+        display: inline-block;
+        position: absolute;
+    }
+
+    &.#{$prefix}tooltip-top {
+        padding-bottom: 5px;
+
+        &:before {
+            bottom: -5px;
+            left: 50%;
+            margin-left: -5px;
+            border-top-color: rgba(0, 0, 0, 0.65);
+        }
+    }
+
+    &.#{$prefix}tooltip-bottom {
+        padding-top: 5px;
+
+        &:before {
+            top: -5px;
+            left: 50%;
+            margin-left: -5px;
+            border-bottom-color: rgba(0, 0, 0, 0.65);
+        }
+    }
+
+    &.#{$prefix}tooltip-left {
+        padding-right: 5px;
+
+        &:before {
+            right: -5px;
+            top: 50%;
+            margin-top: -5px;
+            border-left-color: rgba(0, 0, 0, 0.65);
+        }
+    }
+
+    &.#{$prefix}tooltip-right {
+        padding-left: 5px;
+
+        &:before {
+            left: -5px;
+            top: 50%;
+            margin-top: -5px;
+            border-right-color: rgba(0, 0, 0, 0.65);
+        }
+    }
+}
+
+.#{$prefix}tooltip-inner {
+    font-size: $font-size-base;
+    color: $dark-text-color-base;
+    border-radius: $border-radius-base;
+    margin: 0;
+    word-break: break-all;
+    box-sizing: border-box;
+    line-height: $line-height-base;
+    max-width: 220px;
+    padding: ($base-padding * 0.5) ($base-padding * 0.7);
+    background-color: rgba(0, 0, 0, 0.65);
+}

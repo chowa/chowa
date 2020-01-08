@@ -1,0 +1,121 @@
+@import "../../styles/variables.scss";
+
+.#{$prefix}badge-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}badge {
+    margin: 0;
+    padding: 0 6px;
+    min-width: 20px;
+    line-height: 20px;
+    height: 20px;
+    font-size: $font-size-small;
+    border-radius: 10px;
+    display: block;
+    overflow: hidden;
+    transform-origin: 100% 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}badge-unit-container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    overflow: hidden;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.#{$prefix}badge-unit {
+    transition: transform $anim-duration ease-in;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 8px;
+}
+
+.#{$prefix}badge-numbers {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}badge-number {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 20px;
+    line-height: 20px;
+}
+
+.#{$prefix}badge-dark {
+    color: $dark-text-color-base;
+    background-color: $dark-background-color;
+}
+
+.#{$prefix}badge-primary {
+    color: $dark-text-color-base;
+    background-color: $primary-color;
+}
+
+.#{$prefix}badge-danger {
+    color: $dark-text-color-base;
+    background-color: $danger-color;
+}
+
+.#{$prefix}badge-warning {
+    color: $dark-text-color-base;
+    background-color: $warning-color;
+}
+
+.#{$prefix}badge-with-children {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.#{$prefix}badge-dot {
+    min-width: 6px;
+    padding: 0;
+    height: 6px;
+    border-radius: 3px;
+}
+
+@keyframes #{$prefix}badge-trans {
+    0% {
+        transform: scale(0) translate(50%, -50%);
+    }
+
+    50% {
+        transform: scale(1.2) translate(50%, -50%);
+    }
+
+    100% {
+        transform: scale(1) translate(50%, -50%);
+    }
+}
+
+.#{$prefix}badge-appear {
+    animation-duration: $anim-duration;
+    animation-timing-function: linear;
+}
+
+.#{$prefix}badge-enter {
+    animation-name: #{$prefix}badge-trans;
+}
+
+.#{$prefix}badge-leave {
+    animation-name: #{$prefix}badge-trans;
+    animation-direction: reverse;
+}

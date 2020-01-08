@@ -1,0 +1,113 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+@mixin btn-size($padding, $text-size, $height) {
+    padding: $padding;
+    font-size: $text-size;
+    height: $height;
+    line-height: $height - 2;
+}
+
+@mixin btn-type($border-color, $bg-color, $active-border-color, $active-bg-color, $text-color, $active-text-color) {
+    border-color: $border-color;
+    background-color: $bg-color;
+    color: $text-color;
+
+    &.#{$prefix}btn-active,
+    &.#{$prefix}btn-loading,
+    &:not(.#{$prefix}btn-disabled):hover {
+        background-color: $active-bg-color;
+        border-color: $active-border-color;
+        color: $active-text-color;
+    }
+
+    &:not(.#{$prefix}btn-disabled):focus {
+        box-shadow: 0 0 6px 3px rgba(red($active-border-color), green($active-border-color), blue($active-border-color), 0.15);
+    }
+
+    &.#{$prefix}btn-ghost {
+        color: $bg-color;
+        border-color: $border-color;
+        background-color: transparent;
+
+        &.#{$prefix}btn-active,
+        &.#{$prefix}btn-loading,
+        &:not(.#{$prefix}btn-disabled):hover {
+            color: $active-border-color;
+            border-color: $active-border-color;
+            background-color: transparent;
+        }
+    }
+
+    &.#{$prefix}btn-text {
+        border-color: transparent;
+        background-color: transparent;
+        padding: 0;
+        @if ($bg-color == #fff) {
+            color: $text-color-gray;
+        }
+        @else {
+            color: $bg-color;
+        }
+
+        &.#{$prefix}btn-active,
+        &.#{$prefix}btn-loading,
+        &:not(.#{$prefix}btn-disabled):hover {
+            color: $active-border-color;
+            border-color: transparent;
+            background-color: transparent;
+        }
+    }
+}
+
+.#{$prefix}btn {
+    @include btn();
+    @include btn-type($border-color, $dark-text-color-base, $primary-color, $dark-text-color-base, $text-color-gray, $primary-color);
+    @include btn-size(0 ($base-padding + 5px), $font-size-base, $io-height-base);
+
+    + .#{$prefix}btn {
+        margin-left: $base-padding * 1.6;
+    }
+}
+
+a.#{$prefix}btn {
+    text-decoration: none;
+}
+
+.#{$prefix}btn-primary {
+    @include btn-type($primary-color, $primary-color, $primary-active-color, $primary-active-color, $dark-text-color-base, $dark-text-color-base);
+}
+
+.#{$prefix}btn-danger {
+    @include btn-type($danger-color, $danger-color, $danger-active-color, $danger-active-color, $dark-text-color-base, $dark-text-color-base);
+}
+
+.#{$prefix}btn-small {
+    @include btn-size(0 ($base-padding + 2px), $font-size-small, $io-height-small);
+}
+
+.#{$prefix}btn-large {
+    @include btn-size(0 ($base-padding + 8px), $font-size-large, $io-height-large);
+}
+
+.#{$prefix}btn-block {
+    display: block;
+    width: 100%;
+
+    + .#{$prefix}btn-block {
+        margin-left: 0;
+        margin-top: $base-padding * 1.6;
+    }
+}
+
+.#{$prefix}btn-dashed {
+    border-style: dashed;
+}
+
+.#{$prefix}btn-disabled {
+    @include disabled();
+}
+
+.#{$prefix}btn-loading {
+    cursor: not-allowed;
+}

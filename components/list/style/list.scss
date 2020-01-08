@@ -1,0 +1,64 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}list {
+    border-radius: $border-radius-base;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.#{$prefix}list-item {
+    color: $text-color-gray;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    padding: ($base-padding * 1.2) ($base-padding * 1.6);
+    margin: 0;
+    transition: all $anim-duration ease-in-out;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $border-color;
+    }
+}
+
+.#{$prefix}list-item-inner {
+    flex: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}list-item-actions-wrapper {
+    flex: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0 0 0 ($base-padding * 0.6);
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.#{$prefix}list-item-action {
+    margin: 0;
+    padding: 0 0 0 ($base-padding * 0.6);
+    box-sizing: border-box;
+    color: $text-color-light;
+    font-size: $font-size-small;
+
+    a {
+        @include link();
+    }
+}
+
+.#{$prefix}list-bordered {
+    border: 1px solid $border-color;
+}
+
+.#{$prefix}list-highlight .#{$prefix}list-item:hover {
+    background-color: $background-color-active;
+}

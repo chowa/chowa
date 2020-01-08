@@ -1,0 +1,137 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}time {
+    width: 258px;
+    height: 258px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+}
+
+.#{$prefix}time-hour-wrapper,
+.#{$prefix}time-minute-wrapper {
+    flex: 0 0 129px;
+}
+
+.#{$prefix}time-with-second {
+    .#{$prefix}time-hour-wrapper,
+    .#{$prefix}time-minute-wrapper,
+    .#{$prefix}time-second-wrapper {
+        flex: 0 0 86px;
+    }
+}
+
+.#{$prefix}time-minute-wrapper,
+.#{$prefix}time-second-wrapper {
+    border-left: 1px solid $border-color;
+}
+
+.#{$prefix}time-hour-selector,
+.#{$prefix}time-minute-selector,
+.#{$prefix}time-second-selector {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.#{$prefix}time-cell {
+    text-align: center;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    transition: all $anim-duration ease-in;
+
+    &:last-child {
+        margin-bottom: 228px;
+    }
+
+    &:hover:not(.#{$prefix}time-selected) {
+        background-color: $background-color-active;
+    }
+}
+
+.#{$prefix}time-selected {
+    color: $primary-color;
+    background-color: $background-color-base;
+}
+
+// picker
+.#{$prefix}time-picker {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    transition: all $anim-duration linear;
+    border-radius: $border-radius-base;
+    background-color: $background-color-light;
+    height: $io-height-base;
+    width: 160px;
+    outline: none;
+    vertical-align: top;
+
+    &:not(.#{$prefix}time-picker-disabled):hover {
+        @include io-hover();
+    }
+
+    &.#{$prefix}time-picker-focused {
+        @include io-focus();
+    }
+
+    &.#{$prefix}has-error {
+        @include has-error();
+    }
+}
+
+.#{$prefix}time-picker-input {
+    position: absolute;
+    width: 100%;
+    border: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    outline: none;
+    margin: 0;
+    padding: 0 $io-height-base 0 ($base-padding * 1.2);
+    box-sizing: border-box;
+    color: $text-color-gray;
+    border-radius: $border-radius-base;
+    background: transparent;
+    font-size: $font-size-base;
+    cursor: inherit;
+}
+
+.#{$prefix}time-picker-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $text-color-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $anim-duration ease-in;
+    pointer-events: none;
+    width: $io-height-base - 2px;
+    height: $io-height-base - 2px;
+    font-size: $font-size-base;
+}
+
+.#{$prefix}time-picker-icon-active {
+    color: $primary-color;
+}
+
+.#{$prefix}time-picker-disabled {
+    background-color: $disabled-color;
+    cursor: not-allowed;
+}

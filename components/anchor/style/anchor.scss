@@ -1,0 +1,55 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}anchor-wrapper {
+    margin: 0;
+    padding: ($base-padding * 0.8) 0;
+    box-sizing: border-box;
+    background-color: $background-color-light;
+    transition: all 0.2s ease-in;
+    font-size: $font-size-small;
+    overflow: hidden;
+    position: relative;
+}
+
+.#{$prefix}anchor {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-left: 1px solid $border-color;
+}
+
+.#{$prefix}anchor-link {
+    line-height: 22px;
+    margin: 0;
+    padding: 0 ($base-padding * 1.2);
+    box-sizing: border-box;
+    position: relative;
+    @include text-overflow();
+
+    > a {
+        color: $text-color-gray;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+        transition: color $anim-duration ease-in;
+
+        &:hover {
+            color: $link-color-active;
+        }
+    }
+}
+
+.#{$prefix}anchor-active-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: ($base-padding * 0.8) 0 0 0;
+    padding: 0;
+    height: 22px;
+    width: 0;
+    border-left: 2px solid $primary-color;
+    box-sizing: border-box;
+    transition: all $anim-duration ease-in-out;
+}

@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+@import "../../styles/animation/fade.scss";
+
+.#{$prefix}default-appear {
+    animation-duration: $anim-duration;
+    animation-timing-function: ease-in-out;
+}
+
+.#{$prefix}fade-enter {
+    animation-name: #{$prefix}fade;
+}
+
+.#{$prefix}fade-leave {
+    animation-name: #{$prefix}fade;
+    animation-direction: reverse;
+}

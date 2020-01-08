@@ -1,0 +1,81 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+@keyframes #{$prefix}skeleton-loading {
+    0%,
+    100% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.#{$prefix}skeleton-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.#{$prefix}skeleton {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}skeleton-with-avatar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .#{$prefix}skeleton-content {
+        flex: auto;
+    }
+}
+
+.#{$prefix}skeleton-avatar {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    margin: 0 ($base-padding * 1.6) 0 0;
+    background: $background-color-base;
+    flex: none;
+}
+
+.#{$prefix}skeleton-avatar-circle {
+    border-radius: 17px;
+}
+
+.#{$prefix}skeleton-avatar-rect {
+    border-radius: $border-radius-base;
+}
+
+.#{$prefix}skeleton-content {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.#{$prefix}skeleton-title,
+.#{$prefix}skeleton-loading-block {
+    padding: 0;
+    box-sizing: border-box;
+    height: $font-size-base * 1.5;
+    margin: ($base-padding * 0.4) 0;
+    background: $background-color-base;
+}
+
+.#{$prefix}skeleton-with-animation {
+    .#{$prefix}skeleton-title,
+    .#{$prefix}skeleton-loading-block,
+    .#{$prefix}skeleton-avatar {
+        background: linear-gradient(90deg, rgba(207, 216, 220, 0.2), rgba(207, 216, 220, 0.4), rgba(207, 216, 220, 0.2));
+        animation: #{$prefix}skeleton-loading 1.4s ease infinite;
+        background-size: 600% 600%;
+    }
+}

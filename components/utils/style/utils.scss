@@ -1,0 +1,167 @@
+@import "../../styles/variables.scss";
+
+$gutter-options: (8, 12, 16, 18, 22);
+
+@each $size in $gutter-options {
+    .#{$prefix}mt-#{$size} {
+        margin-top: #{$size}px !important;
+    }
+
+    .#{$prefix}ml-#{$size} {
+        margin-left: #{$size}px !important;
+    }
+
+    .#{$prefix}mb-#{$size} {
+        margin-bottom: #{$size}px !important;
+    }
+
+    .#{$prefix}mr-#{$size} {
+        margin-right: #{$size}px !important;
+    }
+}
+
+// 圆角
+.#{$prefix}round {
+    border-radius: 999px !important;
+}
+
+// 浮动
+.#{$prefix}fl {
+    float: left !important;
+}
+
+.#{$prefix}fr {
+    float: right !important;
+}
+
+.#{$prefix}clear {
+    clear: both !important;
+}
+
+.#{$prefix}clear-l {
+    clear: left !important;
+}
+
+.#{$prefix}clear-r {
+    clear: right !important;
+}
+
+// 弹性布局
+.#{$prefix}flex-box {
+    display: flex !important;
+    overflow-x: hidden;
+}
+
+.#{$prefix}flex-auto {
+    flex: auto !important;
+}
+
+.#{$prefix}flex-none {
+    flex: none !important;
+}
+
+.#{$prefix}flex-column {
+    flex-direction: column !important;
+}
+
+.#{$prefix}flex-column-reverse {
+    flex-direction: column-reverse !important;
+}
+
+.#{$prefix}flex-row-reverse {
+    flex-direction: row-reverse !important;
+}
+
+.#{$prefix}flex-align-end {
+    align-items: flex-end !important;
+}
+
+.#{$prefix}flex-align-middle {
+    align-items: center !important;
+}
+
+.#{$prefix}flex-justify-end {
+    justify-content: flex-end !important;
+}
+
+.#{$prefix}flex-justify-center {
+    justify-content: center !important;
+}
+
+.#{$prefix}flex-justify-space-between {
+    justify-content: space-between !important;
+}
+
+.#{$prefix}flex-justify-space-around {
+    justify-content: space-around !important;
+}
+
+// 字体
+@for $size from 12 through 26 {
+    .#{$prefix}fs-#{$size} {
+        font-size: #{$size}px !important;
+    }
+}
+
+.#{$prefix}text-color-base {
+    color: $text-color-base;
+}
+
+.#{$prefix}text-color-gray {
+    color: $text-color-gray;
+}
+
+.#{$prefix}text-color-light {
+    color: $text-color-light;
+}
+
+.#{$prefix}text-color-primary {
+    color: $primary-color;
+}
+
+.#{$prefix}text-color-info {
+    color: $info-color;
+}
+
+.#{$prefix}text-color-success {
+    color: $success-color;
+}
+
+.#{$prefix}text-color-warning {
+    color: $warning-color;
+}
+
+.#{$prefix}text-color-error {
+    color: $danger-color;
+}
+
+.#{$prefix}text-bold {
+    font-weight: 500;
+}
+
+.#{$prefix}clear-btn {
+    margin: 0;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: $text-color-light;
+    font-size: $font-size-small;
+    color: $dark-text-color-gray;
+    transition: all $anim-duration ease-in;
+    cursor: pointer;
+    border-radius: 50%;
+
+    &:hover {
+        color: $dark-text-color-base;
+    }
+}
+
+.#{$prefix}clear-btn-absolute {
+    position: absolute;
+    top: ($io-height-base - 18px) / 2;
+    right: ($io-height-base - 18px) / 2;
+}

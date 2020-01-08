@@ -1,0 +1,36 @@
+@import "../variables.scss";
+@import "./zoom.scss";
+
+@keyframes #{$prefix}zoom-vertical {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+.#{$prefix}zoom-top-enter {
+    transform-origin: bottom;
+    animation-name: #{$prefix}zoom-vertical;
+}
+
+.#{$prefix}zoom-top-leave {
+    transform-origin: bottom;
+    animation-name: #{$prefix}zoom-vertical;
+    animation-direction: reverse;
+}
+
+.#{$prefix}zoom-bottom-enter {
+    transform-origin: top;
+    animation-name: #{$prefix}zoom-vertical;
+}
+
+.#{$prefix}zoom-bottom-leave {
+    transform-origin: top;
+    animation-name: #{$prefix}zoom-vertical;
+    animation-direction: reverse;
+}

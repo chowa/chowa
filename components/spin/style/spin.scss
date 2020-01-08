@@ -1,0 +1,152 @@
+@import "../../styles/variables.scss";
+@import "../../styles/animation/rotating.scss";
+
+.#{$prefix}spin {
+    margin: 0;
+    padding: 0;
+    width: $font-size-base + 2px;
+    height: $font-size-base + 2px;
+    font-size: $font-size-base + 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary-color;
+    animation: #{$prefix}rotating 1s infinite linear;
+}
+
+.#{$prefix}spin-light {
+    color: $dark-text-color-base;
+}
+
+.#{$prefix}spin-ml {
+    margin-left: $base-padding * 0.6;
+}
+
+.#{$prefix}spin-mr {
+    margin-right: $base-padding * 0.6;
+}
+
+.#{$prefix}spin-mt {
+    margin-top: $base-padding * 0.6;
+}
+
+.#{$prefix}spin-mb {
+    margin-bottom: $base-padding * 0.6;
+}
+
+.#{$prefix}spin-wrapper {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}spin-children-wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}spin-filter {
+    filter: blur(0.8px);
+    opacity: 0.8;
+}
+
+.#{$prefix}spin-loader-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@keyframes #{$prefix}spin-ball-1 {
+    50% {
+        top: 27px;
+        left: 27px;
+        opacity: 0.3;
+    }
+}
+
+@keyframes #{$prefix}spin-ball-2 {
+    50% {
+        top: 27px;
+        left: 45px;
+        opacity: 0.3;
+    }
+}
+
+@keyframes #{$prefix}spin-ball-3 {
+    50% {
+        top: 45px;
+        left: 27px;
+        opacity: 0.3;
+    }
+}
+
+@keyframes #{$prefix}spin-ball-4 {
+    50% {
+        top: 45px;
+        left: 45px;
+        opacity: 0.3;
+    }
+}
+
+.#{$prefix}spin-loader {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 96px;
+    height: 96px;
+    animation: #{$prefix}rotating 5.6s infinite linear;
+
+    > span {
+        position: absolute;
+        display: block;
+        border-radius: 100%;
+        width: 24px;
+        height: 24px;
+        background-color: $primary-color;
+        opacity: 0.85;
+
+        &:nth-child(1) {
+            top: 0;
+            left: 0;
+            z-index: 1;
+            animation: #{$prefix}spin-ball-1 1.4s infinite ease-in-out;
+        }
+
+        &:nth-child(2) {
+            top: 0;
+            left: 72px;
+            z-index: 2;
+            animation: #{$prefix}spin-ball-2 1.4s infinite ease-in-out;
+        }
+
+        &:nth-child(3) {
+            top: 72px;
+            left: 0;
+            z-index: 3;
+            animation: #{$prefix}spin-ball-3 1.4s infinite ease-in-out;
+        }
+
+        &:nth-child(4) {
+            top: 72px;
+            left: 72px;
+            z-index: 4;
+            animation: #{$prefix}spin-ball-4 1.4s infinite ease-in-out;
+        }
+    }
+}
+
+.#{$prefix}spin-loading-text {
+    font-size: $font-size-small;
+    color: $text-color-gray;
+    margin: ($base-padding * 1.2) 0;
+    line-height: 1;
+    padding: 0;
+}

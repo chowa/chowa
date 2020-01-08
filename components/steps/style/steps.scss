@@ -1,0 +1,250 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+@mixin horizontal-step-line {
+    content: '';
+    display: block;
+    background-color: $border-color;
+    position: absolute;
+    z-index: 1;
+    transition: border-color $anim-duration ease-in;
+    width: 999px;
+    height: 1px;
+    top: 50%;
+    padding: 0;
+}
+
+@mixin vertical-steps-line {
+    content: '';
+    display: block;
+    background-color: $border-color;
+    position: absolute;
+    z-index: 1;
+    transition: border-color $anim-duration ease-in;
+    width: 1px;
+    height: 999px;
+    left: 50%;
+    top: 100%;
+    padding: 0;
+}
+
+.#{$prefix}steps {
+    margin: 0;
+    padding: $base-padding * 1.2;
+    font-size: $font-size-base;
+    box-sizing: border-box;
+}
+
+.#{$prefix}steps-item {
+    flex: auto;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+    &:last-child {
+        flex: none;
+    }
+}
+
+.#{$prefix}steps-item-inner {
+    display: inline-flex;
+    flex-direction: row;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}steps-item-icon {
+    display: block;
+    border-radius: 50%;
+    text-align: center;
+    transition: all $anim-duration ease-in;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    flex: none;
+}
+
+.#{$prefix}steps-item-content {
+    z-index: 5;
+    margin: 0 0 0 ($base-padding * 0.8);
+    padding: 0;
+    max-width: 160px;
+}
+
+.#{$prefix}steps-item-title {
+    display: inline-block;
+    margin: 0;
+    padding: 0 ($base-padding * 1.2) 0 0;
+    transition: color $anim-duration ease-in;
+    line-height: 34px;
+    position: relative;
+}
+
+.#{$prefix}steps-item-description {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    color: $text-color-light;
+    font-size: $font-size-small;
+}
+
+// 状态
+.#{$prefix}steps-item-wait {
+    .#{$prefix}steps-item-icon {
+        border: 1px solid $border-color;
+        color: $text-color-light;
+        background: $dark-text-color-base;
+    }
+
+    .#{$prefix}steps-item-title {
+        color: $text-color-light;
+    }
+}
+
+.#{$prefix}steps-item-process {
+    .#{$prefix}steps-item-icon {
+        border: 1px solid $primary-color;
+        background-color: $primary-color;
+        color: $dark-text-color-base;
+    }
+
+    .#{$prefix}steps-item-title {
+        color: $text-color-base;
+    }
+}
+
+.#{$prefix}steps-item-finish {
+    .#{$prefix}steps-item-icon {
+        border: 1px solid $primary-color;
+        color: $primary-color;
+    }
+
+    .#{$prefix}steps-item-title {
+        color: $text-color-gray;
+    }
+}
+
+.#{$prefix}steps-item-error .#{$prefix}steps-item-icon {
+    border: 1px solid $danger-color;
+    color: $danger-color;
+}
+
+.#{$prefix}steps-item-select .#{$prefix}steps-item-icon {
+    cursor: pointer;
+}
+
+// 水平布局
+.#{$prefix}steps-horizontal {
+    display: flex;
+    flex-direction: row;
+
+    .#{$prefix}steps-item+ .#{$prefix}steps-item {
+        padding-left: $base-padding * 1.2;
+    }
+
+    &:not(.#{$prefix}steps-vertical-center) {
+        .#{$prefix}steps-item:not(:last-child) .#{$prefix}steps-item-title:before {
+            margin: 0;
+            left: 100%;
+            @include horizontal-step-line();
+        }
+
+        .#{$prefix}steps-item-finish:not(:last-child) .#{$prefix}steps-item-title:before {
+            background-color: $primary-color;
+        }
+    }
+
+    &.#{$prefix}steps-vertical-center {
+        .#{$prefix}steps-item-inner {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .#{$prefix}steps-item-content {
+            margin-left: 0;
+        }
+
+        .#{$prefix}steps-item-title {
+            padding-right: 0;
+        }
+
+        .#{$prefix}steps-item:not(:last-child) .#{$prefix}steps-item-icon:before {
+            margin: 0 0 0 ($base-padding * 1.2);
+            left: 100%;
+            @include horizontal-step-line();
+        }
+
+        .#{$prefix}steps-item:not(:first-child) .#{$prefix}steps-item-icon:after {
+            margin: 0 ($base-padding * 1.2) 0 0;
+            right: 100%;
+            @include horizontal-step-line();
+        }
+
+        .#{$prefix}steps-item-finish:not(:last-child) .#{$prefix}steps-item-icon:before {
+            background-color: $primary-color;
+        }
+
+        .#{$prefix}steps-item-finish:not(:last-child)+ .#{$prefix}steps-item .#{$prefix}steps-item-icon:after {
+            background-color: $primary-color;
+        }
+    }
+}
+
+// 垂直
+.#{$prefix}steps-vertical {
+    display: inline-flex;
+    flex-direction: column;
+    min-height: 100%;
+
+    .#{$prefix}steps-item:not(:last-child) .#{$prefix}steps-item-icon:before {
+        margin: ($base-padding * 1.2) 0 0 0;
+        @include vertical-steps-line();
+    }
+
+    .#{$prefix}steps-item+ .#{$prefix}steps-item {
+        padding-top: $base-padding * 1.2;
+    }
+
+    &.#{$prefix}steps-item-vertical-center .#{$prefix}steps-item-inner {
+        width: 100%;
+    }
+
+    .#{$prefix}steps-item-finish:not(:last-child) .#{$prefix}steps-item-icon:before {
+        background-color: $primary-color;
+    }
+}
+
+@media only screen and (max-width: #{$screen-small}) {
+    .#{$prefix}steps-horizontal {
+        flex-direction: column;
+
+        .#{$prefix}steps-item+ .#{$prefix}steps-item {
+            padding-top: $base-padding * 1.2;
+            padding-left: 0;
+        }
+
+        &:not(.#{$prefix}steps-vertical-center) {
+            .#{$prefix}steps-item:not(:last-child) .#{$prefix}steps-item-title:before {
+                display: none;
+            }
+        }
+
+        &.#{$prefix}steps-vertical-center {
+            align-items: center;
+
+            .#{$prefix}steps-item:not(:last-child) .#{$prefix}steps-item-icon:before {
+                display: none;
+            }
+
+            .#{$prefix}steps-item:not(:first-child) .#{$prefix}steps-item-icon:after {
+                display: none;
+            }
+        }
+    }
+}

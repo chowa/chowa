@@ -1,0 +1,418 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+@import "../../styles/transition/slide-down.scss";
+@import "../../styles/transition/zoom-horizontal.scss";
+
+// 默认样式
+.#{$prefix}menu {
+    display: flex;
+    margin: 0;
+    list-style: none;
+    border-radius: 0;
+    user-select: none;
+    overflow: hidden;
+}
+
+.#{$prefix}menu-item,
+.#{$prefix}menu-submenu-trigger {
+    margin: 0;
+    box-sizing: border-box;
+    transition: all $anim-duration ease-in;
+    white-space: nowrap;
+}
+
+.#{$prefix}menu-item-inner a {
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-decoration: none;
+    transition: all $anim-duration ease-in;
+}
+
+// 组
+.#{$prefix}menu-group {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}menu-group-title {
+    margin: 0;
+    box-sizing: border-box;
+    font-size: $font-size-small;
+    line-height: 28px;
+    height: 28px;
+}
+
+.#{$prefix}menu-submenu-collapse,
+.#{$prefix}menu-group-inner {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+// 水平
+@mixin menu-horizontal-theme($bg-color, $text-color, $text-color-active, $text-color-disabled) {
+    background-color: $bg-color;
+    @if $bg-color==$background-color-light {
+        .#{$prefix}menu-item,
+        .#{$prefix}menu-submenu-trigger {
+            &:before {
+                content: '';
+                margin: 0;
+                padding: 0;
+                display: block;
+                position: absolute;
+                left: 50%;
+                right: 50%;
+                bottom: 0;
+                height: 2px;
+                transition: all $anim-duration ease-in;
+                background-color: $text-color-active;
+            }
+        }
+    }
+
+    .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-item-inner a,
+    .#{$prefix}menu-submenu-trigger {
+        color: $text-color;
+    }
+
+    .#{$prefix}menu-item:not(.#{$prefix}menu-disabled) .#{$prefix}menu-item-inner:hover,
+    .#{$prefix}menu-item:not(.#{$prefix}menu-disabled) .#{$prefix}menu-item-inner:hover a,
+    .#{$prefix}menu-submenu-active:not(.#{$prefix}menu-disabled) {
+        color: $text-color-active;
+    }
+
+    .#{$prefix}menu-active:not(.#{$prefix}menu-disabled) {
+        @if $bg-color==$background-color-light {
+            &:before {
+                left: 0;
+                right: 0;
+            }
+        }
+        @else {
+            background-color: darken($bg-color, 5%);
+        }
+    }
+
+    .#{$prefix}menu-active,
+    .#{$prefix}menu-active .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-active .#{$prefix}menu-item-inner a {
+        color: $text-color-active;
+    }
+
+    .#{$prefix}menu-disabled,
+    .#{$prefix}menu-disabled .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-disabled .#{$prefix}menu-item-inner a {
+        color: $text-color-disabled;
+    }
+}
+
+.#{$prefix}menu-horizontal {
+    flex-direction: row;
+    height: $menu-size-base;
+    line-height: $menu-size-base;
+    flex-wrap: nowrap;
+    padding: 0;
+
+    .#{$prefix}menu-item,
+    .#{$prefix}menu-submenu-trigger {
+        height: 100%;
+        padding: 0 ($base-padding * 1.8);
+        position: relative;
+    }
+
+    .#{$prefix}menu-submenu-trigger,
+    .#{$prefix}menu-item-inner {
+        transition: all $anim-duration ease-in;
+        cursor: pointer;
+        box-sizing: border-box;
+
+        .#{$prefix}icon {
+            margin-right: $base-padding * 0.4;
+        }
+    }
+
+    .#{$prefix}menu-item-inner {
+        padding: 0;
+        margin: 0;
+    }
+
+    &.#{$prefix}menu-light {
+        @include menu-horizontal-theme($background-color-light, $text-color-gray, $primary-color, $text-color-light);
+    }
+
+    &.#{$prefix}menu-dark {
+        @include menu-horizontal-theme($dark-background-color, $dark-text-color-base, $primary-color, $dark-text-color-light);
+    }
+
+    &.#{$prefix}menu-primary {
+        @include menu-horizontal-theme($primary-color, darken($dark-text-color-base, 5%), $dark-text-color-base, $dark-text-color-gray);
+    }
+}
+
+// 垂直
+@mixin menu-vertical-theme($bg-color, $text-color, $text-color-active, $text-color-disabled, $bg-color-active, $open-bg-color) {
+    background-color: $bg-color;
+
+    .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-item-inner a,
+    .#{$prefix}menu-submenu-trigger {
+        color: $text-color;
+    }
+
+    .#{$prefix}menu-item:not(.#{$prefix}menu-disabled) .#{$prefix}menu-item-inner:hover,
+    .#{$prefix}menu-item:not(.#{$prefix}menu-disabled) .#{$prefix}menu-item-inner:hover a,
+    .#{$prefix}menu-submenu-trigger:not(.#{$prefix}menu-disabled):hover {
+        color: $text-color-active;
+    }
+
+    .#{$prefix}menu-active:not(.#{$prefix}menu-disabled) {
+        background-color: $bg-color-active;
+        color: $text-color-active;
+
+        .#{$prefix}menu-item-inner,
+        .#{$prefix}menu-item-inner a,
+        .#{$prefix}menu-submenu-trigger {
+            color: $text-color-active;
+        }
+    }
+
+    .#{$prefix}menu-submenu-active {
+        background-color: $open-bg-color;
+    }
+
+    .#{$prefix}menu-group-title {
+        color: lighten($text-color-disabled, 10%);
+    }
+
+    .#{$prefix}menu-disabled,
+    .#{$prefix}menu-disabled .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-disabled .#{$prefix}menu-item-inner a {
+        color: $text-color-disabled;
+    }
+}
+
+.#{$prefix}menu-vertical {
+    flex-direction: column;
+    transition: all $anim-duration ease-in;
+    overflow: hidden;
+    width: 100%;
+    padding: ($base-padding * 1.2) 0;
+
+    .#{$prefix}menu-item,
+    .#{$prefix}menu-submenu-trigger {
+        height: 42px;
+        line-height: 42px;
+        font-size: $font-size-base;
+        padding: 0 ($base-padding * 2.6);
+    }
+
+    .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-submenu-trigger {
+        transition: all $anim-duration ease-in;
+        cursor: pointer;
+    }
+
+    .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-submenu-title {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+        .#{$prefix}icon {
+            margin-right: $base-padding * 0.6;
+        }
+    }
+
+    .#{$prefix}menu-submenu-trigger {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .#{$prefix}menu-submenu-title {
+        line-height: 42px;
+        height: 42px;
+        flex: auto;
+    }
+
+    .#{$prefix}menu-submenu-arrow {
+        flex: none;
+        margin: 0;
+        padding: 0;
+        margin-left: ($base-padding * 0.6);
+        transition: transform $anim-duration ease-in;
+    }
+
+    .#{$prefix}menu-submenu-arrow-active {
+        transform: rotate(-180deg);
+    }
+
+    .#{$prefix}menu-group-title {
+        padding: 0 ($base-padding * 1.6);
+    }
+
+    &.#{$prefix}menu-collapse {
+        width: $menu-size-base;
+
+        .#{$prefix}menu-item,
+        .#{$prefix}menu-submenu-trigger {
+            display: block;
+            padding: 0;
+            text-align: center;
+            @include text-overflow();
+        }
+
+        .#{$prefix}menu-item-inner,
+        .#{$prefix}menu-submenu-title {
+            .#{$prefix}icon {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &.#{$prefix}menu-light {
+        @include menu-vertical-theme($background-color-light, $text-color-gray, $primary-color, $text-color-light, $background-color-active, $background-color-light);
+    }
+
+    &.#{$prefix}menu-dark {
+        @include menu-vertical-theme($dark-background-color, $dark-text-color-gray, $dark-text-color-base, $dark-text-color-light, $primary-color, darken($dark-background-color, 5%));
+    }
+
+    &.#{$prefix}menu-primary {
+        @include menu-vertical-theme($primary-color, $dark-text-color-base, $dark-text-color-base, $dark-text-color-gray, lighten($primary-color, 10%), darken($primary-color, 5%));
+    }
+}
+
+// overlay
+@mixin submenu-overlay-theme($drop-bg-color, $text-color, $text-color-active, $text-color-disabled, $bg-color-active) {
+    @include dropdown-content($drop-bg-color);
+
+    .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-item-inner a,
+    .#{$prefix}menu-submenu-related-trigger {
+        color: $text-color;
+    }
+
+    .#{$prefix}menu-item:not(.#{$prefix}menu-disabled):hover .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-item:not(.#{$prefix}menu-disabled):hover .#{$prefix}menu-item-inner a,
+    .#{$prefix}menu-submenu-related-trigger:not(.#{$prefix}menu-disabled):hover {
+        color: $text-color-active;
+    }
+
+    .#{$prefix}menu-submenu-related-active {
+        color: $text-color-active;
+    }
+
+    .#{$prefix}menu-active,
+    .#{$prefix}menu-active .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-active .#{$prefix}menu-item-inner a {
+        color: $text-color-active;
+        background-color: $bg-color-active;
+    }
+
+    .#{$prefix}menu-disabled,
+    .#{$prefix}menu-disabled .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-disabled .#{$prefix}menu-item-inner a {
+        color: $text-color-disabled;
+    }
+
+    .#{$prefix}menu-group-title {
+        color: lighten($text-color-disabled, 10%);
+    }
+}
+
+.#{$prefix}menu-overlay-submenu {
+    margin: 0;
+    padding: ($base-padding * 1.2) 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-size: $font-size-base;
+    line-height: 34px;
+    min-width: 160px;
+
+    .#{$prefix}menu-submenu-related {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .#{$prefix}menu-item,
+    .#{$prefix}menu-submenu-related-trigger {
+        margin: 0;
+        padding: 0 ($base-padding * 1.8);
+        box-sizing: border-box;
+    }
+
+    .#{$prefix}menu-item-inner,
+    .#{$prefix}menu-submenu-related-trigger {
+        transition: all $anim-duration ease-in;
+        cursor: pointer;
+
+        .#{$prefix}icon {
+            margin-right: $base-padding * 0.6;
+        }
+    }
+
+    .#{$prefix}menu-submenu-related-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .#{$prefix}menu-submenu-title {
+        flex: auto;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        @include text-overflow();
+    }
+
+    .#{$prefix}menu-submenu-arrow {
+        flex: none;
+        margin: 0 0 0 ($base-padding * 0.8);
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .#{$prefix}menu-submenu-related-inner {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        min-width: 100%;
+        margin: 0 0 0 2px;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .#{$prefix}menu-group-title {
+        padding: 0 ($base-padding * 0.8);
+    }
+
+    &.#{$prefix}menu-overlay-submenu-light {
+        @include submenu-overlay-theme($background-color-light, $text-color-gray, $primary-color, $text-color-light, $background-color-active);
+    }
+
+    &.#{$prefix}menu-overlay-submenu-dark {
+        @include submenu-overlay-theme($dark-background-color, $dark-text-color-gray, $dark-text-color-base, $dark-text-color-light, $primary-color);
+    }
+
+    &.#{$prefix}menu-overlay-submenu-primary {
+        @include submenu-overlay-theme(rgba(red($primary-color), green($primary-color), blue($primary-color), 0.65), $dark-text-color-base, $dark-text-color-base, $dark-text-color-light, $primary-color);
+    }
+}
+
+// disabled
+.#{$prefix}menu-disabled {
+    cursor: not-allowed;
+}
+
+.#{$prefix}menu-disabled .#{$prefix}menu-item-inner {
+    cursor: not-allowed;
+}

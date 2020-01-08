@@ -1,0 +1,60 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+@import "../../styles/animation/rotating.scss";
+
+.#{$prefix}nprogress {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}nprogress-bar {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    z-index: 999;
+    background: $primary-color;
+}
+
+.#{$prefix}nprogress-shadow {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 12px $primary-color;
+}
+
+.#{$prefix}nprogress-spinner-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: fixed;
+    top: $base-padding * 1.4;
+    right: $base-padding * 1.4;
+    z-index: 999;
+}
+
+.#{$prefix}nprogress-spinner {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
+    width: $base-padding * 1.8;
+    height: $base-padding * 1.8;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: $primary-color;
+    border-bottom-color: $primary-color;
+    animation: #{$prefix}rotating 0.4s infinite linear;
+}

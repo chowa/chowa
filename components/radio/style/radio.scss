@@ -1,0 +1,151 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}radio-wrapper {
+    display: inline-block;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    height: $io-height-base;
+    line-height: $io-height-base;
+    outline: none;
+    white-space: nowrap;
+
+    + .#{$prefix}radio-wrapper {
+        margin-left: ($base-padding * 1.6);
+    }
+
+    &:not(.#{$prefix}radio-disabled):hover .#{$prefix}radio-inner {
+        @include io-hover();
+    }
+
+    &:not(.#{$prefix}radio-disabled):focus .#{$prefix}radio-inner {
+        @include io-focus();
+    }
+
+    &.#{$prefix}has-error .#{$prefix}radio-inner {
+        @include has-error();
+    }
+}
+
+.#{$prefix}radio {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin: ($io-height-base - 16px) / 2 0;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.#{$prefix}radio-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
+    border: 1px solid $border-color;
+    border-radius: 50%;
+    transition: all $anim-duration ease-in;
+    background-color: $background-color-light;
+
+    &:before {
+        content: '';
+        margin: 4px;
+        padding: 0;
+        display: block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        transition: all $anim-duration ease-in;
+        transform: scale(0);
+    }
+}
+
+.#{$prefix}radio-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.#{$prefix}radio-label {
+    margin: 0 0 0 ($base-padding * 0.4);
+    padding: 0;
+}
+
+// 状态
+.#{$prefix}radio-checked .#{$prefix}radio-inner {
+    border-color: $primary-color;
+
+    &:before {
+        background-color: $primary-color;
+        transform: scale(1);
+    }
+}
+
+.#{$prefix}radio-disabled {
+    cursor: not-allowed;
+
+    .#{$prefix}radio-inner {
+        background-color: $disabled-color;
+        border-color: $border-color;
+    }
+
+    .#{$prefix}radio-label {
+        color: $text-color-light;
+    }
+
+    &.#{$prefix}radio-checked .#{$prefix}radio-inner:before {
+        background-color: $text-color-light;
+    }
+}
+
+// btn
+.#{$prefix}radio-btn {
+    border-color: $border-color;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    background-color: $background-color-light;
+    line-height: $io-height-base - 2;
+    padding: 0 ($base-padding + 5px);
+    @include btn();
+
+    .#{$prefix}radio {
+        display: none;
+    }
+
+    &.#{$prefix}has-error.#{$prefix}radio-btn {
+        @include has-error();
+    }
+
+    .#{$prefix}radio-label {
+        margin: 0;
+    }
+
+    &:not(.#{$prefix}radio-disabled):hover {
+        color: $primary-color;
+        border-color: $primary-color;
+    }
+
+    &:not(.#{$prefix}radio-disabled).#{$prefix}radio-checked {
+        color: $dark-text-color-base;
+        border-color: $primary-color;
+        background-color: $primary-color;
+    }
+
+    &:not(.#{$prefix}radio-disabled):focus {
+        box-shadow: inset 0 0 6px 3px rgba(red($primary-color), green($primary-color), blue($primary-color), 0.15);
+    }
+
+    &.#{$prefix}radio-disabled {
+        background-color: $disabled-color;
+        cursor: not-allowed;
+    }
+}

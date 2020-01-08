@@ -1,0 +1,187 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}drawer-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    background-color: $mask-color;
+}
+
+.#{$prefix}drawer {
+    position: fixed;
+    background: $dark-text-color-base;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    max-height: 100vh;
+}
+
+.#{$prefix}drawer-right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 220px;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.#{$prefix}drawer-left {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    min-width: 220px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.#{$prefix}drawer-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 220px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.#{$prefix}drawer-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 220px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.#{$prefix}drawer-header {
+    display: flex;
+    color: $text-color-base;
+    flex: none;
+    margin: 0;
+    padding: 0 ($base-padding * 1.6);
+    font-size: $font-size-base;
+    height: 55px;
+    line-height: 55px;
+    box-sizing: border-box;
+}
+
+.#{$prefix}drawer-header-title {
+    flex: auto;
+}
+
+.#{$prefix}drawer-header-close {
+    margin: 0 0 0 $base-padding * 1.6;
+    padding: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: $text-color-gray;
+    transition: color $anim-duration ease-in;
+    cursor: pointer;
+    flex: none;
+
+    &:hover {
+        color: $text-color-base;
+    }
+}
+
+.#{$prefix}drawer-body {
+    flex: auto;
+    margin: 0;
+    padding: ($base-padding * 1.2) ($base-padding * 1.6);
+    box-sizing: border-box;
+    color: $text-color-gray;
+    @include scrollbar(false);
+
+    &.#{$prefix}drawer-body-media {
+        padding: 0;
+    }
+}
+
+.#{$prefix}drawer-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: none;
+    margin: 0;
+    box-sizing: border-box;
+    padding: ($base-padding * 0.8) ($base-padding * 1.6);
+    font-size: $font-size-base;
+    color: $text-color-light;
+
+    &.#{$prefix}drawer-footer-start {
+        justify-content: flex-start;
+    }
+}
+
+.#{$prefix}drawer-bordered {
+    .#{$prefix}drawer-header {
+        border-bottom: 1px solid $border-color;
+    }
+
+    .#{$prefix}drawer-footer {
+        border-top: 1px solid $border-color;
+    }
+}
+
+@keyframes #{$prefix}drawer-right-trans {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes #{$prefix}drawer-left-trans {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes #{$prefix}drawer-top-trans {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes #{$prefix}drawer-bottom-trans {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@mixin drawer-transition ($placement) {
+    .#{$prefix}drawer-#{$placement}-enter {
+        animation-name: #{$prefix}drawer-#{$placement}-trans;
+    }
+
+    .#{$prefix}drawer-#{$placement}-leave {
+        animation-name: #{$prefix}drawer-#{$placement}-trans;
+        animation-direction: reverse;
+    }
+}
+
+.#{$prefix}drawer-appear {
+    animation-duration: $anim-duration;
+    animation-timing-function: ease-in-out;
+}
+
+@include drawer-transition(right);
+@include drawer-transition(left);
+@include drawer-transition(top);
+@include drawer-transition(bottom);

@@ -1,0 +1,200 @@
+@import "../../styles/variables.scss";
+
+.#{$prefix}carousel {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.#{$prefix}carousel-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.#{$prefix}carousel-items-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    position: relative;
+    height: 100%;
+}
+
+.#{$prefix}carousel-item {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}carousel-slide {
+    .#{$prefix}carousel-container {
+        overflow: hidden;
+    }
+
+    .#{$prefix}carousel-items-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .#{$prefix}carousel-item {
+        opacity: 0.3;
+        width: 100%;
+        overflow: hidden;
+        transition: all $anim-duration ease-in;
+    }
+
+    .#{$prefix}carousel-item-active {
+        opacity: 1;
+    }
+}
+
+.#{$prefix}carousel-fade {
+    .#{$prefix}carousel-item {
+        opacity: 0;
+        transition: all $anim-duration * 2 ease-in;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+    }
+
+    .#{$prefix}carousel-item-active {
+        opacity: 1;
+    }
+}
+
+&.#{$prefix}carousel-smash {
+     .#{$prefix}carousel-item {
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         perspective: 700px;
+         transition: all $anim-duration * 2 ease-in;
+         position: absolute;
+         left: 0;
+         top: 0;
+         right: 0;
+         z-index: 1;
+         overflow: hidden;
+    }
+
+    .#{$prefix}carousel-fragment {
+        transition: all $anim-duration * 3 ease-in-out;
+        transform: translateZ(500px) rotateZ(180deg);
+        margin: 0;
+        padding: 0;
+    }
+
+    .#{$prefix}carousel-item-active {
+        z-index: 10;
+        overflow: visible;
+
+        .#{$prefix}carousel-fragment {
+            transform: translateZ(0) rotateZ(0);
+        }
+    }
+}
+
+.#{$prefix}carousel-next-btn,
+.#{$prefix}carousel-pre-btn {
+    position: absolute;
+    top: 50%;
+    width: 36px;
+    height: 36px;
+    margin: -18px 0 0 0;
+    padding: 0;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border: none;
+    font-size: $font-size-base + 8px;
+    line-height: 36px;
+    text-align: center;
+    color: $dark-text-color-base;
+    cursor: pointer;
+    transition: all $anim-duration ease-in;
+    z-index: 15;
+    box-sizing: border-box;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.#{$prefix}carousel-pre-btn {
+    left: $base-padding * 1.8;
+}
+
+.#{$prefix}carousel-next-btn {
+    right: $base-padding * 1.8;
+}
+
+.#{$prefix}carousel-pages {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    z-index: 15;
+}
+
+.#{$prefix}carousel-pages-btn {
+    margin: 0 4px;
+    padding: 0;
+    box-sizing: border-box;
+    flex: none;
+    display: flex;
+    align-items: center;
+
+    button {
+        width: 24px;
+        height: 3px;
+        border: none;
+        overflow: hidden;
+        text-indent: -999px;
+        transition: all $anim-duration ease-in;
+        outline: none;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+}
+
+.#{$prefix}carousel-pages-active {
+    cursor: not-allowed;
+}
+
+.#{$prefix}carousel-pages-inside {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: $base-padding;
+
+    .#{$prefix}carousel-pages-btn button {
+        background-color: rgba(red($dark-text-color-base), green($dark-text-color-base), blue($dark-text-color-base), 0.45);
+    }
+
+    .#{$prefix}carousel-pages-active button {
+        background-color: $background-color-light;
+    }
+}
+
+.#{$prefix}carousel-pages-outside {
+    padding: $base-padding 0;
+
+    .#{$prefix}carousel-pages-btn button {
+        background-color: rgba(red($text-color-gray), green($text-color-gray), blue($text-color-gray), 0.45);
+    }
+
+    .#{$prefix}carousel-pages-active button {
+        background-color: $text-color-gray;
+    }
+}

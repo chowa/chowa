@@ -1,0 +1,83 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+@mixin create-tigger($picker, $width) {
+    .#{$prefix}#{$picker}-picker {
+        position: relative;
+        display: inline-block;
+        border: 1px solid $border-color;
+        transition: all $anim-duration linear;
+        border-radius: $border-radius-base;
+        width: $width;
+        height: $io-height-base;
+        background-color: $background-color-light;
+        box-sizing: border-box;
+        cursor: text;
+
+        &:not(.#{$prefix}#{$picker}-picker-disabled):hover {
+            @include io-hover();
+        }
+
+        &.#{$prefix}#{$picker}-picker-focused {
+            @include io-focus();
+        }
+
+        &.#{$prefix}has-error {
+            @include has-error();
+        }
+    }
+
+    .#{$prefix}#{$picker}-picker-input {
+        position: absolute;
+        width: 100%;
+        border: none;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        color: $text-color-gray;
+        border-radius: $border-radius-base;
+        outline: none;
+        box-sizing: border-box;
+        margin: 0;
+        background: transparent;
+        padding: 0 $io-height-base 0 ($base-padding * 1.2);
+        font-size: $font-size-base;
+        cursor: inherit;
+    }
+
+    .#{$prefix}#{$picker}-picker-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $text-color-light;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all $anim-duration ease-in;
+        pointer-events: none;
+        font-size: $font-size-base;
+        width: $io-height-base - 2px;
+        height: $io-height-base - 2px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .#{$prefix}#{$picker}-picker-icon-active {
+        color: $primary-color;
+    }
+
+    .#{$prefix}#{$picker}-picker-disabled {
+        background-color: $disabled-color;
+        cursor: not-allowed;
+    }
+}
+
+@include create-tigger(date, 180px);
+@include create-tigger(month, 140px);
+@include create-tigger(year, 120px);
+@include create-tigger(range, 360px);
+@include create-tigger(week, 160px);
+
+.#{$prefix}date-picker-with-time {
+    width: 210px;
+}

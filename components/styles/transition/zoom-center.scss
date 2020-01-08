@@ -1,0 +1,22 @@
+@import "../variables.scss";
+@import "./zoom.scss";
+
+@keyframes #{$prefix}zoom-center {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.#{$prefix}zoom-center-enter {
+    transform-origin: center;
+    animation-name: #{$prefix}zoom-center;
+}
+
+.#{$prefix}zoom-center-leave {
+    animation-name: #{$prefix}zoom-center;
+    animation-direction: reverse;
+}

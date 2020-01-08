@@ -1,0 +1,97 @@
+@import "../../styles/variables.scss";
+@import "../../styles/transition/slide-down.scss";
+
+@mixin alert-type($color, $amount: 43%) {
+    border-color: lighten($color, 25%);
+    background-color: lighten($color, $amount);
+    color: $color;
+}
+
+// base layout
+.#{$prefix}alert {
+    display: flex;
+    border-width: 1px;
+    border-style: solid;
+    align-items: flex-start;
+    border-radius: $border-radius-base + 2px;
+    margin: 0;
+    padding: ($base-padding * 0.4) ($base-padding * 0.8);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.#{$prefix}alert-icon {
+    flex: none;
+    margin: 0 ($base-padding * 0.6) 0 0;
+    padding: 0;
+    line-height: 1;
+    font-size: $font-size-large;
+    box-sizing: border-box;
+}
+
+.#{$prefix}alert-inner {
+    margin: 0;
+    padding: 0;
+    flex: auto;
+    box-sizing: border-box;
+}
+
+.#{$prefix}alert-title {
+    margin: 0;
+    padding: 0 0 ($base-padding * 0.6) 0;
+    box-sizing: border-box;
+    line-height: 22px;
+    color: $text-color-base;
+    font-size: $font-size-base;
+}
+
+.#{$prefix}alert-content {
+    margin: 0;
+    padding: 0;
+    line-height: 16px;
+    box-sizing: border-box;
+    color: $text-color-gray;
+    font-size: $font-size-small;
+}
+
+.#{$prefix}alert-close {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: color $anim-duration ease-in;
+    opacity: 0.65;
+    flex: none;
+    cursor: pointer;
+    font-size: $font-size-small;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.#{$prefix}alert-info {
+    @include alert-type($info-color);
+}
+
+.#{$prefix}alert-success {
+    @include alert-type($success-color, 52%);
+}
+
+.#{$prefix}alert-error {
+    @include alert-type($error-color);
+}
+
+.#{$prefix}alert-warning {
+    @include alert-type($warning-color);
+}
+
+// 带有标题的情况
+.#{$prefix}alert-with-title {
+    padding: ($base-padding * 1.2) ($base-padding * 1.6);
+}
+
+.#{$prefix}alert-icon-big {
+    margin-right: $base-padding * 1.5;
+    line-height: 1.6;
+    font-size: $font-size-base + 10px;
+}

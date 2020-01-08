@@ -1,0 +1,26 @@
+@import "../../styles/variables.scss";
+@import "../../styles/animation/fade.scss";
+
+.#{$prefix}image {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-base + 4px;
+    color: $text-color-light;
+}
+
+.#{$prefix}image-main {
+     width: 100%;
+     height: 100%;
+     animation: #{$prefix}fade ease-in $anim-duration;
+     margin: 0;
+     padding: 0;
+     display: block;
+ }
+
+.#{$prefix}image-border {
+    border: 1px solid $border-color;
+}

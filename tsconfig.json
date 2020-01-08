@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "lib": [
+          "dom",
+          "es6"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noResolve": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "sourceMap": true,
+        "allowJs": false,
+        "jsx": "react"
+    },
+    "include": [
+        "./components/*/*.tsx",
+        "./components/*/*.ts",
+        "./components/*.ts"
+    ],
+    "compileOnSave": false,
+    "awesomeTypescriptLoaderOptions": {
+      "forkChecker": true,
+      "useWebpackText": true
+    }
+}

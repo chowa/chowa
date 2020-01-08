@@ -1,0 +1,2 @@
+import './min';
+import './full';

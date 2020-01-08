@@ -1,0 +1,146 @@
+@import "../../styles/variables.scss";
+
+$btn-type-color: (
+    'danger': $danger-color,
+    'primary': $primary-color
+);
+
+@mixin horizontal {
+    flex-direction: row;
+    align-items: flex-start;
+
+    .#{$prefix}btn {
+        &:before {
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-right: 1px solid transparent;
+        }
+
+        &:not(:last-child) {
+            border-right-width: 0;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+
+            &:not(.#{$prefix}btn-disabled):hover,
+            &.#{$prefix}btn-active {
+                &:before {
+                    border-color: $primary-color;
+                }
+                @each $type, $type-color in $btn-type-color {
+                    &.#{$prefix}btn-#{$type}:before {
+                        border-color: $type-color;
+                    }
+                }
+            }
+        }
+
+        + .#{$prefix}btn {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+            @each $type, $type-color in $btn-type-color {
+                &.#{$prefix}btn-#{$type} {
+                    border-left-color: darken($type-color, 10%);
+
+                    &:not(.#{$prefix}btn-disabled):hover {
+                        border-left-color: $type-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin vertical {
+    flex-direction: column;
+    align-items: stretch;
+
+    .#{$prefix}btn {
+        &:before {
+            bottom: -1px;
+            left: -1px;
+            right: -1px;
+            border-top: 1px solid transparent;
+        }
+
+        &:not(:last-child) {
+            border-bottom-width: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            &:not(.#{$prefix}btn-disabled):hover,
+            &.#{$prefix}btn-active {
+                &:before {
+                    border-color: $primary-color;
+                }
+                @each $type, $type-color in $btn-type-color {
+                    &.#{$prefix}btn-#{$type}:before {
+                        border-color: $type-color;
+                    }
+                }
+            }
+        }
+
+        + .#{$prefix}btn {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            @each $type, $type-color in $btn-type-color {
+                &.#{$prefix}btn-#{$type} {
+                    border-top-color: darken($type-color, 10%);
+
+                    &:not(.#{$prefix}btn-disabled):hover {
+                        border-top-color: $type-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.#{$prefix}btn-group {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    .#{$prefix}btn {
+        margin-left: 0;
+        position: relative;
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 999;
+            transition: border-color $anim-duration linear;
+        }
+    }
+}
+
+.#{$prefix}btn-group-horizontal {
+    @include horizontal();
+}
+
+.#{$prefix}btn-group-vertical {
+    @include vertical();
+}
+
+.#{$prefix}btn-group-round {
+    .#{$prefix}btn:first-child {
+        border-bottom-left-radius: 999px;
+        border-top-left-radius: 999px;
+    }
+
+    .#{$prefix}btn:last-child {
+        border-bottom-right-radius: 999px;
+        border-top-right-radius: 999px;
+    }
+}
+
+.#{$prefix}btn-group-justified {
+    display: flex;
+
+    .#{$prefix}btn {
+        flex: auto;
+    }
+}

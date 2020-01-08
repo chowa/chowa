@@ -1,0 +1,253 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}cascader {
+    position: relative;
+    width: 100%;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+    transition: all $anim-duration ease-in;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    min-height: $io-height-base;
+    box-sizing: border-box;
+    background-color: $background-color-light;
+
+    &:not(.#{$prefix}cascader-disabled):hover {
+        @include io-hover();
+    }
+
+    &.#{$prefix}cascader-focused,
+    &:not(.#{$prefix}cascader-disabled):focus {
+        @include io-focus();
+    }
+
+    &.#{$prefix}has-error {
+        @include has-error();
+    }
+}
+
+.#{$prefix}cascader-arrow {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-color-light;
+    width: $io-height-base - 2px;
+    height: $io-height-base - 2px;
+    line-height: $io-height-base - 2px;
+    font-size: $font-size-small;
+    transition: all $anim-duration ease-in;
+}
+
+.#{$prefix}cascader-arrow-active {
+    transform: rotate(-180deg);
+    color: $primary-color;
+}
+
+.#{$prefix}cascader-selection {
+    color: $text-color-gray;
+    margin: 0 $io-height-base 0 ($base-padding * 1.2);
+    padding: 0;
+    font-size: $font-size-base;
+    min-height: $io-height-base - 2px;
+    line-height: $io-height-base - 2px;
+    position: relative;
+}
+
+.#{$prefix}cascader-searching,
+.#{$prefix}cascader-placeholder {
+    color: $text-color-light;
+}
+
+.#{$prefix}cascader-search-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: $text-color-gray;
+    font-size: inherit;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    caret-color: $primary-color;
+}
+
+.#{$prefix}cascader-disabled {
+    background-color: $disabled-color;
+    @include disabled();
+}
+
+.#{$prefix}cascader-selector-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// card
+.#{$prefix}cascader-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: $border-radius-base;
+    margin: 0;
+    padding: 0;
+    min-width: 280px;
+    max-width: 480px;
+    max-height: $dropdown-max-height;
+    font-size: $font-size-base;
+    outline: none;
+    @include scrollbar();
+}
+
+.#{$prefix}cascader-card-tier-title {
+    padding: 0;
+    margin: $base-padding;
+    display: flex;
+    border-bottom: 1px solid $border-color;
+    list-style: none;
+}
+
+.#{$prefix}cascader-card-title {
+    flex: none;
+    margin: 0;
+    color: $text-color-base;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color $anim-duration ease-in;
+    padding: ($base-padding * 0.6) $base-padding;
+}
+
+.#{$prefix}cascader-card-selector {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 $base-padding $base-padding $base-padding;
+    margin: 0;
+}
+
+.#{$prefix}cascader-card-option {
+    margin: 0;
+    padding: ($base-padding * 0.4) ($base-padding * 0.6);
+    white-space: nowrap;
+    color: $text-color-gray;
+    cursor: pointer;
+    transition: color $anim-duration ease-in;
+}
+
+.#{$prefix}cascader-card-active {
+    color: $primary-color;
+}
+
+.#{$prefix}cascader-card-selected {
+    color: $primary-color;
+    font-weight: 500;
+}
+
+.#{$prefix}cascader-card-disabled {
+    color: $text-color-light;
+    cursor: not-allowed;
+}
+
+// list
+.#{$prefix}cascader-list {
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    border-radius: $border-radius-base;
+    align-items: top;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    outline: none;
+}
+
+.#{$prefix}cascader-list-selector {
+    height: $dropdown-max-height;
+    margin: 0;
+    padding: $base-padding 0;
+    min-width: 160px;
+    list-style: none;
+    font-size: $font-size-base;
+    @include scrollbar(false);
+
+    + .#{$prefix}cascader-list-selector {
+        border-left: 1px solid $border-color;
+    }
+}
+
+.#{$prefix}cascader-list-option {
+    margin: 0;
+    padding: 0 $base-padding;
+    line-height: 30px;
+    color: $text-color-gray;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all $anim-duration ease-in;
+    white-space: nowrap;
+}
+
+.#{$prefix}cascader-label {
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}cascader-list-arrow {
+    font-size: $font-size-small;
+    padding-left: $base-padding;
+}
+
+.#{$prefix}cascader-not-found {
+    margin: 0;
+    padding: ($base-padding * 1.2) 0;
+    width: 160px;
+    box-sizing: border-box;
+}
+
+.#{$prefix}cascader-filter-selector {
+    height: $dropdown-max-height;
+    margin: 0;
+    padding: $base-padding 0;
+    list-style: none;
+    font-size: $font-size-base;
+    outline: 0;
+    @include scrollbar(false);
+}
+
+.#{$prefix}cascader-filter-option {
+    margin: 0;
+    padding: 0 $base-padding;
+    line-height: 30px;
+    min-width: 140px;
+    color: $text-color-gray;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all $anim-duration ease-in;
+    white-space: nowrap;
+}
+
+.#{$prefix}cascader-list-selected {
+    background-color: $background-color-base;
+    color: $primary-color;
+}
+
+.#{$prefix}cascader-list-active {
+    background-color: $background-color-active;
+}
+
+.#{$prefix}cascader-list-disabled {
+    color: $text-color-light;
+    cursor: not-allowed;
+}

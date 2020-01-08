@@ -1,0 +1,28 @@
+@import "../variables.scss";
+
+@keyframes #{$prefix}slide-down {
+    0% {
+        max-height: 0;
+    }
+
+    100% {
+        max-height: 666px;
+    }
+}
+
+// 向下展开
+.#{$prefix}slide-down-enter {
+    animation-name: #{$prefix}slide-down;
+}
+
+.#{$prefix}slide-down-leave {
+    animation-name: #{$prefix}slide-down;
+    animation-direction: reverse;
+}
+
+.#{$prefix}slide-down-appear {
+    animation-duration: $anim-duration;
+    animation-timing-function: ease-in;
+    transform-origin: top;
+    overflow-y: hidden;
+}

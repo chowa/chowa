@@ -1,0 +1,103 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+@import "../../styles/transition/slide-down.scss";
+
+.#{$prefix}form {
+    margin: 0;
+    padding: ($base-padding * 1.2) 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}form-inline {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.#{$prefix}form-item {
+    margin: 0 0 ($base-padding * 1.2) 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.#{$prefix}form-item-label {
+    color: $text-color-gray;
+    line-height: $io-height-base;
+    font-size: $font-size-base;
+    box-sizing: border-box;
+    word-break: keep-all;
+}
+
+.#{$prefix}form-item-label-top .#{$prefix}form-item-label {
+    padding: 0;
+    margin: 0 ($base-padding * 0.8) 0 0;
+}
+
+.#{$prefix}form-item-label-left,
+.#{$prefix}form-item-label-right {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .#{$prefix}form-item-label {
+        margin: 0 ($base-padding * 1.2) 0 0;
+        padding: 0 ($base-padding * 0.8);
+        display: inline-flex;
+        align-items: flex-start;
+    }
+}
+
+.#{$prefix}form-item-label-left .#{$prefix}form-item-label {
+    justify-content: flex-start;
+}
+
+.#{$prefix}form-item-label-right .#{$prefix}form-item-label {
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: #{$screen-small}) {
+    .#{$prefix}form-item-label-right .#{$prefix}form-item-label {
+        justify-content: flex-start;
+    }
+}
+
+.#{$prefix}form-item-required {
+    color: $danger-color;
+    margin: 0 ($base-padding * 0.4);
+    padding: 0;
+    flex: none;
+}
+
+.#{$prefix}form-item-content {
+    text-align: left;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    flex: auto;
+}
+
+.#{$prefix}form-control {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.#{$prefix}form-field {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}form-notice {
+    margin: 0;
+    padding: ($base-padding * 0.6) 0 0 0;
+    box-sizing: border-box;
+    font-size: $font-size-small;
+    line-height: $font-size-small;
+    height: $font-size-small + ($base-padding * 0.6);
+    color: $danger-color;
+}

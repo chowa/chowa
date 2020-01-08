@@ -1,0 +1,66 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}statistic {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: $line-height-base;
+}
+
+.#{$prefix}statistic-title {
+    margin: 0 0 ($base-padding * 0.8) 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: $text-color-light;
+}
+
+.#{$prefix}statistic-content {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.#{$prefix}statistic-value {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex: none;
+    color: $text-color-base;
+}
+
+.#{$prefix}statistic-value-moment,
+.#{$prefix}statistic-value-integer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base + 10px;
+}
+
+.#{$prefix}statistic-value-decimal {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base + 4px;
+}
+
+.#{$prefix}statistic-prefix {
+    margin: 0 ($base-padding * 0.8) 0 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base + 10px;
+    color: $text-color-base;
+}
+
+.#{$prefix}statistic-suffix {
+    margin: 0 0 0 ($base-padding * 0.4);
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base + 10px;
+    color: $text-color-base;
+}

@@ -1,0 +1,146 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}transfer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    outline: none;
+
+    &:not(.#{$prefix}transfer-disabled):focus .#{$prefix}transfer-model:first-child {
+        @include io-focus();
+    }
+
+    &.#{$prefix}has-error .#{$prefix}transfer-model {
+        @include has-error();
+    }
+}
+
+.#{$prefix}transfer-operate-wrapper {
+    padding: 0 ($base-padding * 1.2);
+    margin: 0;
+    box-sizing: border-box;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.#{$prefix}transfer-operate-btn+ .#{$prefix}transfer-operate-btn {
+    margin-left: 0;
+    margin-top: $base-padding * 1.2;
+}
+
+.#{$prefix}transfer-model {
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+    transition: all $anim-duration linear;
+    flex: none;
+    width: 240px;
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.#{$prefix}transfer-model-header {
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    flex: none;
+    margin: 0;
+    padding: ($base-padding * 0.4) ($base-padding * 1.2);
+}
+
+.#{$prefix}transfer-model-title {
+    margin: 0;
+    padding: 0;
+    line-height: $io-height-base;
+    color: $text-color-light;
+}
+
+.#{$prefix}transfer-model-body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.#{$prefix}transfer-search-wrapper {
+    padding: ($base-padding * 0.8) ($base-padding * 1.2);
+    margin: 0;
+    box-sizing: border-box;
+    flex: none;
+    position: relative;
+}
+
+.#{$prefix}transfer-selector-wrapper {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex: auto;
+    @include scrollbar(false);
+}
+
+.#{$prefix}transfer-item {
+    margin: 0;
+    padding: 0 ($base-padding * 1.2);
+    box-sizing: border-box;
+    transition: all $anim-duration ease-in-out;
+    line-height: $io-height-base;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover:not(.#{$prefix}transfer-item-disabled) {
+        background-color: $background-color-active;
+    }
+
+    .#{$prefix}checkbox-wrapper {
+        width: 100%;
+        @include text-overflow();
+    }
+}
+
+.#{$prefix}transfer-item-disabled {
+    cursor: not-allowed;
+}
+
+.#{$prefix}transfer-empty {
+    margin: 0;
+    padding: 0;
+    color: $text-color-light;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.#{$prefix}transfer-model-footer {
+    border-top: 1px solid $border-color;
+    padding: ($base-padding * 0.4) ($base-padding * 1.2);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.#{$prefix}transfer-disabled .#{$prefix}transfer-model {
+    background-color: $background-color-base;
+
+    .#{$prefix}transfer-item {
+        cursor: not-allowed;
+    }
+}

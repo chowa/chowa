@@ -1,0 +1,102 @@
+@import "../../styles/variables.scss";
+
+.#{$prefix}grid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}grid-row {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.#{$prefix}grid-row-middle {
+    align-items: center;
+}
+
+.#{$prefix}grid-row-bottom {
+    align-items: flex-end;
+}
+
+.#{$prefix}grid-row-end {
+    justify-content: flex-end;
+}
+
+.#{$prefix}grid-row-center {
+    justify-content: center;
+}
+
+.#{$prefix}grid-row-space-around {
+    justify-content: space-around;
+}
+
+.#{$prefix}grid-row-space-between {
+    justify-content: space-between;
+}
+
+.#{$prefix}grid-col {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin make-col-span($span) {
+    $span-width: percentage(1 / $span);
+    @for $index from 1 through $span {
+        .#{$prefix}grid-col-span-#{$index} {
+            flex: 0 0 ($index * $span-width);
+            max-width: $index * $span-width;
+        }
+
+        .#{$prefix}grid-col-pull-#{$index} {
+            margin-left: -$index * $span-width;
+        }
+
+        .#{$prefix}grid-col-push-#{$index} {
+            margin-left: $index * $span-width;
+        }
+    }
+    @if ($span < $grid-span) {
+        @for $index from ($span + 1) through $grid-span {
+            .#{$prefix}grid-col-span-#{$index} {
+                width: 100%;
+                max-width: 100%;
+                flex: none;
+            }
+
+            .#{$prefix}grid-col-pull-#{$index},
+            .#{$prefix}grid-col-push-#{$index} {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: #{$screen-small}) {
+    @include make-col-span($grid-span / 6);
+}
+
+@media only screen and (min-width: #{$screen-small}) and (max-width: #{$screen-medium}) {
+    @include make-col-span($grid-span / 6 * 4);
+}
+
+@media only screen and (min-width: #{$screen-medium}) and (max-width: #{$screen-large}) {
+    @include make-col-span($grid-span / 6 * 5);
+}
+
+@media only screen and (min-width: #{$screen-large}) {
+    @include make-col-span($grid-span);
+}
+
+@for $index from 1 through $grid-span {
+    .#{$prefix}grid-col-order-#{$index} {
+        order: $index;
+    }
+}

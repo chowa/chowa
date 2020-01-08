@@ -1,0 +1,90 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}radio-group {
+    white-space: nowrap;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    min-height: $io-height-base;
+
+    .#{$prefix}radio-btn {
+        position: relative;
+        margin-left: 0;
+        overflow: visible;
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 999;
+            transition: border-color $anim-duration linear;
+        }
+    }
+
+    &.#{$prefix}has-error .#{$prefix}radio-inner,
+    &.#{$prefix}has-error .#{$prefix}radio-btn {
+        @include has-error();
+    }
+}
+
+.#{$prefix}radio-group-horizontal {
+    flex-direction: row;
+
+    .#{$prefix}radio-btn {
+        &:before {
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-right: 1px solid transparent;
+        }
+
+        &:not(:last-child) {
+            border-right-width: 0;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+
+            &:not(.#{$prefix}radio-disabled):hover:before {
+                border-color: $primary-color;
+            }
+        }
+
+        + .#{$prefix}radio-btn {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+        }
+    }
+}
+
+.#{$prefix}radio-group-vertical {
+    flex-direction: column;
+    align-items: stretch;
+
+    .#{$prefix}radio-btn {
+        &:before {
+            bottom: -1px;
+            left: -1px;
+            right: -1px;
+            border-top: 1px solid transparent;
+        }
+
+        &:not(:last-child) {
+            border-bottom-width: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            &:not(.#{$prefix}radio-disabled):hover:before {
+                border-color: $primary-color;
+            }
+        }
+
+        + .#{$prefix}radio-btn {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+
+    .#{$prefix}radio-wrapper+ .#{$prefix}radio-wrapper {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,83 @@
+@import "../../styles/variables.scss";
+
+.#{$prefix}scrollbar {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0 6px 6px 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}scrollbar-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}scrollbar-vertical-track {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 6px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.#{$prefix}scrollbar-vertical-thumb {
+    width: 100%;
+    cursor: pointer;
+    transform: translateY(0);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    height: 30px;
+    min-height: 30px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    transition: background-color $anim-duration ease-in;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}
+
+.#{$prefix}scrollbar-horizontal-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.#{$prefix}scrollbar-horizontal-thumb {
+    height: 100%;
+    cursor: pointer;
+    transform: translateY(0);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    width: 30px;
+    min-width: 10px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    transition: background-color $anim-duration ease-in;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}

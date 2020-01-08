@@ -1,0 +1,38 @@
+@import "../../styles/variables.scss";
+
+.#{$prefix}avatar {
+    overflow: hidden;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    font-size: $font-size-large;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}avatar-dark {
+    background-color: $dark-background-color;
+    color: $dark-text-color-gray;
+}
+
+.#{$prefix}avatar-light {
+    background-color: $background-color-base;
+    color: $primary-color;
+}
+
+.#{$prefix}avatar-primary {
+    background-color: $primary-color;
+    color: $dark-text-color-base;
+}
+
+.#{$prefix}avatar-circle {
+    border-radius: 50%;
+}
+
+.#{$prefix}avatar-rect {
+    border-radius: $border-radius-base;
+}

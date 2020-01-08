@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+npm-debug.*
+iconfonts
+dist
+es
+package-lock.json
+yarn.lock
+.cwfont.manifest
+components/icon/style/icon.scss
+cwfont/cwfont-preview.html

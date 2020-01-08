@@ -1,0 +1,60 @@
+@import "../../styles/variables.scss";
+
+@keyframes #{$prefix}back-top-anim {
+    20% {
+        transform: rotate3d(0, 0, 1, 15deg);
+    }
+
+    40% {
+        transform: rotate3d(0, 0, 1, -10deg);
+    }
+
+    60% {
+        transform: rotate3d(0, 0, 1, 5deg);
+    }
+
+    80% {
+        transform: rotate3d(0, 0, 1, -5deg);
+    }
+
+    100% {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+}
+
+.#{$prefix}back-top {
+    margin: 0;
+    padding: 0;
+    border: none;
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    width: 54px;
+    height: 54px;
+    background-color: $background-color-light;
+    text-align: center;
+    line-height: 54px;
+    color: $text-color-gray;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    outline: none;
+    cursor: pointer;
+    transition: all $anim-duration ease-in;
+    z-index: 100;
+
+    &:hover:not(:disabled) {
+        animation-name: #{$prefix}back-top-anim;
+        animation-duration: $anim-duration * 2;
+        background-color: $primary-color;
+        color: $dark-text-color-base;
+    }
+}
+
+.#{$prefix}back-top-custom {
+    font-size: $font-size-base;
+}
+
+.#{$prefix}back-top-icon {
+    font-size: $font-size-base + 12px;
+}

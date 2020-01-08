@@ -1,0 +1,207 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}select {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+    background-color: $background-color-light;
+    transition: all $anim-duration ease-in;
+    min-height: $io-height-base;
+    font-size: $font-size-base;
+    outline: none;
+    cursor: pointer;
+
+    &:not(.#{$prefix}select-disabled):hover {
+        @include io-hover();
+    }
+
+    &.#{$prefix}select-focused,
+    &:not(.#{$prefix}select-disabled):focus {
+        @include io-focus();
+    }
+
+    &.#{$prefix}has-error {
+        @include has-error();
+    }
+}
+
+.#{$prefix}select-selection {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: $io-height-base - 2px;
+    line-height: $io-height-base - 2px;
+    margin: 0 $io-height-base 0 ($base-padding * 1.2);
+}
+
+.#{$prefix}select-placeholder {
+    color: $text-color-light;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}select-value {
+    margin: 0;
+    padding: 0;
+    color: $text-color-gray;
+    @include text-overflow();
+}
+
+.#{$prefix}select-searching {
+    opacity: 0.6;
+}
+
+.#{$prefix}select-disabled {
+    background-color: $disabled-color;
+    cursor: not-allowed;
+}
+
+.#{$prefix}tag {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.#{$prefix}select-search-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: $text-color-gray;
+    background: transparent;
+    font-size: inherit;
+    border: none;
+    caret-color: $primary-color;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+.#{$prefix}select-search-multiple-input {
+    position: static;
+    display: inline-block;
+    width: 20px;
+    vertical-align: top;
+}
+
+.#{$prefix}select-arrow {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-color-light;
+    width: $io-height-base - 2px;
+    height: $io-height-base - 2px;
+    line-height: $io-height-base - 2px;
+    font-size: $font-size-small;
+    transition: all $anim-duration ease-in;
+}
+
+.#{$prefix}select-arrow-active {
+    transform: rotate(-180deg);
+    color: $primary-color;
+}
+
+// 下拉
+.#{$prefix}select-selector-wrapper {
+    max-height: $dropdown-max-height;
+    margin: 0;
+    padding: $base-padding 0;
+    outline: none;
+    list-style: none;
+    @include scrollbar(false);
+}
+
+.#{$prefix}select-option-selector {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.#{$prefix}select-option {
+    cursor: pointer;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all $anim-duration ease-in-out;
+    color: $text-color-gray;
+    border: 1px solid transparent;
+    line-height: $io-height-base;
+    padding: 0 ($base-padding * 2.2);
+    font-size: $font-size-base;
+}
+
+.#{$prefix}select-option-label {
+    margin: 0;
+    padding: 0;
+    @include text-overflow();
+}
+
+.#{$prefix}select-option-selected {
+    background-color: $background-color-base;
+    color: $text-color-base;
+
+    + .#{$prefix}select-option-selected {
+        border-top: 1px solid $border-color;
+    }
+
+    &.#{$prefix}select-option-multiple {
+        position: relative;
+        padding-right: $base-padding * 3;
+
+        &:after {
+            content: '';
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 10px;
+            height: 6px;
+            border-bottom: 1px solid $text-color-gray;
+            border-left: 1px solid $text-color-gray;
+            transform: rotate(-45deg);
+            position: absolute;
+            right: $base-padding;
+            top: 50%;
+            margin-top: -4px;
+        }
+    }
+}
+
+.#{$prefix}select-option-active {
+    background-color: $background-color-active;
+}
+
+.#{$prefix}select-option-disabled {
+    cursor: not-allowed;
+    color: $text-color-light;
+}
+
+.#{$prefix}select-option-group {
+    margin: 0;
+    padding: 0;
+}
+
+.#{$prefix}select-option-group-title {
+    color: $text-color-light;
+    font-size: $font-size-small;
+    line-height: $io-height-base - 8px;
+    margin: 0;
+    padding: 0 ($base-padding * 1.2);
+    @include text-overflow;
+}
+
+.#{$prefix}select-not-found {
+    margin: 0;
+    padding: 0;
+}

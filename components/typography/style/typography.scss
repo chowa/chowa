@@ -1,0 +1,230 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}typography {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.#{$prefix}typography-title {
+    margin: ($base-padding * 2.8) 0 ($base-padding * 1.8) 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: $text-color-base;
+    font-weight: 400;
+    line-height: $line-height-base;
+    letter-spacing: 0.5px;
+}
+
+h6.#{$prefix}typography-title {
+    font-size: $font-size-base + 2px;
+}
+
+h5.#{$prefix}typography-title {
+    font-size: $font-size-base + 4px;
+}
+
+h4.#{$prefix}typography-title {
+    font-size: $font-size-base + 6px;
+}
+
+h3.#{$prefix}typography-title {
+    font-size: $font-size-base + 8px;
+}
+
+h2.#{$prefix}typography-title {
+    font-size: $font-size-base + 10px;
+}
+
+h1.#{$prefix}typography-title {
+    font-size: $font-size-base + 12px;
+}
+
+.#{$prefix}typography-paragraph {
+    margin: 0 0 ($base-padding * 1.8) 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    line-height: $line-height-base;
+
+    b {
+        font-weight: 500;
+    }
+
+    i {
+        font-style: italic;
+    }
+
+    a {
+        @include link();
+    }
+}
+
+.#{$prefix}typography-blockquote {
+    margin: ($base-padding * 1.8) 0;
+    padding: ($base-padding * 0.8) 0 ($base-padding * 0.8) ($base-padding * 1.8);
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    line-height: $line-height-base;
+    border-left: ($base-padding * 0.4) solid $border-color;
+
+    .#{$prefix}typography-paragraph {
+        margin-bottom: 0;
+    }
+}
+
+.#{$prefix}typography-inline-code {
+    margin: 0;
+    padding: ($base-padding * 0.2) ($base-padding * 0.4);
+    box-sizing: border-box;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    border-radius: $border-radius-base;
+    background-color: #f2f4f5;
+    color: $text-color-base;
+    white-space: nowrap;
+    font-size: $font-size-small;
+}
+
+.#{$prefix}typography-code {
+    margin: ($base-padding * 1.8) 0;
+    padding: ($base-padding * 1.8);
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    box-sizing: border-box;
+    border-radius: $border-radius-base;
+    background-color: $background-color-base;
+    overflow: auto;
+
+    code {
+    	color: black;
+    	background: none;
+    	font-size: $font-size-base;
+    	text-align: left;
+    	white-space: pre-wrap;
+    	word-spacing: normal;
+    	word-break: normal;
+    	word-wrap: normal;
+    	line-height: $line-height-base;
+    	tab-size: 4;
+    	hyphens: none;
+    }
+
+    code::selection {
+    	background: #b3d4fc;
+    }
+
+    .token.cdata,
+    .token.comment,
+    .token.doctype,
+    .token.prolog {
+    	color: slategray;
+    }
+
+    .token.punctuation {
+    	color: #999;
+    }
+
+    .namespace {
+    	opacity: 0.7;
+    }
+
+    .token.boolean,
+    .token.constant,
+    .token.deleted,
+    .token.number,
+    .token.property,
+    .token.symbol,
+    .token.tag {
+    	color: #905;
+    }
+
+    .token.attr-name,
+    .token.builtin,
+    .token.char,
+    .token.inserted,
+    .token.selector,
+    .token.string {
+    	color: #690;
+    }
+
+    .language-css .token.string,
+    .style .token.string,
+    .token.entity,
+    .token.operator,
+    .token.url {
+    	color: #9a6e3a;
+    	background: hsla(0, 0%, 100%, 0.5);
+    }
+
+    .token.atrule,
+    .token.attr-value,
+    .token.keyword {
+    	color: #07a;
+    }
+
+    .token.class-name,
+    .token.function {
+    	color: #dd4a68;
+    }
+
+    .token.important,
+    .token.regex,
+    .token.variable {
+    	color: #e90;
+    }
+
+    .token.bold,
+    .token.important {
+    	font-weight: bold;
+    }
+
+    .token.italic {
+    	font-style: italic;
+    }
+
+    .token.entity {
+    	cursor: help;
+    }
+}
+
+.#{$prefix}typography-list {
+    margin: ($base-padding * 1.8) 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+
+    > li {
+        margin: 0;
+        padding: 0 0 0 ($base-padding * 2.6);
+        position: relative;
+        line-height: $line-height-base;
+        font-size: $font-size-base;
+        color: $text-color-gray;
+
+        &:before {
+            position: absolute;
+            display: block;
+            content: '';
+            width: $base-padding * 0.6;
+            height: $base-padding * 0.6;
+            border-radius: 50%;
+            background-color: $text-color-light;
+            top: ($line-height-base * $font-size-base - $base-padding * 0.6) / 2;
+            left: $base-padding;
+        }
+
+        > .#{$prefix}typography-list {
+            margin: 0;
+        }
+
+        + li {
+            margin-top: $base-padding * 0.6;
+        }
+    }
+
+    .#{$prefix}typography-paragraph {
+        margin-bottom: 0;
+    }
+}

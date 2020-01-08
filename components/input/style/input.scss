@@ -1,0 +1,301 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+::-webkit-input-placeholder {
+    color: $text-color-light;
+}
+
+@mixin status() {
+    &[disabled] {
+        background-color: $disabled-color;
+        color: $text-color-light;
+        cursor: not-allowed;
+    }
+
+    &[readonly] {
+        cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled):not(:read-only) {
+        @include io-hover();
+    }
+
+    &:focus:not(:disabled):not(:read-only) {
+        color: $text-color-base;
+        @include io-focus();
+    }
+}
+
+@mixin input-size($font-size, $height) {
+    height: $height;
+    line-height: $height - 2px;
+    font-size: $font-size;
+}
+
+.#{$prefix}input {
+    border-radius: $border-radius-base;
+    color: $text-color-gray;
+    caret-color: $primary-color;
+    transition: all $anim-duration ease-in;
+    border: 1px solid $border-color;
+    width: 100%;
+    margin: 0;
+    padding: ($base-padding * 0.6) ($base-padding * 1.2);
+    outline: none;
+    box-sizing: border-box;
+    @include input-size($font-size-base, $io-height-base);
+    @include status();
+
+    &.#{$prefix}has-error {
+       @include has-error();
+    }
+}
+
+.#{$prefix}input-small {
+    @include input-size($font-size-small, $io-height-small);
+}
+
+.#{$prefix}input-large {
+    @include input-size($font-size-large, $io-height-large);
+}
+
+// wrapper
+@mixin wrapper-size($font-size, $height) {
+    height: $height;
+    line-height: $height - 2px;
+    font-size: $font-size;
+
+    .#{$prefix}input-fix {
+        width: $height;
+    }
+
+    .#{$prefix}input-fix-wrapper {
+        .#{$prefix}input:not(:first-child) {
+            padding-left: $height;
+        }
+
+        .#{$prefix}input:not(:last-child) {
+            padding-right: $height;
+        }
+    }
+}
+
+.#{$prefix}input-wrapper {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: $text-color-light;
+    @include wrapper-size($font-size-base, $io-height-base);
+
+    .#{$prefix}btn,
+    .#{$prefix}select,
+    .#{$prefix}dropdown-btn,
+    .#{$prefix}input-addon {
+         &:first-child {
+             border-right-width: 0;
+             border-top-right-radius: 0;
+             border-bottom-right-radius: 0;
+         }
+
+         &:last-child {
+             border-left-width: 0;
+             border-top-left-radius: 0;
+             border-bottom-left-radius: 0;
+         }
+     }
+
+     &.#{$prefix}has-error .#{$prefix}input {
+        @include has-error();
+     }
+}
+
+.#{$prefix}input-wrapper-small {
+    @include wrapper-size($font-size-small, $io-height-small);
+}
+
+.#{$prefix}input-wrapper-large {
+    @include wrapper-size($font-size-large, $io-height-large);
+}
+
+.#{$prefix}input-addon {
+    flex: none;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+    background-color: $background-color-light;
+    margin: 0;
+    padding: 0 ($base-padding * 1.4);
+    box-sizing: border-box;
+}
+
+.#{$prefix}input-fix-wrapper {
+    flex: auto;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    &:not(:first-child) .#{$prefix}input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    &:not(:last-child) .#{$prefix}input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+.#{$prefix}input-fix {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: transparent;
+    text-align: center;
+
+    &:first-child {
+        left: 0;
+    }
+
+    &:last-child {
+        right: 0;
+
+        .#{$prefix}clear-btn:not(:last-child) {
+            position: static;
+            margin-right: 6px;
+        }
+    }
+}
+
+// textarta
+.#{$prefix}textarea {
+    display: block;
+    border-radius: $border-radius-base;
+    min-height: 160px;
+    color: $text-color-gray;
+    caret-color: $primary-color;
+    resize: none;
+    transition: all $anim-duration ease-in;
+    width: 100%;
+    border: 1px solid $border-color;
+    margin: 0;
+    padding: ($base-padding * 1.2) ($base-padding * 1.8);
+    box-sizing: border-box;
+    outline: none;
+    font-size: $font-size-base;
+    @include status();
+
+    &.#{$prefix}has-error {
+       @include has-error();
+    }
+}
+
+.#{$prefix}textarea-can-resize {
+    resize: vertical;
+}
+
+// number
+.#{$prefix}input-number {
+    display: inline-flex;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base + 2px;
+    transition: all $anim-duration ease-in;
+    background-color: $background-color-light;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 90px;
+    height: $io-height-base;
+    color: $text-color-light;
+    outline: none;
+
+    &:not(.#{$prefix}input-number-disabled):hover {
+        @include io-hover();
+
+        .#{$prefix}input-number-operate {
+            opacity: 1;
+        }
+    }
+
+    &:not(.#{$prefix}input-number-disabled).#{$prefix}input-number-focused,
+    &:not(.#{$prefix}input-number-disabled):focus {
+        @include io-focus();
+    }
+
+    &.#{$prefix}has-error {
+        @include has-error();
+    }
+}
+
+.#{$prefix}input-number-input {
+     flex: auto;
+     width: 100%;
+     border: none;
+     background-color: transparent;
+     margin: 0;
+     box-sizing: border-box;
+     outline: none;
+     line-height: $io-height-base - 2px;
+     font-size: $font-size-base;
+     padding: 0 ($base-padding * 0.8);
+     text-align: center;
+     color: inherit;
+     cursor: inherit;
+ }
+
+.#{$prefix}input-number-operate {
+     flex: none;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     transition: all $anim-duration ease-in;
+     margin: 0;
+     padding: 0;
+     width: 26px;
+     background-color: $background-color-base;
+     border-left: 1px solid $border-color;
+     border-top-right-radius: $border-radius-base;
+     border-bottom-right-radius: $border-radius-base;
+     overflow: hidden;
+     opacity: 0;
+ }
+
+.#{$prefix}input-number-btn {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    color: $text-color-light;
+    transition: all $anim-duration ease-in-out;
+    font-size: $font-size-small;
+    border: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    box-sizing: border-box;
+    flex: auto;
+
+    &:last-child {
+        border-top: 1px solid $border-color;
+    }
+
+    &:not(.#{$prefix}input-number-btn-disabled):hover {
+        color: $primary-color;
+        background-color: $background-color-active;
+    }
+}
+
+.#{$prefix}input-number-btn-disabled {
+    cursor: not-allowed;
+}
+
+.#{$prefix}input-number-disabled {
+    background-color: $disabled-color;
+    color: $text-color-light;
+    cursor: not-allowed;
+}

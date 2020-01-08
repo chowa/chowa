@@ -1,0 +1,53 @@
+@import "../../styles/variables.scss";
+
+.#{$prefix}breadcrumb {
+    display: flex;
+    flex-direction: row;
+    color: $text-color-light;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: $io-height-base;
+    line-height: $io-height-base;
+    font-size: $font-size-base;
+    box-sizing: border-box;
+}
+
+.#{$prefix}breadcrumb-item {
+    flex: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    &:last-child {
+        color: $text-color-gray;
+
+        a {
+            color: $text-color-gray;
+        }
+    }
+
+    .#{$prefix}icon {
+        margin-right: $base-padding * 0.4;
+    }
+
+    a {
+        color: $text-color-light;
+        transition: color $anim-duration ease-in;
+        text-decoration: none;
+
+        &:hover {
+            color: $link-color-active;
+        }
+    }
+}
+
+.#{$prefix}breadcrumb-separator {
+    flex: none;
+    margin: 0;
+    padding: 0 ($base-padding * 0.6);
+    min-width: $base-padding * 2.4;
+    text-align: center;
+    box-sizing: border-box;
+}

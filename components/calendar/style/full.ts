@@ -1,0 +1,12 @@
+import './full.scss';
+import '../../icon/style';
+import '../../form/style';
+import '../../select/style';
+import '../../input/style';
+import '../../button/style';
+import '../../button-group/style';
+import '../../modal/style';
+import '../../date-picker/style';
+import '../../radio-group/style';
+import '../../transition/style';
+import '../../utils/style';

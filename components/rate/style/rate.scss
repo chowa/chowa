@@ -1,0 +1,76 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.#{$prefix}rate {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: $io-height-base;
+    line-height: $io-height-base;
+    color: $text-color-gray;
+
+    &:not(.#{$prefix}rate-disabled):focus {
+        .#{$prefix}rate-item-full,
+        .#{$prefix}rate-item-half {
+            color: $background-color-active;
+        }
+    }
+
+    &.#{$prefix}has-error .#{$prefix}rate-selected {
+        color: $danger-color;
+    }
+}
+
+.#{$prefix}rate-item {
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: relative;
+    padding: 0;
+    margin: 0 ($base-padding * 0.6) 0 0;
+    font-size: $font-size-large;
+    transition: all $anim-duration ease-in;
+    cursor: pointer;
+    outline: none;
+
+    &:not(.#{$prefix}rate-disabled):hover,
+    &:not(.#{$prefix}rate-disabled):focus {
+        transform: scale(1.2);
+    }
+}
+
+.#{$prefix}rate-disabled {
+    @include disabled();
+}
+
+.#{$prefix}rate-item-full,
+.#{$prefix}rate-item-half {
+    color: $background-color-active;
+    margin: 0;
+    padding: 0;
+    transition: all $anim-duration ease-in;
+
+    &.#{$prefix}rate-selected {
+        color: $warning-color;
+    }
+}
+
+.#{$prefix}rate-item-half {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    bottom: 0;
+    overflow: hidden;
+    transition: all $anim-duration ease-in;
+    z-index: 10;
+}
+
+.#{$prefix}rate-value {
+    margin: 0;
+    padding: 0;
+    font-size: $font-size-base;
+}
