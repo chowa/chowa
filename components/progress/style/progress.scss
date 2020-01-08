@@ -61,6 +61,8 @@
     color: $text-color-gray;
     margin: 0;
     padding: 0 0 0 ($base-padding * 1.2);
+    box-sizing: border-box;
+    line-height: 1;
 }
 
 .#{$prefix}progress-line-percent {

@@ -212,17 +212,18 @@ class Progress extends React.PureComponent<ProgressProps, any> {
     private renderLine(componentClass: string) {
         const { strokeWidth, percent, strokeLinecap, style } = this.props;
         const bgStyle = this.compileLineGradient();
-
+        const raduisStyle = { borderRadius: strokeLinecap === 'round' ? strokeWidth : 0 };
         const lineStyle = {
             height: strokeWidth,
             width: `${percent}%`,
             borderRadius: strokeLinecap === 'round' ? strokeWidth : 0,
+            ...raduisStyle,
             ...bgStyle
         };
 
         return (
             <div className={componentClass} style={style}>
-                <div className={preClass('progress-inner')}>
+                <div className={preClass('progress-inner')} style={raduisStyle}>
                     <div className={preClass('progress-bg')} style={lineStyle}/>
                 </div>
                 { this.renderInfo() }
