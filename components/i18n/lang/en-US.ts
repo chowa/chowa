@@ -94,3 +94,8 @@ export const Transfer = {
     noDataDescription: 'No match Data',
     titles: ['Source', 'Target']
 };
+
+export const Upload = {
+    select: 'Upload files',
+    drag: 'Click or drag files here to upload'
+};

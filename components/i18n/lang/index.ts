@@ -1,5 +1,5 @@
-import * as defaultLang from './zh-CN';
-// import * as defaultLang from './en-US';
+// import * as defaultLang from './zh-CN';
+import * as defaultLang from './en-US';
 
 export interface I18nCommonInterface {
     confirm: string;
@@ -96,6 +96,11 @@ export interface I18nTransferInterface {
     searchPlaceholder: string;
     noDataDescription: string;
     titles: [string, string];
+}
+
+export interface I18nUploadInterface{
+    select: string;
+    drag: string;
 }
 
 export default defaultLang;

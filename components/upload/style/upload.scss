@@ -7,6 +7,48 @@
     padding: ($base-padding * 0.8) 0;
 }
 
+.#{$prefix}upload-drag-wrapper {
+    margin: 0;
+    padding: ($base-padding * 3.2) 0;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px dashed $border-color;
+    transition: all $anim-duration linear;
+    cursor: pointer;
+}
+
+.#{$prefix}upload-drag-icon {
+    margin: 0;
+    padding: 0;
+    box-sizing: box-sizing;
+    font-size: $font-size-base + 20px;
+    color: $primary-color;
+    pointer-events: none;
+}
+
+.#{$prefix}upload-drag-text {
+    margin: 0;
+    padding: 0 0 0 ($base-padding * 1.2);
+    box-sizing: box-sizing;
+    font-size: $font-size-base;
+    color: $text-color-gray;
+    pointer-events: none;
+}
+
+.#{$prefix}upload-drag-active {
+    border-color: $primary-color;
+    background-color: $background-color-active;
+}
+
+.#{$prefix}upload-drag-disabled {
+    cursor: not-allowed;
+
+    .#{$prefix}upload-drag-icon,
+    .#{$prefix}upload-drag-text {
+        color: $disabled-color;
+    }
+}
+
 .#{$prefix}upload-file-list {
     margin: 0;
     padding: ($base-padding * 0.8) 0;

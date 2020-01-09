@@ -9,6 +9,8 @@ class TreeDev extends Component {
                 <h1 className='dev-title'>Upload</h1>
 
                 <Upload action='http://www.mocky.io/v2/5e144ac52d00002b00166e92'/>
+
+                <Upload mode='drag' action='http://www.mocky.io/v2/5e144ac52d00002b00166e92'/>
             </div>
         );
     }

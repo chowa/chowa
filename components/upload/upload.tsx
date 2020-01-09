@@ -1,16 +1,27 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { preClass, isExist } from '../utils';
-import Request, { Process } from './request';
+import { preClass, isExist, isEqual } from '../utils';
+import Request from './request';
 import UploadSelect from './select';
+import UploadDrag from './drag';
 import UploadFileItem from './file-item';
+import {
+    StorageFile,
+    UploadFile,
+    completeFileStorage,
+    transformToStorageFile,
+    computedFileExt,
+    diffUpdate
+} from './tool';
 
 export interface UploadProps {
     className?: string;
     style?: React.CSSProperties;
     mode?: 'select' | 'drag';
     accept?: string;
+    exts?: string[];
+    size?: number;
     action: string;
     multiple?: boolean;
     capture?: boolean;
@@ -19,22 +30,21 @@ export interface UploadProps {
     headers?: object;
     name?: string;
     data?: object;
-    defaultValue?: File[];
-    value?: File[];
-    onChange?: (file: File, files: File[]) => void;
+    defaultValue?: StorageFile[];
+    value?: StorageFile[];
+    onChange?: (storageFiles: StorageFile[]) => void;
     onBeforeUpload?: (file: File) => boolean;
     onProgress?: (file: File, e: ProgressEvent) => void;
-    onSuccess?: (file: File, e: Event) => void;
-    onRemove?: (file: File, files: File[]) => void;
-    onError?: (file: File, e: Event) => void;
+    onSuccess?: (file: File, e: XMLHttpRequest) => void;
+    onError?: (file: File, e: ProgressEvent) => void;
+    onRemove?: (uploadFile: UploadFile) => void;
+    onExtError?: (file: File) => void;
+    onSizeError?: (file: File) => void;
+    formatter?: (uploadFile: UploadFile) => React.ReactNode;
 }
 
 export interface UploadState {
-    defaultFiles: File[];
-    compareFiles: File[];
-    processes: {
-        [ uuid: string ]: Process;
-    };
+    uploadFiles: UploadFile[];
 }
 
 class Upload extends React.PureComponent<UploadProps, UploadState> {
@@ -44,6 +54,8 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
         style: PropTypes.object,
         mode: PropTypes.oneOf(['select', 'drag']),
         accept: PropTypes.string.isRequired,
+        exts: PropTypes.array,
+        size: PropTypes.number,
         action: PropTypes.string,
         capture: PropTypes.bool,
         multiple: PropTypes.bool,
@@ -59,7 +71,10 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
         onProgress: PropTypes.func,
         onSuccess: PropTypes.func,
         onRemove: PropTypes.func,
-        onError: PropTypes.func
+        onError: PropTypes.func,
+        onExtError: PropTypes.func,
+        onSizeError: PropTypes.func,
+        formatter: PropTypes.func
     };
 
     public static defaultProps = {
@@ -67,7 +82,8 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
         mode: 'select',
         capture: false,
         multiple: false,
-        accept: '*'
+        accept: '*',
+        directory: true
     };
 
     private InputEle: HTMLInputElement;
@@ -77,85 +93,140 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
     public constructor(props: UploadProps) {
         super(props);
 
-        const defaultFiles = props.value || props.defaultValue || [];
         this.state = {
-            defaultFiles,
-            compareFiles: defaultFiles,
-            processes: {}
+            uploadFiles: completeFileStorage(props.value || props.defaultValue)
         };
 
         this.request = new Request(this);
 
         [
             'chooseFile',
-            'onFileAppend',
-            'removeUploadingFile',
-            'removeDefaultFile',
-            'triggerChange'
+            'onInputChangeHandler',
+            'removeFile',
+            'triggerChange',
+            'appendUploadFile'
         ].forEach((fn) => {
             this[fn] = this[fn].bind(this);
         });
     }
 
-    public componentWillUnmount() {
-        const { processes } = this.state;
+    public componentDidUpdate(preProps: UploadProps) {
+        if (!isEqual(preProps.value, this.props.value)) {
+            const { augment, subtract } = diffUpdate(preProps.value, this.props.value);
+            const uploadFiles = [].concat(this.state.uploadFiles);
 
-        Object.keys(processes).forEach((uuid) => {
-            if (processes[uuid].status !== 'success') {
-                processes[uuid].xhr.abort();
+            augment.forEach((diffFile) => {
+                const index = uploadFiles.findIndex((uploadFile) => uploadFile.name === diffFile.name);
+
+                if (index >= 0) {
+                    return;
+                }
+
+                uploadFiles.push(diffFile);
+            });
+
+            subtract.forEach((diffFile) => {
+                const index = uploadFiles.findIndex((uploadFile) => uploadFile.name === diffFile.name);
+
+                if (index < 0) {
+                    return;
+                }
+
+                uploadFiles.splice(index, 1);
+            });
+
+            this.setState({ uploadFiles });
+        }
+    }
+
+    public componentWillUnmount() {
+        const { uploadFiles } = this.state;
+
+        uploadFiles.forEach((file) => {
+            if (file.status !== 'success') {
+                file.xhr.abort();
             }
         });
     }
 
-    private triggerChange() {
-        // todo
+    public triggerChange() {
+        const { onChange } = this.props;
+        const { uploadFiles } = this.state;
+
+        if (!onChange) {
+            return;
+        }
+
+        const storageFiles = [];
+
+        uploadFiles.forEach((uploadFile) => {
+            if (uploadFile.progress !== 100) {
+                return;
+            }
+
+            storageFiles.push(transformToStorageFile(uploadFile));
+        });
+
+        onChange(storageFiles);
     }
 
     private chooseFile() {
         this.InputEle.click();
     }
 
-    private onFileAppend(e: React.ChangeEvent<HTMLInputElement>) {
-        const { onBeforeUpload } = this.props;
-
+    private onInputChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
         for (let i = 0; i < e.target.files.length; i++) {
             const file = e.target.files[i];
 
-            if (onBeforeUpload && !onBeforeUpload(file)) {
-                continue;
-            }
-
-            this.request.exec(file);
+            this.appendUploadFile(file);
         }
 
         e.target.value = null;
     }
 
-    private removeUploadingFile(uuid: string) {
-        const processes = { ...this.state.processes };
-        const process = processes[uuid];
+    private appendUploadFile(file: File) {
+        const { onBeforeUpload, exts, size, onExtError, onSizeError } = this.props;
 
-        if (process.status !== 'success') {
-            process.xhr.abort();
+        if (isExist(exts) && !exts.includes(computedFileExt(file))) {
+            if (onExtError) {
+                onExtError(file);
+            }
+            return;
         }
 
-        delete processes[uuid];
+        if (size > 0 && file.size > size) {
+            if (onSizeError) {
+                onSizeError(file);
+            }
+            return;
+        }
 
-        this.setState({ processes }, this.triggerChange);
+        if (onBeforeUpload && !onBeforeUpload(file)) {
+            return;
+        }
+
+        this.request.exec(file);
     }
 
-    private removeDefaultFile(index: number) {
-        const defaultFiles = [].concat(this.state.defaultFiles);
+    private removeFile(index: number) {
+        const uploadFiles = [].concat(this.state.uploadFiles);
+        const { onRemove } = this.props;
+        const [removeFile] = uploadFiles.splice(index, 1);
 
-        const file = defaultFiles.splice(index, 1);
+        if (removeFile.status !== 'success') {
+            removeFile.xhr.abort();
+        }
 
-        console.log(file) // eslint-disable-line
-        this.setState({ defaultFiles }, this.triggerChange);
+        if (onRemove) {
+            onRemove(removeFile);
+        }
+
+        this.setState({ uploadFiles }, this.triggerChange);
     }
 
     public render() {
-        const { className, style, mode, disabled, accept, multiple, name, capture } = this.props;
-        const { processes, defaultFiles } = this.state;
+        const { className, style, mode, disabled, accept, multiple, name, capture, formatter, directory } = this.props;
+        const { uploadFiles } = this.state;
 
         const componentClass = classNames({
             [preClass('upload')]: true,
@@ -171,7 +242,7 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
                     name={name}
                     capture={capture}
                     hidden={true}
-                    onChange={this.onFileAppend}
+                    onChange={this.onInputChangeHandler}
                     ref={(ele) => {
                         this.InputEle = ele;
                     }}/>
@@ -179,30 +250,32 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
                     mode === 'select' &&
                     <UploadSelect disabled={disabled} triggerUpload={this.chooseFile}/>
                 }
+                {
+                    mode === 'drag' &&
+                    <UploadDrag
+                        appendUploadFile={this.appendUploadFile}
+                        disabled={disabled}
+                        triggerUpload={this.chooseFile}
+                        directory={directory}/>
+                }
                 <ul className={preClass('upload-file-list')}>
                     {
-                        Object.keys(processes).map((uuid) => {
-                            const { file, progress, status } = processes[uuid];
+                        uploadFiles.map((uploadFile, key) => {
+                            const { name, progress, status, uuid } = uploadFile;
+
+                            if (formatter) {
+                                return formatter(uploadFile);
+                            }
 
                             return (
                                 <UploadFileItem
                                     key={uuid}
-                                    name={file.name}
+                                    name={name}
                                     progress={progress}
                                     status={status}
-                                    onRemove={this.removeUploadingFile.bind(this, uuid)}/>
+                                    onRemove={this.removeFile.bind(this, key)}/>
                             );
                         })
-                    }
-                    {
-                        defaultFiles.map((file, key) => (
-                            <UploadFileItem
-                                key={key}
-                                name={file.name}
-                                progress={100}
-                                status={'success'}
-                                onRemove={this.removeDefaultFile.bind(this, key)}/>
-                        ))
                     }
                 </ul>
             </div>

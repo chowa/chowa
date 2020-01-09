@@ -94,3 +94,8 @@ export const Transfer = {
     noDataDescription: '无匹配结果',
     titles: ['源列表', '目标列表']
 };
+
+export const Upload = {
+    select: '上传文件',
+    drag: '点击或拖拽文件上传'
+};
