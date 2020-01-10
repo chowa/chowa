@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Alert from '../../components/alert';
+import Alert from '../../components/Alert';
 import Button from '../../components/button';
 
 class AlertDev extends Component {
@@ -16,16 +16,16 @@ class AlertDev extends Component {
                 <Alert showIcon closeable content='这是一个可关闭的' />
                 <br/>
 
-                <Alert showIcon content={<div>这是一个alert</div>} title='这是一个info' />
+                <Alert showIcon content={<div>这是一个Alert</div>} title='这是一个info' />
                 <br/>
 
-                <Alert showIcon content='这是一个alert' title='这是一个success' type='success' />
+                <Alert showIcon content='这是一个Alert' title='这是一个success' type='success' />
                 <br/>
 
-                <Alert showIcon content='这是一个alert' title='这是一个error' type='error' closeable />
+                <Alert showIcon content='这是一个Alert' title='这是一个error' type='error' closeable />
                 <br/>
 
-                <Alert showIcon content='这是一个alert' title='这是一个warning' type='warning' />
+                <Alert showIcon content='这是一个Alert' title='这是一个warning' type='warning' />
                 <br/>
 
                 <Alert content='这是一个info' />
@@ -40,10 +40,10 @@ class AlertDev extends Component {
                 <Alert content='这是一个warning' type='warning'/>
                 <br/>
 
-                <Alert showIcon content='这是一个可改变可见的alert' visible={this.state.AlertVisible} title='info' />
+                <Alert showIcon content='这是一个可改变可见的Alert' visible={this.state.AlertVisible} title='info' />
                 <br/>
 
-                <Button className='cw-mt-18' onClick={e => this.setState({AlertVisible: !this.state.AlertVisible})}>改变alert可见</Button>
+                <Button className='cw-mt-18' onClick={e => this.setState({AlertVisible: !this.state.AlertVisible})}>改变Alert可见</Button>
                 <Alert content='这是一个warning' type='warning' closeable closeText="关闭"/>
             </div>
         );
