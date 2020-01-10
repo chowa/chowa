@@ -4,7 +4,7 @@
 
 # react-chowa
 
-React中台组件库
+基于React构建的UI组件库
 
 [![Build Status](https://travis-ci.org/chowa/react-chowa.svg?branch=master)](https://travis-ci.org/chowa/react-chowa)
 [![npm](https://img.shields.io/npm/v/react-chowa.svg)](https://www.npmjs.com/package/react-chowa)
@@ -15,7 +15,7 @@ React中台组件库
 
 ## 文档
 
-> 正在抓紧赶工，请稍后
+[点击阅读文档](https://chowa.github.io/react-chowa/)
 
 ## 特性
 
@@ -30,10 +30,6 @@ React中台组件库
 * Firefox >= 20
 * Android > 4.4
 * IE > 9
-
-## React支持
-
-要求React版本 >= 16.0.0
 
 ## 安装
 
@@ -86,3 +82,5 @@ npm run dev
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2019-present, Chowa
