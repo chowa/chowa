@@ -1,6 +1,7 @@
 components
 dev
 cwfont
+docs
 node_modules
 .babelrc
 .editorconfig
@@ -15,5 +16,5 @@ package-lock.json
 postcss.config.js
 tsconfig.json
 webpack.config.js
-webpack.config.dev-test.js
+webpack.config.dev.js
 webpack.config.prod.js
