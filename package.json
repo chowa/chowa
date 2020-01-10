@@ -1,6 +1,6 @@
 {
   "name": "react-chowa",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React UI library",
   "main": "dist/react-chowa.js",
   "typings": "es/index.d.ts",
