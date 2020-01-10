@@ -94,7 +94,7 @@ gulp.task('compile typescript', () => {
 });
 
 gulp.task('create css index', () => {
-    return gulp.src(path.join(prodConfig.output.path, 'lib/*/style/index.js'))
+    return gulp.src(path.join(moduleDir, '*/style/index.js'))
         .pipe(gulpReplace(/\.scss/g, '.css'))
         .pipe(gulpReplace(/style/g, 'style/css'))
         .pipe(gulpRename((p) => {
@@ -104,7 +104,7 @@ gulp.task('create css index', () => {
 });
 
 gulp.task('create css types', () => {
-    return gulp.src(path.join(prodConfig.output.path, 'lib/*/style/*.d.ts'))
+    return gulp.src(path.join(moduleDir, '*/style/*.d.ts'))
         .pipe(gulpReplace(/\.scss/g, '.css'))
         .pipe(gulpReplace(/style/g, 'style/css'))
         .pipe(gulpRename((p) => {
