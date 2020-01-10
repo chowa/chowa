@@ -11,8 +11,7 @@ import {
     UploadFile,
     completeFileStorage,
     transformToStorageFile,
-    computedFileExt,
-    diffUpdate
+    computedFileExt
 } from './tool';
 
 export interface UploadProps {
@@ -112,28 +111,23 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
 
     public componentDidUpdate(preProps: UploadProps) {
         if (!isEqual(preProps.value, this.props.value)) {
-            const { augment, subtract } = diffUpdate(preProps.value, this.props.value);
-            const uploadFiles = [].concat(this.state.uploadFiles);
+            const value = [].concat(this.props.value);
+            const compare: UploadFile[] = [].concat(this.state.uploadFiles);
+            let uploadFiles: UploadFile[] = [];
 
-            augment.forEach((diffFile) => {
-                const index = uploadFiles.findIndex((uploadFile) => uploadFile.name === diffFile.name);
+            compare.forEach((uploadFile) => {
+                const valueIndex = value.findIndex((storageFile) => uploadFile.name === storageFile.name);
 
-                if (index >= 0) {
-                    return;
+                if (valueIndex) {
+                    value.splice(valueIndex, 1);
                 }
 
-                uploadFiles.push(diffFile);
-            });
-
-            subtract.forEach((diffFile) => {
-                const index = uploadFiles.findIndex((uploadFile) => uploadFile.name === diffFile.name);
-
-                if (index < 0) {
-                    return;
+                if (uploadFile.status !== 'success' || valueIndex >= 0) {
+                    uploadFiles.push(uploadFile);
                 }
-
-                uploadFiles.splice(index, 1);
             });
+
+            uploadFiles = uploadFiles.concat(completeFileStorage(value));
 
             this.setState({ uploadFiles });
         }

@@ -1,5 +1,4 @@
 import { ProgressProps } from '../progress';
-import { isExist } from '../utils';
 
 export interface StorageFile {
     name: string;
@@ -53,36 +52,4 @@ export function computedFileExt(file: File): string {
     }
 
     return file.name.substring(index);
-}
-
-export function diffUpdate(preValue: StorageFile[], value: StorageFile[]) {
-    let subtract: StorageFile[] = [];
-    let augment: StorageFile[] = [];
-
-    if (isExist(preValue) && isExist(value)) {
-        preValue.forEach((preFile) => {
-            if (!value.some((file) => file.name === preFile.name)) {
-                subtract.push(name);
-            }
-        });
-
-        value.forEach((file) => {
-            if (!preValue.some((preFile) => preFile.name === file.name)) {
-                augment.push(name);
-            }
-        });
-    }
-    else {
-        if (!isExist(preValue)) {
-            augment = value;
-        }
-        else {
-            subtract = preValue;
-        }
-    }
-
-    return {
-        augment: completeFileStorage(augment),
-        subtract: completeFileStorage(subtract)
-    };
 }
