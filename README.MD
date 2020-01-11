@@ -22,7 +22,7 @@ UI component library based on React
 * Ecologically complete peripheral tools
 * Uniform visual interaction and rich types of components
 * Typescript development, providing complete type definition files
-* Theme customization, [Vector font icon extension] (https://github.com/chowa/cwfont), Multilingual
+* Theme customization, [Vector font icon extension](https://github.com/chowa/cwfont), Multilingual
 
 ## Install
 
