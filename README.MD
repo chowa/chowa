@@ -4,7 +4,7 @@
 
 # react-chowa
 
-基于React构建的UI组件库
+UI component library based on React
 
 [![Build Status](https://travis-ci.org/chowa/react-chowa.svg?branch=master)](https://travis-ci.org/chowa/react-chowa)
 [![npm](https://img.shields.io/npm/v/react-chowa.svg)](https://www.npmjs.com/package/react-chowa)
@@ -13,25 +13,18 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://opensource.org/licenses/MIT)
 [![Gitter](https://badges.gitter.im/react-chowa/community.svg)](https://gitter.im/react-chowa/community)
 
-## 文档
+## Documents
 
-[点击阅读文档](https://chowa.github.io/react-chowa/)
+[Click to read the document](https://chowa.github.io/react-chowa/)
 
-## 特性
+## Features
 
-* 生态完善的周边工具
-* 视觉交互统一、类型丰富的组件
-* Typescript开发，提供完整的类型定义文件
-* 主题定制、[矢量字体图标拓展](https://github.com/chowa/cwfont)、多语言
+* Ecologically complete peripheral tools
+* Uniform visual interaction and rich types of components
+* Typescript development, providing complete type definition files
+* Theme customization, [Vector font icon extension] (https://github.com/chowa/cwfont), Multilingual
 
-## 浏览器支持
-
-* IOS >= 8
-* Firefox >= 20
-* Android > 4.4
-* IE > 9
-
-## 安装
+## Install
 
 ```
 npm i react-chowa --save
@@ -41,7 +34,7 @@ npm i react-chowa --save
 yarn add react-chowa
 ```
 
-## 使用
+## Usage
 
 ```jsx
 import { Container, Alert } from 'react-chowa';
@@ -59,7 +52,7 @@ export default App = () => {
 ```
 
 
-### 引入样式
+### Import style
 
 ```js
 // css
@@ -68,9 +61,7 @@ import 'react-chowa/dist/react-chowa.css';
 import 'react-chowa/es/styles'
 ```
 
-## 本地开发
-
-克隆到本地后
+## Local development
 
 ```
 git clone https://github.com/chowa/react-chowa.git
