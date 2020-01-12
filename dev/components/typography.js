@@ -3,55 +3,75 @@ import Typography from '../../components/typography';
 
 const { Title, Blockquote, Paragraph, InlineCode, Code, List } = Typography;
 
-const codeDev = `import React, { Component } from 'react';
+const codeDev = `import React, {Component} from 'react';
 import Typography from '../../components/';
 
-const { Title, Blockquote, Paragraph, InlineCode, Code, List } = Typography;
+const {Title, Blockquote, Paragraph, InlineCode, Code, List} = Typography;
 `;
-class TypographyDev extends Component {
 
+class TypographyDev extends Component {
     render() {
         return (
-            <div className='dev-section'>
-                <h1 className='dev-title'>Typography</h1>
+            <div className="dev-section">
+                <h1 className="dev-title"> Typography </h1>
 
                 <Typography>
-                    <Title>永远的蝴蝶</Title>
-                    <Title level={2}>永远的蝴蝶</Title>
-                    <Title level={3}>永远的蝴蝶</Title>
-                    <Title level={4}>永远的蝴蝶</Title>
-                    <Title level={5}>永远的蝴蝶</Title>
-
+                    <Title> Forever Butterfly </Title>
+                    <Title level={2}> Forever Butterfly </Title>
+                    <Title level={3}> Forever Butterfly </Title>
+                    <Title level={4}> Forever Butterfly </Title>
+                    <Title level={5}> Forever Butterfly </Title>
                     <Paragraph>
-                        那时候刚好下着雨，柏油路面湿冷冷的，还闪烁着青、黄、红颜色的灯火。我们就在骑楼下躲雨，看绿色的邮筒孤独地站在街的对面。我白色风衣的大口袋里有一封要寄给南部的母亲的信。樱子说她可以撑伞过去帮我寄信。我默默点头。
+                        At that time it was raining, the asphalt road was cold
+                        and cold, and lights of blue, yellow, and red flashed.We
+                        just hid downstairs and watched the green postbox stand
+                        alone across the street.I have a letter in the large
+                        pocket of my white trench coat to send to my mother in
+                        the south.Sakurako said that she could hold an umbrella
+                        and send me a letter in the past.I nodded silently.
                     </Paragraph>
                     <Paragraph>
-                        “谁叫我们只带来一把小伞哪。”她微笑着说，一面撑起伞，准备过马路帮我寄信。从她伞骨渗下来的小雨点，溅在我的眼镜玻璃上。
+                        "Who told us to bring only a small umbrella. " She said
+                        with a smile, holding up the umbrella and preparing to
+                        cross the road to send me a letter.The little raindrops
+                        seeping from her umbrella bone splashed on my glasses.
                     </Paragraph>
                     <Paragraph>
-                        她只是过马路去帮我寄信。这简单的行动，却要叫我终身难忘了。我缓缓睁开眼，茫然站在骑楼下，眼里裹着滚烫的泪水。世上所有的车子都停了下来，人潮涌向马路中央。没有人知道那躺在街面的，就是我的，蝴蝶。这时她只离我五公尺，竟是那么遥远。更大的雨点溅在我的眼镜上，溅到我的生命里来。
+                        She just crossed the street to send me a letter.This
+                        simple action will make me unforgettable.I slowly opened
+                        my eyes, standing blankly downstairs, with tears in my
+                        eyes.All the cars in the world stopped and the crowd
+                        rushed to the middle of the road.No one knows that the
+                        one lying on the street is mine, the butterfly.At this
+                        time she was only five meters away from me, which was so
+                        far away.Heavier raindrops splashed onto my glasses and
+                        splashed into my life.
                     </Paragraph>
-
                     <Blockquote>
-                        然而我又看到樱子穿着白色的风衣，撑着伞，静静地过马路了。她是要帮我寄信的。那，那是一封写给南部母亲的信。我茫然站在骑楼下，我又看到永远的樱子走到街心。其实雨下得并不大，却是一生一世中最大的一场雨。而那封信是这样写的，年轻的樱子知不知道呢？
+                        However, I saw Sakurako wearing a white trench coat,
+                        holding an umbrella, and quietly crossing the road.She
+                        is going to help me send a letter.Well, that was a
+                        letter to the mother in the south.I stood blankly
+                        downstairs, and I saw the eternal Sakurako walk to the
+                        center of the street again.In fact, it didn 't rain very
+                        much, but it was the biggest rain of a lifetime.And that
+                        letter was written like this, does the young Sakurako
+                        know ?
                     </Blockquote>
-
                     <Paragraph>
-                        随着一阵拔尖的煞车声，<b>樱子</b>的一生轻轻<i>地飞了起来。</i><a>缓缓地</a>，飘落在湿冷的街面上，好像一只夜晚的蝴蝶。
-                        <InlineCode>test@chowa.com</InlineCode>
+                        With the sound of sharp brakes, <b> Sakurako </b> 's
+                        life flew softly <i>. </i>
+                        <a> Slowly </a>, floating on the cold street, like a
+                        butterfly at night.
+                        <InlineCode> test @chowa.com </InlineCode>
                     </Paragraph>
-
-                    <Code>{ codeDev }</Code>
-                    <Code language='bash'>{ `npm install cw-ui` }</Code>
+                    <Code> {codeDev} </Code>
+                    <Code language="bash"> {`npm install cw-ui`} </Code>
                     <List>
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
+                        <span> 1 </span> <span> 2 </span> <span> 3 </span>
                         <List>
-                            <span>5</span>
-                            <span>6</span>
-                            <span>7</span>
-                            <span>8</span>
+                            <span> 5 </span> <span> 6 </span> <span> 7 </span>
+                            <span> 8 </span>
                         </List>
                     </List>
                 </Typography>

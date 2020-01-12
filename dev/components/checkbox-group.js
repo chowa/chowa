@@ -3,25 +3,54 @@ import CheckboxGroup from '../../components/checkbox-group';
 import Checkbox from '../../components/checkbox';
 
 class CheckboxGroupDev extends Component {
-
     state = {
         CheckboxGroup: ['apple'],
-        CheckboxGroupOptions: [{value: 'apple', label: '苹果'}, {value: 'branne', label: '香蕉', disabled: true}, {value: 'mango', label: '芒果'}],
+        CheckboxGroupOptions: [
+            {
+                value: 'apple',
+                label: 'Apple'
+            },
+            {
+                value: 'branne',
+                label: 'banana',
+                disabled: true
+            },
+            {
+                value: 'mango',
+                label: 'mango'
+            }
+        ]
     };
 
     render() {
         return (
-            <div className='dev-section'>
-                <h1 className='dev-title'>CheckboxGroup</h1>
+            <div className="dev-section">
+                <h1 className="dev-title"> CheckboxGroup </h1>
 
-                <CheckboxGroup options={this.state.CheckboxGroupOptions} defaultValue={this.state.CheckboxGroup} onChange={v => this.setState({CheckboxGroup :v})}/>
-                <CheckboxGroup defaultValue={this.state.CheckboxGroup} onChange={value => this.setState({CheckboxGroup: value})}>
-                    <Checkbox label='苹果' value='apple'/>
-                    <Checkbox label='香蕉' value='branne'/>
-                    <Checkbox label='芒果' value='mango'/>
+                <CheckboxGroup
+                    options={this.state.CheckboxGroupOptions}
+                    defaultValue={this.state.CheckboxGroup}
+                    onChange={v =>
+                        this.setState({
+                            CheckboxGroup: v,
+                        })
+                    }/>
+
+                <CheckboxGroup
+                    defaultValue={this.state.CheckboxGroup}
+                    onChange={value =>
+                        this.setState({
+                            CheckboxGroup: value,
+                        })
+                    }>
+                    <Checkbox label="Apple" value="apple" />
+                    <Checkbox label="Banana" value="branne" />
+                    <Checkbox label="Mango" value="mango" />
                 </CheckboxGroup>
 
-                <CheckboxGroup mode='vertical' options={this.state.CheckboxGroupOptions}/>
+                <CheckboxGroup
+                    mode="vertical"
+                    options={this.state.CheckboxGroupOptions}/>
             </div>
         );
     }

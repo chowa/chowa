@@ -9,107 +9,134 @@ import moment from 'moment';
 
 const events = [
     {
-        start: moment('2019-09-10'),
-        finish: moment('2019-09-13'),
-        content: '封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发封闭开发',
+        start: moment(),
+        finish: moment().add(3, 'day'),
+        content: 'Rush to the destination',
         category: 'hz',
         type: 'danger'
     },
     {
-        start: moment('2019-09-13'),
-        finish: moment('2019-09-17'),
-        content: '封闭测试'
+        start: moment(),
+        finish: moment().add(4, 'day'),
+        content: 'Understand situation'
     },
     {
-        start: moment('2019-09-15'),
-        finish: moment('2019-09-17'),
-        content: '封闭测试2'
+        start: moment(),
+        finish: moment().add(3, 'day'),
+        content: 'Understand situation 2'
     },
     {
-        start: moment('2019-09-15'),
-        finish: moment('2019-09-17'),
-        content: '封闭测试3'
+        start: moment(),
+        finish: moment().add(2, 'day'),
+        content: 'Understand situation 3'
     },
     {
-        start: moment('2019-09-15'),
-        finish: moment('2019-09-17'),
-        content: '封闭测试4'
+        start: moment(),
+        finish: moment().add(3, 'day'),
+        content: 'Understand situation 4'
     },
     {
-        start: moment('2019-09-14 12:00:00'),
-        finish: moment('2019-09-15 14:00:00'),
-        content: '吃喝玩乐',
+        start: moment().subtract(1, 'day'),
+        finish: moment().add(1, 'day'),
+        content: 'Eat, Drink, Play',
         type: 'success'
     },
     {
-        start: moment('2019-09-18 12:30:00'),
-        finish: moment('2019-09-18 13:00:00'),
-        content: '吃喝玩乐',
+        start: moment().subtract(1, 'day'),
+        finish: moment().add(1, 'day'),
+        content: 'Eat, Drink, Play',
         type: 'success'
     },
     {
-        start: moment('2019-09-20'),
-        finish: moment('2019-09-22'),
-        content: '准备上线',
+        start: moment().subtract(1, 'day'),
+        finish: moment().add(1, 'day'),
+        content: 'Ready to go live',
         type: 'primary'
     },
     {
-        start: moment('2019-08-25'),
-        finish: moment('2019-09-12'),
-        content: 'QA回归',
+        start: moment().subtract(1, 'day'),
+        finish: moment().add(1, 'day'),
+        content: 'Deliver',
         type: 'warning'
-    }
+    },
 ];
 
 const categories = [
     {
-        value: 'hz',
-        label: '焊装'
+        value: 'product',
+        label: 'Welding'
     },
     {
-        value: 'lc',
-        label: '路测'
+        value: 'sale',
+        label: 'Drive Test'
     }
 ];
 
 class MinDatePickerDev extends Component {
-
     state = {
         syncValue: null
-    }
+    };
 
     componentDidMount() {
         setTimeout(() => {
             this.setState({
                 syncValue: moment('2019-01-05', 'YYYY-MM-DD')
             });
-        }, 2000)
+        }, 2000);
     }
 
     render() {
         const { syncValue } = this.state;
 
         return (
-            <div className='dev-section'>
-                <h1 className='dev-title'>Calendar</h1>
+            <div className="dev-section">
+                <h1 className="dev-title"> Calendar </h1>
+                <MinDay
+                    display={moment()}
+                    values={[moment().add(1, 'day'), moment().add(2, 'day')]}/>
 
-                <MinDay display={moment()} values={[moment().add(1,'day'), moment().add(2,'day')]}/>
-                <MinDay weeksable display={moment()} values={[moment().add(1,'day'), moment().add(7,'day')]}/>
-                <MinMonth display={moment()} rangeDate={{begin: moment().subtract(1, 'month') }}/>
-                <MinYear display={moment()} each={moment()} rangeDate={{begin: moment().subtract(1, 'month') }}/>
+                <MinDay
+                    weeksable
+                    display={moment()}
+                    values={[moment().add(1, 'day'), moment().add(7, 'day')]}/>
 
-                <MinCalendar/>
-                <MinCalendar clearable/>
-                <MinCalendar determinable/>
-                <MinCalendar weeksable/>
-                <MinCalendar weeksable clearable determinable/>
+                <MinMonth
+                    display={moment()}
+                    rangeDate={{
+                        begin: moment().subtract(1, 'month')
+                    }}/>
 
-                <MinRangeCalendar/>
-                <MinRangeCalendar determinable clearable/>
-                <MinRangeCalendar timeable/>
-                <br/>
+                <MinYear
+                    display={moment()}
+                    each={moment()}
+                    rangeDate={{
+                        begin: moment().subtract(1, 'month')
+                    }}/>
 
-                <FullCalendar events={events} appendable editable categories={categories}/>
+                <MinCalendar />
+
+                <MinCalendar clearable />
+
+                <MinCalendar determinable />
+
+                <MinCalendar weeksable />
+
+                <MinCalendar weeksable clearable determinable />
+
+                <MinRangeCalendar />
+
+                <MinRangeCalendar determinable clearable />
+
+                <MinRangeCalendar timeable />
+
+                <br />
+                
+                <FullCalendar
+                    events={events}
+                    appendable
+                    editable
+                    categories={categories}
+                />
             </div>
         );
     }

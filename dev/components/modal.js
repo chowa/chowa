@@ -10,88 +10,173 @@ import Icon from '../../components/icon';
 import { $message } from '../../components/message';
 
 class ModalDev extends Component {
-
     state = {
         showModal: false
-    }
+    };
 
     render() {
         const { showModal } = this.state;
 
         return (
-            <div className='dev-section'>
-                <h1 className='dev-title'>Modal</h1>
+            <div className="dev-section">
+                <h1 className="dev-title"> Modal </h1>
 
-                <Input autoFocus/>
+                <Input autoFocus />
 
-                <Button onClick={e => this.setState({showModal: true})}>显示Modal</Button>
+                <Button onClick={e => this.setState({ showModal: true })}>
+                    Show Modal
+                </Button>
+
                 <Modal visible={showModal}>
-                    <Modal.Header title="对话框" onClose={e => this.setState({showModal: false})}></Modal.Header>
+                    <Modal.Header title="Dialog" onClose={e => this.setState({showModal: false})}/>
+
                     <Modal.Body>
-                        <Input prefix={<Icon type='avatar'/>} />
+                        <Input prefix={<Icon type="avatar" />} />
+
                         <List size="small">
-                            <List.Item>人生得意须尽欢，莫使金樽空对月。</List.Item>
-                            <List.Item>天生我材必有用，千金散尽还复来。</List.Item>
-                            <List.Item>烹羊宰牛且为乐，会须一饮三百杯。</List.Item>
-                            <List.Item>岑夫子，丹丘生，将进酒，杯莫停。</List.Item>
+                            <List.Item>
+                                The joy of life must be joyful, so as not to
+                                make Jinzun empty against the moon.
+                            </List.Item>
+
+                            <List.Item>
+                                Natural talents will be useful.
+                            </List.Item>
+
+                            <List.Item>
+                                Cooking sheep and slaughtering cattle is a
+                                pleasure, and you will need to drink three
+                                hundred cups.
+                            </List.Item>
+
+                            <List.Item>
+                                Master Cen, Dan Qiusheng, will enter the wine,
+                                stop drinking.
+                            </List.Item>
                         </List>
+
                         <List size="small">
-                            <List.Item>人生得意须尽欢，莫使金樽空对月。</List.Item>
-                            <List.Item>天生我材必有用，千金散尽还复来。</List.Item>
-                            <List.Item>烹羊宰牛且为乐，会须一饮三百杯。</List.Item>
-                            <List.Item>岑夫子，丹丘生，将进酒，杯莫停。</List.Item>
+                            <List.Item>
+                                The joy of life must be joyful, so as not to
+                                make Jinzun empty against the moon.
+                            </List.Item>
+
+                            <List.Item>
+                                Natural talents will be useful.
+                            </List.Item>
+
+                            <List.Item>
+                                Cooking sheep and slaughtering cattle is a
+                                pleasure, and you will need to drink three
+                                hundred cups.
+                            </List.Item>
+
+                            <List.Item>
+                                Master Cen, Dan Qiusheng, will enter the wine,
+                                stop drinking.
+                            </List.Item>
                         </List>
+
                         <List size="small">
-                            <List.Item>人生得意须尽欢，莫使金樽空对月。</List.Item>
-                            <List.Item>天生我材必有用，千金散尽还复来。</List.Item>
-                            <List.Item>烹羊宰牛且为乐，会须一饮三百杯。</List.Item>
-                            <List.Item>岑夫子，丹丘生，将进酒，杯莫停。</List.Item>
+                            <List.Item>
+                                The joy of life must be joyful, so as not to
+                                make Jinzun empty against the moon.
+                            </List.Item>
+
+                            <List.Item>
+                                Natural talents will be useful.
+                            </List.Item>
+
+                            <List.Item>
+                                Cooking sheep and slaughtering cattle is a
+                                pleasure, and you will need to drink three
+                                hundred cups.
+                            </List.Item>
+
+                            <List.Item>
+                                Master Cen, Dan Qiusheng, will enter the wine,
+                                stop drinking.
+                            </List.Item>
                         </List>
                     </Modal.Body>
+
                     <Modal.Footer>
-                        <Button onClick={e => $message({
-                            type: 'info',
-                            content: `这是一条info`
-                        })}>取消</Button>
-                        <Button type="primary">确认</Button>
+                        <Button
+                            onClick={e =>
+                                $message({
+                                    type: 'info',
+                                    content: `This is an info`
+                                })
+                            }>
+                            Cancel
+                        </Button>
+
+                        <Button type="primary"> Confirm </Button>
                     </Modal.Footer>
                 </Modal>
 
-                <Button onClick={e => {$alert({
-                    title: '这是一个$alert',
-                    content: '这是一个通过$实例的',
-                    // style: {
-                    //     width: '300px'
-                    // }
-                })}}>$alert</Button>
+                <Button
+                    onClick={e => {
+                        $alert({
+                            title: 'This is a $alert',
+                            content: 'This is a $ instance'
+                        });
+                    }}>
+                    $alert
+                </Button>
 
-                <Button onClick={e => {$alert({
-                    title: '这是一个$alert',
-                    content: '这是一个通过$实例的',
-                    type: 'success',
-                })}}>$alert success</Button>
+                <Button
+                    onClick={e => {
+                        $alert({
+                            title: 'This is a $alert',
+                            content: 'This is a $ instance',
+                            type: 'success'
+                        });
+                    }}>
+                    $alert success
+                </Button>
 
-                <Button onClick={e => {$alert({
-                    title: '这是一个$alert',
-                    content: '这是一个通过$实例的',
-                    type: 'error',
-                })}}>$alert error</Button>
+                <Button
+                    onClick={e => {
+                        $alert({
+                            title: 'This is a $alert',
+                            content: 'This is a $ instance',
+                            type: 'error'
+                        });
+                    }}>
+                    $alert error
+                </Button>
 
-                <Button onClick={e => {$alert({
-                    title: '这是一个$alert',
-                    content: '这是一个通过$实例的',
-                    type: 'warning',
-                })}}>$alert warning</Button>
+                <Button
+                    onClick={e => {
+                        $alert({
+                            title: 'This is a $alert',
+                            content: 'This is a $ instance',
+                            type: 'warning'
+                        });
+                    }}>
+                    $alert warning
+                </Button>
 
-                 <Button onClick={e => {$confirm({
-                    title: '这是一个$confirm',
-                    content: '这是一个通过$实例的'
-                })}}>$confirm</Button>
+                <Button
+                    onClick={e => {
+                        $confirm({
+                            title: 'This is a $confirm',
+                            content: 'This is a $ instance'
+                        });
+                    }}>
+                    $confirm
+                </Button>
 
-                 <Button onClick={e => {$prompt({
-                    title: '这是一个$prompt',
-                    content: '这是一个通过$实例的'
-                })}}>$prompt</Button>
+                <Button
+                    onClick={e => {
+                        $prompt({
+                            title: 'This is a $prompt',
+                            content: 'This is a $ instance'
+                        });
+                    }}>
+                    $prompt
+                </Button>
             </div>
         );
     }

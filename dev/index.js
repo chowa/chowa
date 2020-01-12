@@ -13,7 +13,7 @@ import * as ReactDom from 'react-dom';
 // import CalendarDev from './components/calendar';
 // import CardDev from './components/card';
 // import CarouselDev from './components/carousel';
-// import CascaderDev from './components/cascader';
+import CascaderDev from './components/cascader';
 // import CheckboxDev from './components/checkbox';
 // import CheckboxGroupDev from './components/checkbox-group';
 // import CollapseDev from './components/collapse';
@@ -55,7 +55,7 @@ import * as ReactDom from 'react-dom';
 // import StepsDev from './components/steps';
 // import SwitchDev from './components/switch';
 // import TableDev from './components/table';
-// import TabsDev from './components/tabs';
+import TabsDev from './components/tabs';
 // import TagDev from './components/tag';
 // import TimePickerDev from './components/time-picker';
 // import TimelineDev from './components/timeline';
@@ -63,7 +63,7 @@ import * as ReactDom from 'react-dom';
 // import TransferDev from './components/transfer';
 // import TreeDev from './components/tree';
 // import TypographyDev from './components/typography';
-import UploadDev from './components/upload';
+// import UploadDev from './components/upload';
 
 class Develop extends Component {
 
@@ -82,9 +82,9 @@ class Develop extends Component {
                 <ButtonGroupDev/>
                 <CalendarDev/>
                 <CardDev/>
-                <CarouselDev/>
+                <CarouselDev/>*/}
                 <CascaderDev/>
-                <CheckboxDev/>
+                {/*<CheckboxDev/>
                 <CheckboxGroupDev/>
                 <CollapseDev/>
                 <ColorPickerDev/>
@@ -132,8 +132,8 @@ class Develop extends Component {
                 <TooltipDev/>
                 <TransferDev/>
                 <TreeDev/>
-                <TypographyDev/>*/}
-                <UploadDev/>
+                <TypographyDev/>
+                <UploadDev/>*/}
             </section>
         );
     }

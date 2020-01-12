@@ -2,52 +2,137 @@ import React, { Component } from 'react';
 import Button from '../../components/button';
 
 class ButtonDev extends Component {
-
     render() {
         return (
-            <div className='dev-section'>
-                <h1 className='dev-title'>Button</h1>
+            <div className="dev-section">
+                <h1 className="dev-title"> Button </h1>
+                <Button> button </Button>
 
-                <Button>按钮</Button>
-                <Button disabled>按钮</Button>
-                <Button type='primary'>按钮</Button>
-                <Button type='primary' disabled>按钮</Button>
-                <Button type='danger'>按钮</Button>
-                <Button type='danger' disabled>按钮</Button>
-                <Button type='danger' text>按钮</Button>
-                <Button dashed>按钮</Button>
-                <Button dashed type='danger'>按钮</Button>
-                <Button dashed type='primary'>按钮</Button>
-                <Button dashed disabled>按钮</Button>
-                <Button type='danger' text disabled>按钮</Button>
-                <Button type='danger' text active>按钮</Button>
-                <Button type='primary' text disabled>按钮</Button>
-                <Button type='primary' text active>按钮</Button>
-                <Button text>按钮</Button>
-                <Button type='danger' text>按钮</Button>
-                <Button type='primary' text>按钮</Button>
-                <Button type='primary' round>按钮</Button>
-                <Button type='primary' size='small'>按钮</Button>
-                <Button type='primary' size='large'>按钮</Button>
-                <Button disabled onClick={e => console.log(e)}>按钮</Button>
-                <Button active>按钮</Button>
-                <Button loading>按钮</Button>
-                <Button type='primary' disabled active>按钮 disabled active</Button>
-                <Button type='primary' loading>按钮</Button>
-                <Button type='danger' loading>按钮</Button>
-                <div className='cw-mt-18 cw-mb-20'>
-                    <Button block>按钮</Button>
-                    <Button block>按钮</Button>
-                    <Button block>按钮</Button>
-                    <Button block>按钮</Button>
+                <Button disabled> Button </Button>
+
+                <Button type="primary"> Button </Button>
+
+                <Button type="primary" disabled>
+                    Button
+                </Button>
+
+                <Button type="danger"> Button </Button>
+
+                <Button type="danger" disabled>
+                    Button
+                </Button>
+
+                <Button type="danger" text>
+                    Button
+                </Button>
+
+                <Button dashed> button </Button>
+
+                <Button dashed type="danger">
+                    Button
+                </Button>
+
+                <Button dashed type="primary">
+                    Button
+                </Button>
+
+                <Button dashed disabled>
+                    button
+                </Button>
+
+                <Button type="danger" text disabled>
+                    Button
+                </Button>
+
+                <Button type="danger" text active>
+                    Button
+                </Button>
+
+                <Button type="primary" text disabled>
+                    Button
+                </Button>
+
+                <Button type="primary" text active>
+                    Button
+                </Button>
+
+                <Button text> Button </Button>
+
+                <Button type="danger" text>
+                    Button
+                </Button>
+
+                <Button type="primary" text>
+                    Button
+                </Button>
+
+                <Button type="primary" round>
+                    Button
+                </Button>
+
+                <Button type="primary" size="small">
+                    Button
+                </Button>
+
+                <Button type="primary" size="large">
+                    Button
+                </Button>
+
+                <Button disabled onClick={e => console.log(e)}>
+                    button
+                </Button>
+
+                <Button active> button </Button>
+
+                <Button loading> button </Button>
+
+                <Button type="primary" disabled active>
+                    Button disabled active
+                </Button>
+
+                <Button type="primary" loading>
+                    Button
+                </Button>
+
+                <Button type="danger" loading>
+                    Button
+                </Button>
+
+                <div className="cw-mt-18 cw-mb-20">
+                    <Button block> button </Button>
+
+                    <Button block> button </Button>
+
+                    <Button block> button </Button>
+
+                    <Button block> button </Button>
+
                 </div>
-                <div style={{background: '#2b2b2b', padding: '30px'}}>
-                    <Button ghost>按钮</Button>
-                    <Button ghost type='primary'>按钮</Button>
-                    <Button ghost type='danger'>按钮</Button>
-                    <Button ghost type='danger' disabled>按钮</Button>
-                    <Button ghost dashed>按钮</Button>
-                    <Button ghost text>按钮</Button>
+
+                <div style={{background: '#2b2b2b',padding: '30px'}}>
+                    <Button ghost> button </Button>
+
+                    <Button ghost type="primary">
+                        Button
+                    </Button>
+
+
+                    <Button ghost type="danger">
+                        Button
+                    </Button>
+
+                    <Button ghost type="danger" disabled>
+                        Button
+                    </Button>
+
+                    <Button ghost dashed>
+                        button
+                    </Button>
+
+                    <Button ghost text>
+                        Button
+                    </Button>
+
                 </div>
             </div>
         );

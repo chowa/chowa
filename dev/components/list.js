@@ -2,46 +2,98 @@ import React, { Component } from 'react';
 import List from '../../components/list';
 
 class ListDev extends Component {
-
     render() {
         return (
-            <div className='dev-section'>
-                <h1 className='dev-title'>List</h1>
+            <div className="dev-section">
+                <h1 className="dev-title"> List </h1>
 
                 <List>
-                    <List.Item>人生得意须尽欢，莫使金樽空对月。</List.Item>
-                    <List.Item>天生我材必有用，千金散尽还复来。</List.Item>
-                    <List.Item>烹羊宰牛且为乐，会须一饮三百杯。</List.Item>
-                    <List.Item>岑夫子，丹丘生，将进酒，杯莫停。</List.Item>
+                    <List.Item>
+                        The joy of life must be joyful, so as not to make Jinzun
+                        empty against the moon.
+                    </List.Item>
+
+                    <List.Item> Natural talents will be useful. </List.Item>
+
+                    <List.Item>
+                        Cooking sheep and slaughtering cattle is a pleasure, and
+                        you will need to drink three hundred cups.
+                    </List.Item>
+
+                    <List.Item>
+                        Master Cen, Dan Qiusheng, will enter the wine, stop
+                        drinking.
+                    </List.Item>
                 </List>
 
-                <br/>
+                <br />
 
                 <List bordered>
-                    <List.Item>人生得意须尽欢，莫使金樽空对月。</List.Item>
-                    <List.Item>天生我材必有用，千金散尽还复来。</List.Item>
-                    <List.Item>烹羊宰牛且为乐，会须一饮三百杯。</List.Item>
-                    <List.Item>岑夫子，丹丘生，将进酒，杯莫停。</List.Item>
+                    <List.Item>
+                        The joy of life must be joyful, so as not to make Jinzun
+                        empty against the moon.
+                    </List.Item>
+
+                    <List.Item> Natural talents will be useful. </List.Item>
+
+                    <List.Item>
+                        Cooking sheep and slaughtering cattle is a pleasure, and
+                        you will need to drink three hundred cups.
+                    </List.Item>
+
+                    <List.Item>
+                        Master Cen, Dan Qiusheng, will enter the wine, stop
+                        drinking.
+                    </List.Item>
                 </List>
 
-                <br/>
+                <br />
 
                 <List>
-                    <List.Item actions={[<a href=''>连接</a>, <a href=''>连接</a>]}>
-                        天生我材必有用，千金散尽还复来。天生我材必有用，千金散尽还复来。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。天生我材必有用，千金散尽还复来。天生我材必有用，千金散尽还复来。
+                    <List.Item
+                        actions={[
+                            <a href=""> connection </a>,
+                            <a href=""> connection </a>,
+                        ]}
+                    >
+                        We are born to be useful.We are born to be useful.The
+                        joy of life must be joyful, so as not to make Jinzun
+                        empty to the moon.We are born to be useful.We are born
+                        to be useful.We are born to be useful.
                     </List.Item>
-                    <List.Item>天生我材必有用，千金散尽还复来。</List.Item>
-                    <List.Item>烹羊宰牛且为乐，会须一饮三百杯。</List.Item>
-                    <List.Item>岑夫子，丹丘生，将进酒，杯莫停。</List.Item>
+
+                    <List.Item> Natural talents will be useful. </List.Item>
+
+                    <List.Item>
+                        Cooking sheep and slaughtering cattle is a pleasure, and
+                        you will need to drink three hundred cups.
+                    </List.Item>
+
+                    <List.Item>
+                        Master Cen, Dan Qiusheng, will enter the wine, stop
+                        drinking.
+                    </List.Item>
                 </List>
 
-                <br/>
+                <br />
 
                 <List bordered highlight>
-                    <List.Item>人生得意须尽欢，莫使金樽空对月。</List.Item>
-                    <List.Item>天生我材必有用，千金散尽还复来。</List.Item>
-                    <List.Item>烹羊宰牛且为乐，会须一饮三百杯。</List.Item>
-                    <List.Item>岑夫子，丹丘生，将进酒，杯莫停。</List.Item>
+                    <List.Item>
+                        The joy of life must be joyful, so as not to make Jinzun
+                        empty against the moon.
+                    </List.Item>
+
+                    <List.Item> Natural talents will be useful. </List.Item>
+
+                    <List.Item>
+                        Cooking sheep and slaughtering cattle is a pleasure, and
+                        you will need to drink three hundred cups.
+                    </List.Item>
+
+                    <List.Item>
+                        Master Cen, Dan Qiusheng, will enter the wine, stop
+                        drinking.
+                    </List.Item>
                 </List>
             </div>
         );

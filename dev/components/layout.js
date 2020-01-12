@@ -3,7 +3,6 @@ import Layout from '../../components/layout';
 import Switch from '../../components/switch';
 
 class LayoutDev extends Component {
-
     state = {
         collapse: false,
         height: 600,
@@ -14,7 +13,7 @@ class LayoutDev extends Component {
         setInterval(() => {
             this.setState({
                 contentHeight: 800
-            })
+            });
         }, 2000);
     }
 
@@ -35,109 +34,155 @@ class LayoutDev extends Component {
         const { collapse, height, contentHeight } = this.state;
 
         return (
-            <div className='dev-section'>
-                <h1 className='dev-title'>Layout</h1>
+            <div className="dev-section">
+                <h1 className="dev-title"> Layout </h1>
 
-                {/*<div style={{height: 400}}>
+                <div style={{height: 400}}>
                     <Layout>
                         <Layout.Header style={{background: 'rgb(75, 160, 233)'}}>
-                            <div style={centerStyle}><span>Header</span></div>
+                            <div style={centerStyle}>
+                                <span> Header </span>
+                            </div>
                         </Layout.Header>
                         <Layout.Content style={{background: 'rgb(45, 140, 240)'}}>
-                            <div style={centerStyle}><span>Content</span></div>
+                            <div style={centerStyle}>
+                                <span> Content </span>
+                            </div>
                         </Layout.Content>
                         <Layout.Footer style={{background: 'rgb(75, 160, 233)'}}>
-                            <div style={centerStyle}><span>Footer</span></div>
+                            <div style={centerStyle}>
+                                <span> Footer </span>
+                            </div>
                         </Layout.Footer>
                     </Layout>
                 </div>
 
-                <div style={{height: 400}} className='cw-mt-18'>
+                <div style={{height: 400}} className="cw-mt-18">
                     <Layout withAside>
                         <Layout.Aside dark>
-                            <div style={centerStyle}><span>Aside</span></div>
+                            <div style={centerStyle}>
+                                <span> Aside </span>
+                            </div>
                         </Layout.Aside>
                         <Layout>
                             <Layout.Header style={{background: 'rgb(75, 160, 233)'}}>
-                                <div style={centerStyle}><span>Header</span></div>
+                                <div style={centerStyle}>
+                                    <span> Header </span>
+                                </div>
                             </Layout.Header>
                             <Layout.Content style={{background: 'rgb(45, 140, 240)'}}>
-                                <div style={centerStyle}><span>Content</span></div>
+                                <div style={centerStyle}>
+                                    <span> Content </span>
+                                </div>
                             </Layout.Content>
                             <Layout.Footer style={{background: 'rgb(75, 160, 233)'}}>
-                                <div style={centerStyle}><span>Footer</span></div>
+                                <div style={centerStyle}>
+                                    <span> Footer </span>
+                                </div>
                             </Layout.Footer>
                         </Layout>
                     </Layout>
-                </div>*/}
+                </div>
 
                 <Layout>
                     <Layout.Content style={{background: 'rgb(45, 140, 240)'}}>
-                        <div style={ {background: '#fec', height: contentHeight} }><span>Content</span></div>
+                        <div style={{background: '#fec',height: contentHeight}}>
+                            <span> Content </span>
+                        </div>
                     </Layout.Content>
                 </Layout>
-                <br/>
 
-                <div className='cw-mt-18'>
-                    <Switch checked={collapse} onChange={e => this.setState({collapse: e.target.checked})}/>
+                <br />
+
+                <div className="cw-mt-18">
+                    <Switch
+                        checked={collapse}
+                        onChange={e =>
+                            this.setState({
+                                collapse: e.target.checked,
+                            })
+                        }/>
+
                     <Layout>
                         <Layout.Header style={{background: 'rgb(75, 160, 233)'}}>
-                            <div style={centerStyle}><span>Header</span></div>
+                            <div style={centerStyle}>
+                                <span> Header </span>
+                            </div>
                         </Layout.Header>
                         <Layout withAside>
                             <Layout.Aside dark collapse={collapse}>
-                                <div style={centerStyle}><span>Aside</span></div>
+                                <div style={centerStyle}>
+                                    <span> Aside </span>
+                                </div>
                             </Layout.Aside>
                             <Layout>
                                 <Layout.Content style={{background: 'rgb(45, 140, 240)'}}>
                                     {/*<div style={centerStyle}><span>Content</span></div>*/}
-                                    <div style={ {height: contentHeight} }/>
+                                    <div style={{height: contentHeight}}/>
                                 </Layout.Content>
                                 <Layout.Footer style={{background: 'rgb(75, 160, 233)'}}>
-                                    <div style={centerStyle}><span>Footer</span></div>
+                                    <div style={centerStyle}>
+                                        <span> Footer </span>
+                                    </div>
                                 </Layout.Footer>
                             </Layout>
                         </Layout>
                     </Layout>
                 </div>
 
-                {/*<div style={{height: 400}} className='cw-mt-18'>
+                <div style={{height: 400}} className="cw-mt-18">
                     <Layout>
                         <Layout.Header style={{background: 'rgb(75, 160, 233)'}}>
-                            <div style={centerStyle}><span>Header</span></div>
+                            <div style={centerStyle}>
+                                <span> Header </span>
+                            </div>
                         </Layout.Header>
                         <Layout withAside>
                             <Layout.Content style={{background: 'rgb(45, 140, 240)'}}>
-                                <div style={centerStyle}><span>Content</span></div>
+                                <div style={centerStyle}>
+                                    <span> Content </span>
+                                </div>
                             </Layout.Content>
                             <Layout.Aside dark>
-                                <div style={centerStyle}><span>Aside</span></div>
+                                <div style={centerStyle}>
+                                    <span> Aside </span>
+                                </div>
                             </Layout.Aside>
                         </Layout>
                         <Layout.Footer style={{background: 'rgb(75, 160, 233)'}}>
-                            <div style={centerStyle}><span>Footer</span></div>
+                            <div style={centerStyle}>
+                                <span> Footer </span>
+                            </div>
                         </Layout.Footer>
                     </Layout>
                 </div>
 
-                <br/>
+                <br />
 
                 <Layout fullScreen>
                     <Layout.Aside dark>
-                        <div style={centerStyle}><span>Aside</span></div>
+                        <div style={centerStyle}>
+                            <span> Aside </span>
+                        </div>
                     </Layout.Aside>
                     <Layout>
                         <Layout.Header style={{background: 'rgb(75, 160, 233)'}}>
-                            <div style={centerStyle}><span>Header</span></div>
+                            <div style={centerStyle}>
+                                <span> Header </span>
+                            </div>
                         </Layout.Header>
-                        <Layout.Content style={{background: 'rgb(45, 140, 240)', height}}>
-                            <div style={centerStyle}><span>Content</span></div>
+                        <Layout.Content style={{background: 'rgb(45, 140, 240)',height}}>
+                            <div style={centerStyle}>
+                                <span> Content </span>
+                            </div>
                         </Layout.Content>
                         <Layout.Footer style={{background: 'rgb(75, 160, 233)'}}>
-                            <div style={centerStyle}><span>Footer</span></div>
+                            <div style={centerStyle}>
+                                <span> Footer </span>
+                            </div>
                         </Layout.Footer>
                     </Layout>
-                </Layout>*/}
+                </Layout>
             </div>
         );
     }

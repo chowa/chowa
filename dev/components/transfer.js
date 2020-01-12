@@ -11,7 +11,7 @@ class TransferDev extends Component {
         for (let i = 1; i <= 20; i++) {
             transferData.push({
                 index: i,
-                title: `内容第${i}条`,
+                title: `Contents ${i}`,
                 description: `description of ${i}`,
                 disabled: i % 5 === 0
             });
@@ -27,18 +27,28 @@ class TransferDev extends Component {
         const { transferData, transferTarget } = this.state;
 
         return (
-            <div className='dev-section'>
-                <h1 className='dev-title'>Transfer</h1>
+            <div className="dev-section">
+                <h1 className="dev-title"> Transfer </h1>
 
                 <Transfer
                     searchable
-                    formatter={item => { return <span>{item.title} - {item.description}</span>}}
-                    sourceFooter={<Button text size='small'>btn</Button>}
+                    formatter={item => {
+                        return (
+                            <span>
+                                {item.title} - {item.description}
+                            </span>
+                        );
+                    }}
+                    sourceFooter={
+                        <Button text size="small">
+                            btn
+                        </Button>
+                    }
                     onChange={val => this.setState({transferTarget: val})}
                     targetIndexs={transferTarget}
                     data={transferData}/>
 
-                <br/>
+                <br />
 
                 <Transfer
                     disabled
