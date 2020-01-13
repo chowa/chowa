@@ -13,7 +13,7 @@ export interface AlertProps {
     content: React.ReactNode;
     showIcon?: boolean;
     visible?: boolean;
-    closeable?: boolean;
+    closable?: boolean;
     closeText?: React.ReactNode;
     onVisibleChange?: (visible: boolean) => void;
 }
@@ -32,7 +32,7 @@ class Alert extends React.PureComponent<AlertProps, AlertState> {
         content: PropTypes.node.isRequired,
         showIcon: PropTypes.bool,
         visible: PropTypes.bool,
-        closeable: PropTypes.bool,
+        closable: PropTypes.bool,
         closeText: PropTypes.node,
         onVisibleChange: PropTypes.func
     };
@@ -41,7 +41,7 @@ class Alert extends React.PureComponent<AlertProps, AlertState> {
         showIcon: false,
         visible: true,
         type: 'info',
-        closeable: false
+        closable: false
     };
 
     public constructor(props: AlertProps) {
@@ -75,7 +75,7 @@ class Alert extends React.PureComponent<AlertProps, AlertState> {
     }
 
     public render() {
-        const { className, style, type, content, title, showIcon, closeable, closeText } = this.props;
+        const { className, style, type, content, title, showIcon, closable, closeText } = this.props;
         const { selfVisible } = this.state;
 
         const iconType = isExist(title) ? `${type}-fill` : type;
@@ -110,7 +110,7 @@ class Alert extends React.PureComponent<AlertProps, AlertState> {
                         <div className={preClass('alert-content')}>{ content }</div>
                     </div>
                     {
-                        closeable &&
+                        closable &&
                         <span className={preClass('alert-close')} onClick={this.hideAlertHandler}>
                             { closeText === undefined && <Icon type='close'/> }
                             { isExist(closeText) && <a>{ closeText }</a> }

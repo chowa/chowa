@@ -7,7 +7,7 @@ import Icon from '../icon';
 export interface TagProps{
     className?: string;
     style?: React.CSSProperties;
-    closeable?: boolean;
+    closable?: boolean;
     checkable?: boolean;
     checked?: boolean;
     disabled?: boolean;
@@ -27,7 +27,7 @@ class Tag extends React.PureComponent<TagProps, TagState> {
     public static propTypes = {
         className: PropTypes.string,
         style: PropTypes.object,
-        closeable: PropTypes.bool,
+        closable: PropTypes.bool,
         checkable: PropTypes.bool,
         checked: PropTypes.bool,
         disabled: PropTypes.bool,
@@ -37,7 +37,7 @@ class Tag extends React.PureComponent<TagProps, TagState> {
     };
 
     public static defaultProps = {
-        closeable: false,
+        closable: false,
         checkable: false,
         disabled: false,
         checked: false
@@ -81,7 +81,7 @@ class Tag extends React.PureComponent<TagProps, TagState> {
     }
 
     public render() {
-        const { children, className, style, closeable, color, checkable, disabled } = this.props;
+        const { children, className, style, closable, color, checkable, disabled } = this.props;
         const { result } = this.state;
         const inRecommend = recommend.includes(color);
         const useCustomColor = isExist(color) && !inRecommend;
@@ -114,7 +114,7 @@ class Tag extends React.PureComponent<TagProps, TagState> {
                 }
                 <span className={preClass('tag-inner')}>{ children }</span>
                 {
-                    closeable && !disabled &&
+                    closable && !disabled &&
                     <button onClick={this.onCloseHandler} tabIndex={-1} className={preClass('tag-close')}>
                         <Icon type='close'/>
                     </button>

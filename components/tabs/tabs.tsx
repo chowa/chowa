@@ -14,7 +14,7 @@ export interface TabsProps {
     defaultActiveIndex?: React.ReactText;
     activeIndex?: React.ReactText;
     mode?: 'line' | 'card';
-    closeable?: boolean;
+    closable?: boolean;
     appendable?: boolean;
     onChange?: (index: React.ReactText) => void;
     onBeforeClose?: (index: React.ReactText) => boolean;
@@ -41,7 +41,7 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
         tabJustified: PropTypes.bool,
         defaultActiveIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
         mode: PropTypes.oneOf(['line', 'card']),
-        closeable: PropTypes.bool,
+        closable: PropTypes.bool,
         appendable: PropTypes.bool,
         onChange: PropTypes.func,
         onBeforeClose: PropTypes.func,
@@ -50,7 +50,7 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
     };
 
     public static defaultProps = {
-        closeable: false,
+        closable: false,
         tabJustified: false,
         appendable: false,
         tabPosition: 'top',
@@ -289,7 +289,7 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
     }
 
     private compileTabs(): React.ReactNodeArray {
-        const { children, mode, tabPosition, closeable, appendable } = this.props;
+        const { children, mode, tabPosition, closable, appendable } = this.props;
         const {
             selfActiveIndex,
             showNavScrollBtn,
@@ -336,7 +336,7 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
                     onClick={disabled || selfActiveIndex === index ? null : this.onTabClickHandler.bind(this, index)}>
                     { tab }
                     {
-                        closeable &&
+                        closable &&
                         <button className={tablCloseClass} onClick={this.onCloseHandler.bind(this, index)}>
                             <Icon type='close'/>
                         </button>

@@ -468,7 +468,7 @@ class TabsDev extends Component {
                 <br />
 
                 <Tabs
-                    closeable
+                    closable
                     onClose={index => {
                         const newCloseTabs = [].concat(closeTabs);
                         newCloseTabs.splice(newCloseTabs.indexOf(index), 1);

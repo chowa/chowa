@@ -53,7 +53,7 @@ class NotificationDev extends Component {
                         $notification({
                             title: 'Insert a farewell for everyone below',
                             type: 'info',
-                            closeable: true
+                            closable: true
                         });
                     }}>
                     info
@@ -64,7 +64,7 @@ class NotificationDev extends Component {
                         $notification({
                             title: 'Insert a farewell for everyone below',
                             type: 'success',
-                            closeable: true
+                            closable: true
                         });
                     }}>
                     success
@@ -75,7 +75,7 @@ class NotificationDev extends Component {
                         $notification({
                             title: 'Insert a farewell for everyone below',
                             type: 'warning',
-                            closeable: true
+                            closable: true
                         });
                     }}>
                     warning
@@ -86,7 +86,7 @@ class NotificationDev extends Component {
                         $notification({
                             title: 'Insert a farewell for everyone below',
                             type: 'error',
-                            closeable: true
+                            closable: true
                         });
                     }}>
                     error
@@ -99,7 +99,7 @@ class NotificationDev extends Component {
                             content:
                                 "Outside the long pavilion, beside the ancient road, the grass is green. Evening wind blows the willow flute, the sunset is outside the mountains. The horizon of the sky, the corner of the earth, half-knowledge of knowledge. With a pot of muddy wine, I'm happy, don't dream cold tonight. Outside the long pavilion, beside the ancient road, the fragrant grass is green. When does Jun come here? ",
                             type: 'info',
-                            closeable: true
+                            closable: true
                         });
                     }}>
                     content - type

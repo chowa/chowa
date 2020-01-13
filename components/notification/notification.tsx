@@ -14,7 +14,7 @@ export interface NotificationProps {
     type?: 'info' | 'success' | 'error' | 'warning';
     title: string;
     content?: React.ReactNode;
-    closeable?: boolean;
+    closable?: boolean;
     delay?: number;
     index?: number;
     placement?: Placement;
@@ -33,7 +33,7 @@ class Notification extends React.PureComponent<NotificationProps, NotificationSt
         type: PropTypes.oneOf(['info', 'success', 'error', 'warning']),
         title: PropTypes.string.isRequired,
         content: PropTypes.node,
-        closeable: PropTypes.bool,
+        closable: PropTypes.bool,
         delay: PropTypes.number,
         index: PropTypes.number,
         placement: PropTypes.oneOf(['top-right', 'top-left', 'bottom-right', 'bottom-left']),
@@ -41,7 +41,7 @@ class Notification extends React.PureComponent<NotificationProps, NotificationSt
     };
 
     public static defaultProps = {
-        closeable: false,
+        closable: false,
         delay: 3000,
         placement: 'top-right'
     };
@@ -68,17 +68,17 @@ class Notification extends React.PureComponent<NotificationProps, NotificationSt
     }
 
     private onMouseEnterHandler() {
-        const { closeable } = this.props;
+        const { closable } = this.props;
 
-        if (closeable) {
+        if (closable) {
             this.clearCrontab();
         }
     }
 
     private onMouseLeaveHandler() {
-        const { closeable } = this.props;
+        const { closable } = this.props;
 
-        if (closeable) {
+        if (closable) {
             this.crontab();
         }
     }
@@ -126,7 +126,7 @@ class Notification extends React.PureComponent<NotificationProps, NotificationSt
     }
 
     public render() {
-        const { className, style, type, title, content, closeable, placement } = this.props;
+        const { className, style, type, title, content, closable, placement } = this.props;
         const { visible } = this.state;
         const transPlacement = placement.split('-').pop();
         const componentClass = classNames({
@@ -163,7 +163,7 @@ class Notification extends React.PureComponent<NotificationProps, NotificationSt
                         { content && <p className={preClass('notification-content')}>{ content }</p> }
                     </div>
                     {
-                        closeable &&
+                        closable &&
                         <button className={preClass('notification-close')} onClick={this.closeHandler}>
                             <Icon type='close'/>
                         </button>

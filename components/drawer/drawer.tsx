@@ -11,7 +11,7 @@ export interface DrawerProps {
     className?: string;
     style?: React.CSSProperties;
     visible?: boolean;
-    maskCloseable?: boolean;
+    maskClosable?: boolean;
     withMask?: boolean;
     scrollDisabled?: boolean;
     placement?: 'top' | 'left' | 'right' | 'bottom';
@@ -25,7 +25,7 @@ class Drawer extends React.PureComponent<DrawerProps, any> {
         className: PropTypes.string,
         style: PropTypes.object,
         visible: PropTypes.bool,
-        maskCloseable: PropTypes.bool,
+        maskClosable: PropTypes.bool,
         withMask: PropTypes.bool,
         scrollDisabled: PropTypes.bool,
         placement: PropTypes.oneOf(['top', 'left', 'right', 'bottom']),
@@ -36,7 +36,7 @@ class Drawer extends React.PureComponent<DrawerProps, any> {
     public static defaultProps = {
         visible: false,
         scrollDisabled: false,
-        maskCloseable: true,
+        maskClosable: true,
         withMask: true,
         placement: 'right',
         bordered: true
@@ -78,7 +78,7 @@ class Drawer extends React.PureComponent<DrawerProps, any> {
     }
 
     public render() {
-        const { children, style, className, visible, placement, maskCloseable, bordered, withMask } = this.props;
+        const { children, style, className, visible, placement, maskClosable, bordered, withMask } = this.props;
         const fragments = [];
 
         const componentClass = classNames({
@@ -94,7 +94,7 @@ class Drawer extends React.PureComponent<DrawerProps, any> {
                     key='drawer-mask'
                     visible={visible}
                     className={preClass('drawer-mask')}
-                    onClick={maskCloseable ? this.onMaskClickHandler : null}
+                    onClick={maskClosable ? this.onMaskClickHandler : null}
                     role='drawer-mask'/>
             );
         }

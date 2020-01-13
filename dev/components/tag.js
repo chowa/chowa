@@ -25,7 +25,7 @@ class TagDev extends Component {
 
                 <br />
 
-                <Tag closeable> This is a tag </Tag>
+                <Tag closable> This is a tag </Tag>
 
                 <Tag checkable> This is a tag </Tag>
 

@@ -463,7 +463,7 @@ class Select extends React.PureComponent<SelectProps, SelectState> {
                                     <Tag
                                         key={key}
                                         disabled={disabled}
-                                        closeable={true}
+                                        closable={true}
                                         onClose={this.onDeSelectHandler.bind(this, option)}>
                                         { getOptionLabel(option) }
                                     </Tag>

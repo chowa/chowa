@@ -22,7 +22,7 @@ export interface ModalProps {
     align?: 'top' | 'middle' | 'bottom';
     justify?: 'start' | 'end' | 'center';
     bordered?: boolean;
-    maskCloseable?: boolean;
+    maskClosable?: boolean;
     withMask?: boolean;
     scrollDisabled?: boolean;
     onClose?: () => void;
@@ -47,7 +47,7 @@ class Modal extends React.PureComponent<ModalProps, ModalState> {
         align: PropTypes.oneOf(['top', 'middle', 'bottom']),
         justify: PropTypes.oneOf(['start', 'end', 'center']),
         bordered: PropTypes.bool,
-        maskCloseable: PropTypes.bool,
+        maskClosable: PropTypes.bool,
         withMask: PropTypes.bool,
         scrollDisabled: PropTypes.bool,
         onClose: PropTypes.func,
@@ -64,7 +64,7 @@ class Modal extends React.PureComponent<ModalProps, ModalState> {
         align: 'middle',
         justify: 'center',
         bordered: true,
-        maskCloseable: true,
+        maskClosable: true,
         withMask: true,
         scrollDisabled: false
     };
@@ -187,7 +187,7 @@ class Modal extends React.PureComponent<ModalProps, ModalState> {
             align,
             justify,
             bordered,
-            maskCloseable,
+            maskClosable,
             withMask,
             style,
             onShow,
@@ -229,7 +229,7 @@ class Modal extends React.PureComponent<ModalProps, ModalState> {
                 onEnter={this.onEnterHandler}
                 onLeave={this.onLeaveHandler}
                 className={wrapperClass}
-                onClick={maskCloseable ? this.onMaskClickHandler : undefined}
+                onClick={maskClosable ? this.onMaskClickHandler : undefined}
                 appear={preClass('modal-appear')}
                 enter={preClass('modal-enter')}
                 leave={preClass('modal-leave')}>

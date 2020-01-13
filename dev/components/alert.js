@@ -13,8 +13,8 @@ class AlertDev extends Component {
                 <h1 className="dev-title"> Alert </h1>
                 <Alert
                     showIcon
-                    closeable
-                    content="This is a closeable Alert Component"/>
+                    closable
+                    content="This is a closable Alert Component"/>
 
                 <br />
 
@@ -38,7 +38,7 @@ class AlertDev extends Component {
                     content="This is an Alert component"
                     title="This is a error type"
                     type="error"
-                    closeable/>
+                    closable/>
 
                 <br />
 
@@ -87,7 +87,7 @@ class AlertDev extends Component {
                 <Alert
                     content="This is a warning type"
                     type="warning"
-                    closeable
+                    closable
                     closeText="close"/>
             </div>
         );

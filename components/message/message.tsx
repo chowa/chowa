@@ -13,7 +13,7 @@ export interface MessageProps {
     style?: React.CSSProperties;
     type?: 'info' | 'success' | 'error' | 'warning' | 'process' | 'fetching';
     content: React.ReactNode;
-    closeable?: boolean;
+    closable?: boolean;
     delay?: number;
     index?: number;
     top?: number;
@@ -32,7 +32,7 @@ class Message extends React.PureComponent<MessageProps, MessageState> {
         style: PropTypes.object,
         type: PropTypes.oneOf(['info', 'success', 'error', 'warning', 'process', 'fetching']),
         content: PropTypes.node.isRequired,
-        closeable: PropTypes.bool,
+        closable: PropTypes.bool,
         delay: PropTypes.number,
         index: PropTypes.number,
         top: PropTypes.number,
@@ -41,7 +41,7 @@ class Message extends React.PureComponent<MessageProps, MessageState> {
 
     public static defaultProps = {
         type: 'info',
-        closeable: false,
+        closable: false,
         delay: 3000,
         top: 65
     };
@@ -69,17 +69,17 @@ class Message extends React.PureComponent<MessageProps, MessageState> {
     }
 
     private onMouseEnterHandler() {
-        const { closeable } = this.props;
+        const { closable } = this.props;
 
-        if (closeable) {
+        if (closable) {
             this.clearCrontab();
         }
     }
 
     private onMouseLeaveHandler() {
-        const { closeable } = this.props;
+        const { closable } = this.props;
 
-        if (closeable) {
+        if (closable) {
             this.crontab();
         }
     }
@@ -127,7 +127,7 @@ class Message extends React.PureComponent<MessageProps, MessageState> {
     }
 
     public render() {
-        const { className, style, type, content, closeable, top } = this.props;
+        const { className, style, type, content, closable, top } = this.props;
         const { zIndex, visible } = this.state;
 
         const componentClass = classNames({
@@ -157,7 +157,7 @@ class Message extends React.PureComponent<MessageProps, MessageState> {
                             { content }
                         </p>
                         {
-                            closeable &&
+                            closable &&
                             <span className={preClass('message-close')} onClick={this.closeHandler}>
                                 <Icon type='close'/>
                             </span>

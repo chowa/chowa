@@ -72,11 +72,11 @@ class MessageDev extends Component {
                 <Button
                     onClick={e =>
                         $message({
-                            closeable: true,
-                            content: `This is a closeable`
+                            closable: true,
+                            content: `This is a closable`
                         })
                     }>
-                    closeable
+                    closable
                 </Button>
             </div>
         );
