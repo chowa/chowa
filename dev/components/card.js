@@ -103,7 +103,7 @@ class CardDev extends Component {
                     <Image
                         width={375}
                         height={535}
-                        src="http: //t2.hddhhn.com/uploads/tu/201810/9999/633172b781.jpg"
+                        src="http://t2.hddhhn.com/uploads/tu/201810/9999/633172b781.jpg"
                     />
                 </Card>
 
@@ -173,7 +173,7 @@ class CardDev extends Component {
                                 <Icon type="time" /> last login
                             </span>
                         }
-                        src="http: //themenate.com/espire/html/dist/assets/images/avatars/user-1.jpg"/>
+                        src="http://themenate.com/espire/html/dist/assets/images/avatars/user-1.jpg"/>
 
                     <Image
                         className="cw-mt-18"
