@@ -2,20 +2,20 @@
     <img width="200" src="http://upload.ouliu.net/i/20200108181725zq75v.png" width="240">
 </p>
 
-# react-chowa
+# Chowa
 
 UI component library based on React
 
-[![Build Status](https://travis-ci.org/chowa/react-chowa.svg?branch=master)](https://travis-ci.org/chowa/react-chowa)
-[![npm](https://img.shields.io/npm/v/react-chowa.svg)](https://www.npmjs.com/package/react-chowa)
-[![npm](https://img.shields.io/npm/dm/react-chowa.svg)](https://www.npmjs.com/package/react-chowa)
-[![NPM downloads](https://img.shields.io/npm/dt/react-chowa.svg)](https://npmjs.org/package/react-chowa)
+[![Build Status](https://travis-ci.org/chowa/chowa.svg?branch=master)](https://travis-ci.org/chowa/chowa)
+[![npm](https://img.shields.io/npm/v/chowa.svg)](https://www.npmjs.com/package/chowa)
+[![npm](https://img.shields.io/npm/dm/chowa.svg)](https://www.npmjs.com/package/chowa)
+[![NPM downloads](https://img.shields.io/npm/dt/chowa.svg)](https://npmjs.org/package/chowa)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://opensource.org/licenses/MIT)
-[![Gitter](https://badges.gitter.im/react-chowa/community.svg)](https://gitter.im/react-chowa/community)
+[![Gitter](https://badges.gitter.im/chowa/community.svg)](https://gitter.im/chowa/community)
 
 ## Documents
 
-[Click to read the document](https://chowa.github.io/react-chowa/)
+[Click to read the document](https://chowa.github.io/chowa/)
 
 ## Features
 
@@ -27,17 +27,17 @@ UI component library based on React
 ## Install
 
 ```
-npm i react-chowa --save
+npm i chowa --save
 ```
 
 ```
-yarn add react-chowa
+yarn add chowa
 ```
 
 ## Usage
 
 ```jsx
-import { Container, Alert } from 'react-chowa';
+import { Container, Alert } from 'chowa';
 
 export default App = () => {
     return (
@@ -56,16 +56,16 @@ export default App = () => {
 
 ```js
 // css
-import 'react-chowa/dist/react-chowa.css';
+import 'chowa/dist/chowa.css';
 // sass
-import 'react-chowa/es/styles'
+import 'chowa/es/styles'
 ```
 
 ## Local development
 
 ```
-git clone https://github.com/chowa/react-chowa.git
-cd react-chowa
+git clone https://github.com/chowa/chowa.git
+cd chowa
 npm install
 npm run dev
 ```

@@ -1,11 +1,11 @@
 {
-  "name": "react-chowa",
-  "version": "1.0.3",
-  "description": "React UI library",
-  "main": "dist/react-chowa.js",
+  "name": "chowa",
+  "version": "1.0.0",
+  "description": "UI component library based on React",
+  "main": "dist/chowa.js",
   "typings": "es/index.d.ts",
   "module": "es/index.js",
-  "style": "dist/react-chowa.css",
+  "style": "dist/chowa.css",
   "scripts": {
     "cwfont": "cwfont compile",
     "dev": "npm run cwfont && webpack-dev-server --config webpack.config.dev.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chowa/react-chowa.git"
+    "url": "git+https://github.com/chowa/chowa.git"
   },
   "keywords": [
     "React",
@@ -34,9 +34,9 @@
   "author": "xuecong8226@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chowa/react-chowa/issues"
+    "url": "https://github.com/chowa/chowa/issues"
   },
-  "homepage": "https://github.com/chowa/react-chowa#readme",
+  "homepage": "https://github.com/chowa/chowa#readme",
   "browserslist": [
     "iOS >= 8",
     "Firefox >= 20",

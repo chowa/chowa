@@ -19,7 +19,7 @@ LICENSE file in the root directory of this source tree.
 
 module.exports = webapckMerge(webpackBaseConfig, {
     entry: {
-        'react-chowa': [
+        'chowa': [
             path.join(__dirname, 'components'),
             path.join(__dirname, 'components/styles')
         ],
@@ -32,7 +32,7 @@ module.exports = webapckMerge(webpackBaseConfig, {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js',
         libraryTarget: 'umd',
-        library: 'react-chowa'
+        library: 'chowa'
     },
     stats: {
         colors: true,
@@ -104,7 +104,7 @@ module.exports = webapckMerge(webpackBaseConfig, {
             ignoreOrder: true
         }),
         new OptimizeCSSAssetsPlugin({
-            assetNameRegExp: /react-chowa\.css/,
+            assetNameRegExp: /chowa\.css/,
             cssProcessor: require('cssnano'),
             cssProcessorOptions: {
                 discardComments: {
