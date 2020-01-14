@@ -28,8 +28,8 @@ const transferData = [];
 for (let i = 1; i <= 20; i++) {
     transferData.push({
         index: i,
-        title: `Contents $ (i)`,
-        description: `description of $ (i)`,
+        title: `Contents ${i}`,
+        description: `description of ${i}`,
         disabled: i % 5 === 0
     });
 }
