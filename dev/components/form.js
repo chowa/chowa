@@ -345,12 +345,12 @@ class FormDev extends Component {
                                     message: 'This is a required field',
                                 },
                             ]}>
-                            <Checkbox label="吃" />
+                            <Checkbox label="Eat" />
                         </Validator>
                     </Form.Item>
                     <Form.Item
                         required
-                        label="You cannot change it when you choose">
+                        label="God">
                         <Validator
                             name="unchange"
                             rules={[
@@ -364,7 +364,7 @@ class FormDev extends Component {
                     </Form.Item>
                     <Form.Item
                         required
-                        label="You cannot change it when you choose">
+                        label="god">
                         <Validator
                             name="unchangeBtn"
                             rules={[
@@ -376,7 +376,7 @@ class FormDev extends Component {
                             <Radio btn label="god" />
                         </Validator>
                     </Form.Item>
-                    <Form.Item required label="Accept notification message">
+                    <Form.Item required label="accept">
                         <Validator
                             name="reveive"
                             rules={[
@@ -483,7 +483,7 @@ class FormDev extends Component {
                             <Rate />
                         </Validator>
                     </Form.Item>
-                    <Form.Item required label="Where have you been">
+                    <Form.Item required label="where">
                         <Validator
                             name="where"
                             rules={[
@@ -510,7 +510,7 @@ class FormDev extends Component {
                                 data={transferData}/>
                         </Validator>
                     </Form.Item>
-                    <Form.Item required label="multiple selection">
+                    <Form.Item required label="multiple">
                         <Validator
                             name="more"
                             rules={[
@@ -526,7 +526,7 @@ class FormDev extends Component {
                             </CheckboxGroup>
                         </Validator>
                     </Form.Item>
-                    <Form.Item required label="single choice">
+                    <Form.Item required label="single">
                         <Validator
                             name="singe"
                             rules={[
@@ -538,7 +538,7 @@ class FormDev extends Component {
                             <RadioGroup options={radioOptions} />
                         </Validator>
                     </Form.Item>
-                    <Form.Item required label="single choice">
+                    <Form.Item required label="single">
                         <Validator
                             name="singeBtn"
                             rules={[
@@ -550,7 +550,7 @@ class FormDev extends Component {
                             <RadioGroup btn options={radioOptions} />
                         </Validator>
                     </Form.Item>
-                    <Form.Item required label="Description">
+                    <Form.Item required label="description">
                         <Validator
                             name="description"
                             rules={[
