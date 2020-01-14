@@ -11,7 +11,7 @@ UI component library based on React
 [![npm](https://img.shields.io/npm/dm/chowa.svg)](https://www.npmjs.com/package/chowa)
 [![NPM downloads](https://img.shields.io/npm/dt/chowa.svg)](https://npmjs.org/package/chowa)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://opensource.org/licenses/MIT)
-[![Gitter](https://badges.gitter.im/chowa/community.svg)](https://gitter.im/chowa/community)
+[![Gitter](https://badges.gitter.im/chowa/community.svg)](https://gitter.im/chowa-fe/community)
 
 ## Documents
 
