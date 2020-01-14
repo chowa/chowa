@@ -11,17 +11,13 @@ class RateDev extends Component {
 
                 <Rate defaultValue={4} disabled />
 
-                <Rate defaultValue={4} character="I" />
+                <Rate defaultValue={4} character="Good" />
 
                 <Rate defaultValue={3.6} allowHalf />
 
-                <Rate defaultValue={4} character="I" allowHalf />
+                <Rate defaultValue={4} character="Good" allowHalf />
 
                 <Rate defaultValue={4} count={10} allowHalf />
-
-                <Rate defaultValue={4} size="small" />
-
-                <Rate defaultValue={4} size="large" />
 
                 <Rate defaultValue={4} showValue />
             </div>

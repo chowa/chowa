@@ -77,7 +77,7 @@ class TableDev extends Component {
                     }}
                     footer={<span> This is the footer </span>}>
                     <Table.Column
-                        title="Number"
+                        title="Num"
                         width={200}
                         dataIndex="no"
                         fixed="left"/>
@@ -89,7 +89,7 @@ class TableDev extends Component {
                         <Table.Column
                             title="Country"
                             dataIndex="country"
-                            width={150}/>
+                            width={200}/>
 
                         <Table.Column
                             title="Detailed address"
@@ -120,10 +120,9 @@ class TableDev extends Component {
                                     width={50}/>
 
                                 <Table.Column
-                                    title="House number"
+                                    title="Detail"
                                     align="right"
-                                    dataIndex="tablet"
-                                    width="60% "/>
+                                    dataIndex="tablet"/>
                             </Table.Column>
                         </Table.Column>
                     </Table.Column>
@@ -412,7 +411,7 @@ class TableDev extends Component {
                 </Table>
 
                 <br />
-                
+
                 <Table
                     data={fixedData}
                     size="small"
