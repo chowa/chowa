@@ -16,6 +16,7 @@
 .#{$prefix}menu-item,
 .#{$prefix}menu-submenu-trigger {
     margin: 0;
+    font-size: $font-size-base;
     box-sizing: border-box;
     transition: all $anim-duration ease-in;
     white-space: nowrap;
@@ -207,7 +208,6 @@
     .#{$prefix}menu-submenu-trigger {
         height: 42px;
         line-height: 42px;
-        font-size: $font-size-base;
         padding: 0 ($base-padding * 2.6);
     }
 
