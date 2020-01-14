@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { preClass, isExist } from '../utils';
+import { I18nReceiver, I18nTableInterface } from '../i18n';
 import { Record, UpdateParams, ExpanedVisibleMap } from './table';
 import { TableColumnProps, DataIndex } from './table-column';
 import { getColumnByDataIndex, attrMerge } from './tool';
@@ -210,7 +211,15 @@ class TableBodyRow extends React.PureComponent<TableBodyRowProps, TableBodyRowSt
                     expanded && fixed !== 'left' &&
                     <td key={`${index}-expanded`} className={preClass('table-align-center')}>
                         <span className={preClass('table-expanded-btn')} onClick={this.updateExpandedVisible}>
-                            { expandedVisible ? expandedCloseNode : expandedOpenNode }
+                            {
+                                expandedVisible
+                                    ? <I18nReceiver module='Table'>
+                                        { (i18n: I18nTableInterface) => expandedCloseNode || i18n.expandedCloseNode }
+                                    </I18nReceiver>
+                                    : <I18nReceiver module='Table'>
+                                        { (i18n: I18nTableInterface) => expandedOpenNode || i18n.expandedOpenNode }
+                                    </I18nReceiver>
+                            }
                         </span>
                     </td>
                 }

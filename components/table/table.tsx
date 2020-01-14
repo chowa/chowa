@@ -175,8 +175,6 @@ class Table extends React.PureComponent<TableProps, TableState> {
         selectedIndexs: [],
         selectable: false,
         accordion: false,
-        expandedOpenNode: '展开',
-        expandedCloseNode: '收起',
         draggable: false
     };
 

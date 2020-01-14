@@ -98,6 +98,11 @@ export interface I18nTransferInterface {
     titles: [string, string];
 }
 
+export interface I18nTableInterface{
+    expandedOpenNode: string;
+    expandedCloseNode: string;
+}
+
 export interface I18nUploadInterface{
     select: string;
     drag: string;

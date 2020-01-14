@@ -95,6 +95,11 @@ export const Transfer = {
     titles: ['Source', 'Target']
 };
 
+export const Table = {
+    expandedOpenNode: 'Open',
+    expandedCloseNode: 'Close'
+};
+
 export const Upload = {
     select: 'Upload files',
     drag: 'Click or drag files here to upload'
