@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const webapckMerge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 function windows2posix(themeFilePath) {
     return path.resolve(__dirname, themeFilePath).replace(/\\/g, '/');
@@ -29,8 +28,7 @@ module.exports = webapckMerge(webpackBaseConfig, {
     },
     mode: 'development',
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'static/js/[name].[hash:8].js'
+        filename: 'js/[name].js'
     },
     module: {
         rules: [{
@@ -71,8 +69,7 @@ module.exports = webapckMerge(webpackBaseConfig, {
                 collapseWhitespace: true
             }
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new StyleLintPlugin()
+        new webpack.HotModuleReplacementPlugin()
     ],
     optimization: {
         splitChunks: {

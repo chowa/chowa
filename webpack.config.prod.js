@@ -29,7 +29,6 @@ module.exports = webapckMerge(webpackBaseConfig, {
         hints: false
     },
     output: {
-        path: path.join(__dirname, 'dist'),
         filename: '[name].js',
         libraryTarget: 'umd',
         library: 'chowa'

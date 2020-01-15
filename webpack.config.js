@@ -1,8 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
+    output: {
+        path: path.join(__dirname, 'dist')
+    },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
@@ -43,6 +47,7 @@ module.exports = {
     },
     plugins: [
         new FriendlyErrorsPlugin(),
+        new StyleLintPlugin(),
         new webpack.LoaderOptionsPlugin({
             options: {
                 tslint: {
