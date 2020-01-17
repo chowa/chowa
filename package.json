@@ -98,7 +98,7 @@
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.2",
-    "stylelint-plugin-chowa-standard": "^1.0.6",
+    "stylelint-plugin-chowa-standard": "latest",
     "ts-loader": "^6.2.1",
     "typescript": "^3.6.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
