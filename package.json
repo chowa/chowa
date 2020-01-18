@@ -7,9 +7,9 @@
   "module": "es/index.js",
   "style": "dist/chowa.css",
   "scripts": {
-    "cwfont": "cwfont compile",
-    "dev": "npm run cwfont && webpack-dev-server --config webpack.config.dev.js",
-    "build": "npm run cwfont && gulp && webpack --config webpack.config.prod.js",
+    "iconfont": "cwfont compile",
+    "dev": "npm run iconfont && webpack-dev-server --config webpack.config.dev.js",
+    "build": "npm run iconfont && gulp && webpack --config webpack.config.prod.js",
     "stylelint": "stylelint components/*/style/*.scss styles/*.scss styles/*/*.scss",
     "eslint": "eslint components/*/*.{ts,tsx} components/*.ts components/*/style/*.ts"
   },
