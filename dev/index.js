@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as ReactDom from 'react-dom';
 // import AffixDev from './components/affix';
-// import AlertDev from './components/alert';
+import AlertDev from './components/alert';
 // import AnchorDev from './components/anchor';
 // import AutoCompleteDev from './components/auto-complete';
 // import AvatarDev from './components/avatar';
@@ -70,9 +70,9 @@ class Develop extends Component {
     render() {
         return (
             <section>
-                {/*<AffixDev/>
+                {/*<AffixDev/>*/}
                 <AlertDev/>
-                <AnchorDev/>
+                {/*<AnchorDev/>
                 <AutoCompleteDev/>
                 <AvatarDev/>
                 <BackTopDev/>
@@ -123,9 +123,9 @@ class Develop extends Component {
                 <SpinDev/>
                 <StatisticDev/>
                 <StepsDev/>
-                <SwitchDev/>*/}
+                <SwitchDev/>
                 <TableDev/>
-                {/*<TabsDev/>
+                <TabsDev/>
                 <TagDev/>
                 <TimePickerDev/>
                 <TimelineDev/>

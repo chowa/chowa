@@ -9,7 +9,7 @@ export interface AlertProps {
     className?: string;
     style?: React.CSSProperties;
     type?: 'info' | 'success' | 'error' | 'warning';
-    title?: string;
+    title?: React.ReactNode;
     content: React.ReactNode;
     showIcon?: boolean;
     visible?: boolean;
@@ -28,7 +28,7 @@ class Alert extends React.PureComponent<AlertProps, AlertState> {
         className: PropTypes.string,
         style: PropTypes.object,
         type: PropTypes.oneOf(['info', 'success', 'error', 'warning']),
-        title: PropTypes.string,
+        title: PropTypes.node,
         content: PropTypes.node.isRequired,
         showIcon: PropTypes.bool,
         visible: PropTypes.bool,
@@ -106,7 +106,7 @@ class Alert extends React.PureComponent<AlertProps, AlertState> {
                         </div>
                     }
                     <div className={preClass('alert-inner')}>
-                        { title && <p className={preClass('alert-title')}>{ title }</p> }
+                        { title && <div className={preClass('alert-title')}>{ title }</div> }
                         <div className={preClass('alert-content')}>{ content }</div>
                     </div>
                     {
