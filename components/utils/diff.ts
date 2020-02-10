@@ -21,20 +21,16 @@ export function isEqual(a: any, b: any): boolean {
         return true;
     }
 
-    if (isReactElement(a) || isReactElement(b)) {
-        return isReactElement(a) && isReactElement(b)
-            ? isEqual(a.props, b.props)
-            : false;
-    }
-
     if (typeof a === 'object' && typeof b === 'object') {
-        if (a instanceof Date && b instanceof Date) {
+        if (isReactElement(a) && isReactElement(b)) {
+            return isEqual(a.props, b.props);
+        }
+        else if (a instanceof Date && b instanceof Date) {
             return +a === +b;
         }
         else if (a instanceof RegExp && b instanceof RegExp) {
             return a.toString() === b.toString();
         }
-
         else if (Array.isArray(a) && Array.isArray(b)) {
             const arrLen = a.length;
 
