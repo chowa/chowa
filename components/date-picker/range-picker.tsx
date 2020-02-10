@@ -117,7 +117,7 @@ class RangePicker extends React.PureComponent<RangePickerProps, RangePickerState
 
     private onChangeHandler(result: [moment.Moment, moment.Moment]) {
         this.setState({ result });
-        console.log(result); // eslint-disable-line
+
         if (this.props.onChange) {
             this.props.onChange(result);
         }
