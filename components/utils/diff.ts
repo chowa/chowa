@@ -27,14 +27,15 @@ export function isEqual(a: any, b: any): boolean {
             : false;
     }
 
-    if (a && b && typeof a === 'object' && typeof b === 'object') {
-        const arrA = Array.isArray(a);
-        const arrB = Array.isArray(b);
-
-        if (arrA !== arrB) {
-            return false;
+    if (typeof a === 'object' && typeof b === 'object') {
+        if (a instanceof Date && b instanceof Date) {
+            return +a === +b;
         }
-        else if (arrA && arrB) {
+        else if (a instanceof RegExp && b instanceof RegExp) {
+            return a.toString() === b.toString();
+        }
+
+        else if (Array.isArray(a) && Array.isArray(b)) {
             const arrLen = a.length;
 
             if (arrLen !== b.length) {
@@ -47,28 +48,27 @@ export function isEqual(a: any, b: any): boolean {
             }
             return true;
         }
+        else {
+            const keys = Object.keys(a);
+            const objLen = keys.length;
 
-        const keys = Object.keys(a);
-        const objLen = keys.length;
-
-        if (objLen !== Object.keys(b).length) {
-            return false;
-        }
-
-        for (let i = objLen; i--; i !== 0) {
-            if (!hasProperty(b, keys[i])) {
+            if (objLen !== Object.keys(b).length) {
                 return false;
             }
-        }
 
-        for (let i = objLen; i--; i !== 0) {
-            const key = keys[i];
-            if (!isEqual(a[key], b[key])) {
-                return false;
+            for (let i = objLen; i--; i !== 0) {
+                if (!hasProperty(b, keys[i])) {
+                    return false;
+                }
+            }
+
+            for (let i = objLen; i--; i !== 0) {
+                const key = keys[i];
+                if (!isEqual(a[key], b[key])) {
+                    return false;
+                }
             }
         }
-
-        return true;
     }
 
     return a !== a && b !== b;

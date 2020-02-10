@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as ReactDom from 'react-dom';
 // import AffixDev from './components/affix';
-import AlertDev from './components/alert';
+// import AlertDev from './components/alert';
 // import AnchorDev from './components/anchor';
 // import AutoCompleteDev from './components/auto-complete';
 // import AvatarDev from './components/avatar';
@@ -19,7 +19,7 @@ import AlertDev from './components/alert';
 // import CollapseDev from './components/collapse';
 // import ColorPickerDev from './components/color-picker';
 // import ContainerDev from './components/container';
-// import DatePickerDev from './components/date-picker';
+import DatePickerDev from './components/date-picker';
 // import DividerDev from './components/divider';
 // import DrawerDev from './components/drawer';
 // import DropdownDev from './components/dropdown';
@@ -54,7 +54,7 @@ import AlertDev from './components/alert';
 // import StatisticDev from './components/statistic';
 // import StepsDev from './components/steps';
 // import SwitchDev from './components/switch';
-import TableDev from './components/table';
+// import TableDev from './components/table';
 // import TabsDev from './components/tabs';
 // import TagDev from './components/tag';
 // import TimePickerDev from './components/time-picker';
@@ -70,9 +70,9 @@ class Develop extends Component {
     render() {
         return (
             <section>
-                {/*<AffixDev/>*/}
+                {/*<AffixDev/>
                 <AlertDev/>
-                {/*<AnchorDev/>
+                <AnchorDev/>
                 <AutoCompleteDev/>
                 <AvatarDev/>
                 <BackTopDev/>
@@ -88,9 +88,9 @@ class Develop extends Component {
                 <CheckboxGroupDev/>
                 <CollapseDev/>
                 <ColorPickerDev/>
-                <ContainerDev/>
+                <ContainerDev/>*/}
                 <DatePickerDev/>
-                <DividerDev/>
+                {/*<DividerDev/>
                 <DrawerDev/>
                 <DropdownDev/>
                 <FormDev/>

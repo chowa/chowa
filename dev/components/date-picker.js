@@ -70,9 +70,13 @@ class DatePickerDev extends Component {
                     }}
                     clearable/>
 
+                <RangePicker defaultValue={[moment(), moment().add(1, 'month')]}/>
+
                 <RangePicker determinable={false} />
 
                 <RangePicker timeable placeholder="Please select time range" />
+
+                <RangePicker/>
 
                 <RangePicker disabled />
 
