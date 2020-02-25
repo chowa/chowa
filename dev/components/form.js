@@ -129,7 +129,7 @@ class FormRef extends Component {
                             name="unchange"
                             rules={[
                                 {
-                                    valiation: val => val === true,
+                                    validation: val => val === true,
                                     message: 'This is a required item',
                                 }
                             ]}>
@@ -143,7 +143,7 @@ class FormRef extends Component {
                             name="unchangeBtn"
                             rules={[
                                 {
-                                    valiation: val => val === true,
+                                    validation: val => val === true,
                                     message: 'This is a required field',
                                 }
                             ]}>
@@ -355,7 +355,7 @@ class FormDev extends Component {
                             name="unchange"
                             rules={[
                                 {
-                                    valiation: val => val === true,
+                                    validation: val => val === true,
                                     message: 'This is a required item',
                                 },
                             ]}>
@@ -369,7 +369,7 @@ class FormDev extends Component {
                             name="unchangeBtn"
                             rules={[
                                 {
-                                    valiation: val => val === true,
+                                    validation: val => val === true,
                                     message: 'This is a required field',
                                 },
                             ]}>
@@ -429,7 +429,7 @@ class FormDev extends Component {
                                     message: 'This is a required item',
                                 },
                                 {
-                                    valiation: values => values[1] > 40,
+                                    validation: values => values[1] > 40,
                                     message: 'greater than 40 ',
                                 },
                             ]}>
@@ -474,7 +474,7 @@ class FormDev extends Component {
                                     message: 'This is a required item',
                                 },
                                 {
-                                    valiation: value => {
+                                    validation: value => {
                                         return value > 2;
                                     },
                                     message: 'greater than 2'
@@ -567,7 +567,7 @@ class FormDev extends Component {
                             name="amount"
                             rules={[
                                 {
-                                    valiation: val => val > 5,
+                                    validation: val => val > 5,
                                     message: 'This is a required item'
                                 }
                             ]}>

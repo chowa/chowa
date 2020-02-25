@@ -11,7 +11,7 @@ export interface Rule {
     min?: number;
     max?: number;
     regex?: RegExp;
-    valiation?: (value: any) => boolean;
+    validation?: (value: any) => boolean;
 }
 
 export interface ValidatorStatus {
@@ -172,7 +172,7 @@ class FormValidator extends React.PureComponent<FormValidatorProps, FormValidato
         const hasResult = isExist(value);
 
         if (isExist(rules)) {
-            hasError = !rules.every(({ required, length, min, max, regex, valiation, message }) => {
+            hasError = !rules.every(({ required, length, min, max, regex, validation, message }) => {
                 if (required && !hasResult) {
                     verifyMsg = message;
                     return false;
@@ -193,7 +193,7 @@ class FormValidator extends React.PureComponent<FormValidatorProps, FormValidato
                     verifyMsg = message;
                     return false;
                 }
-                else if (valiation && (!hasResult || (hasResult && !valiation(value)))) {
+                else if (validation && (!hasResult || (hasResult && !validation(value)))) {
                     verifyMsg = message;
                     return false;
                 }
