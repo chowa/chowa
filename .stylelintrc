@@ -1,5 +1,6 @@
 {
     "extends": [
+        'stylelint-scss',
         "stylelint-plugin-chowa-standard"
     ]
 }
