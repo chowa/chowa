@@ -177,23 +177,23 @@ class FormValidator extends React.PureComponent<FormValidatorProps, FormValidato
                     verifyMsg = message;
                     return false;
                 }
-                else if (length && (!hasResult || (hasResult && value.length !== length))) {
+                else if (length && hasResult && value.length !== length) {
                     verifyMsg = message;
                     return false;
                 }
-                else if (min && (!hasResult || (hasResult && value.length < min))) {
+                else if (min && hasResult && value.length < min) {
                     verifyMsg = message;
                     return false;
                 }
-                else if (max && (!hasResult || (hasResult && value.length > max))) {
+                else if (max && hasResult && value.length > max) {
                     verifyMsg = message;
                     return false;
                 }
-                else if (regex && (!hasResult || (hasResult && !regex.test(value)))) {
+                else if (regex && hasResult && !regex.test(value)) {
                     verifyMsg = message;
                     return false;
                 }
-                else if (validation && (!hasResult || (hasResult && !validation(value)))) {
+                else if (validation && hasResult && !validation(value)) {
                     verifyMsg = message;
                     return false;
                 }
