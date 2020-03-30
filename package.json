@@ -56,9 +56,7 @@
     "react-dnd": "^9.4.0",
     "react-dnd-html5-backend": "^9.4.0",
     "react-dom": "^16.10.2",
-    "resize-observer-polyfill": "^1.5.1",
-    "stylelint": "^13.2.0",
-    "stylelint-webpack-plugin": "^1.2.3"
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
@@ -103,8 +101,10 @@
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.2",
+    "stylelint": "^13.2.1",
     "stylelint-plugin-chowa-standard": "latest",
     "stylelint-scss": "^3.14.2",
+    "stylelint-webpack-plugin": "^1.2.3",
     "ts-loader": "^6.2.1",
     "typescript": "^3.6.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
