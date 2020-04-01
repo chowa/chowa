@@ -19,8 +19,8 @@
     margin: 0;
     padding: ($base-padding * 2.2) 0 ($base-padding * 1.2);
     box-sizing: border-box;
-    max-width: 140px;
-    max-height: 140px + $base-padding * 3.4;
+    min-width: 140px;
+    min-height: 140px + $base-padding * 3.4;
 
     img {
         max-width: 100%;
