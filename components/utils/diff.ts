@@ -22,7 +22,10 @@ export function isEqual(a: any, b: any): boolean {
     }
 
     if (typeof a === 'object' && typeof b === 'object') {
-        if (isReactElement(a) && isReactElement(b)) {
+        if (a === null || b === null) {
+            return a === b;
+        }
+        else if (isReactElement(a) && isReactElement(b)) {
             return isEqual(a.props, b.props);
         }
         else if (a instanceof Date && b instanceof Date) {
