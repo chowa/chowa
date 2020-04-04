@@ -51,7 +51,12 @@ class Spin extends React.PureComponent<SpinProps, any> {
     }
 
     private wrapperSpin(): React.ReactNode {
-        const { children, loading, loadingText } = this.props;
+        const { children, loading, loadingText, className } = this.props;
+
+        const wrapperClass = classNames({
+            [preClass('spin-wrapper')]: true,
+            [className]: isExist(className)
+        });
 
         const filterWrapClass = classNames({
             [preClass('spin-children-wrapper')]: true,
@@ -59,7 +64,7 @@ class Spin extends React.PureComponent<SpinProps, any> {
         });
 
         return (
-            <div className={preClass('spin-wrapper')}>
+            <div className={wrapperClass}>
                 <div className={filterWrapClass}>
                     { children }
                 </div>
