@@ -19,7 +19,7 @@ import * as ReactDom from 'react-dom';
 // import CollapseDev from './components/collapse';
 // import ColorPickerDev from './components/color-picker';
 // import ContainerDev from './components/container';
-import DatePickerDev from './components/date-picker';
+// import DatePickerDev from './components/date-picker';
 // import DividerDev from './components/divider';
 // import DrawerDev from './components/drawer';
 // import DropdownDev from './components/dropdown';
@@ -59,7 +59,7 @@ import DatePickerDev from './components/date-picker';
 // import TagDev from './components/tag';
 // import TimePickerDev from './components/time-picker';
 // import TimelineDev from './components/timeline';
-// import TooltipDev from './components/tooltip';
+import TooltipDev from './components/tooltip';
 // import TransferDev from './components/transfer';
 // import TreeDev from './components/tree';
 // import TypographyDev from './components/typography';
@@ -88,9 +88,9 @@ class Develop extends Component {
                 <CheckboxGroupDev/>
                 <CollapseDev/>
                 <ColorPickerDev/>
-                <ContainerDev/>*/}
+                <ContainerDev/>
                 <DatePickerDev/>
-                {/*<DividerDev/>
+                <DividerDev/>
                 <DrawerDev/>
                 <DropdownDev/>
                 <FormDev/>
@@ -128,9 +128,9 @@ class Develop extends Component {
                 <TabsDev/>
                 <TagDev/>
                 <TimePickerDev/>
-                <TimelineDev/>
+                <TimelineDev/>*/}
                 <TooltipDev/>
-                <TransferDev/>
+                {/*<TransferDev/>
                 <TreeDev/>
                 <TypographyDev/>
                 <UploadDev/>*/}

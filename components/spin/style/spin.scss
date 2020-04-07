@@ -12,6 +12,7 @@
     justify-content: center;
     color: $primary-color;
     animation: #{$prefix}rotating 1s infinite linear;
+    vertical-align: middle;
 }
 
 .#{$prefix}spin-light {
