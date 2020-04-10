@@ -98,7 +98,7 @@ export function transformReactNodeToData(
                     ...attributes,
                     tier,
                     type: 'group',
-                    data: transformReactNodeToData(content, tier)
+                    data: transformReactNodeToData(content, tier + 1)
                 } as Group);
                 break;
 

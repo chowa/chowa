@@ -52,7 +52,7 @@ const MenuItemRecord: React.SFC<MenuItemRecordProps> = (props) => {
     const wrapperProps = {
         style: {
             ...style,
-            ...((tier > 1 && !inOverlay )? { paddingLeft: tier * tierSpace } : {})
+            ...((tier > 1 && !inOverlay )? { paddingLeft: (tier - 1) * tierSpace } : {})
         },
         className: componentClass,
         disabled,
