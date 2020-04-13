@@ -163,7 +163,7 @@ class MenuSubmenuRecord extends React.PureComponent<MenuSubmenuRecordProps, Menu
             <li style={style} className={wrapperClass}>
                 <div
                     onClick={disabled ? null : updateCollapseManager.bind(this, parentKey, collapseKey)}
-                    style={tier > 1 ? { paddingLeft: (tier - 1) * tierSpace } : {}}
+                    style={tier > 1 ? { paddingLeft: tier * tierSpace } : {}}
                     className={triggerClass}>
                     <div className={preClass('menu-submenu-title')}>
                         { title }

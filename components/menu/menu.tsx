@@ -64,7 +64,7 @@ class Menu extends React.PureComponent<MenuProps, MenuState> {
         super(props);
 
         const renderData = transformReactNodeToData(props.children);
-        const collapseManager = initCollapseManager(renderData, props.accordion);
+        const collapseManager = initCollapseManager(renderData, props.accordion, this.props.activeIndex);
 
         this.state = {
             renderData,
@@ -102,13 +102,11 @@ class Menu extends React.PureComponent<MenuProps, MenuState> {
     }
 
     private reCollectionRenderData() {
-        const { children, accordion } = this.props;
+        const { children } = this.props;
         const renderData = transformReactNodeToData(children);
-        const collapseManager = initCollapseManager(renderData, accordion);
 
         this.setState({
-            renderData,
-            collapseManager
+            renderData
         }, this.adaptiveLayout);
     }
 

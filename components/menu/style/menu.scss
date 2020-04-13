@@ -16,10 +16,10 @@
 .#{$prefix}menu-item,
 .#{$prefix}menu-submenu-trigger {
     margin: 0;
-    font-size: $font-size-base;
     box-sizing: border-box;
     transition: all $anim-duration ease-in;
     white-space: nowrap;
+    font-size: $font-size-base;
 }
 
 .#{$prefix}menu-item-inner a {
@@ -28,6 +28,7 @@
     display: block;
     text-decoration: none;
     transition: all $anim-duration ease-in;
+    @include text-overflow();
 }
 
 // 组
@@ -116,6 +117,7 @@
     flex-direction: row;
     height: $menu-size-base;
     line-height: $menu-size-base;
+    font-size: $font-size-base;
     flex-wrap: nowrap;
     padding: 0;
 

@@ -69,10 +69,12 @@ export function computedIconAndText(children: React.ReactNode) {
 export function transformReactNodeToData(
     children: React.ReactNode,
     tier = 1,
+    inGroup = false,
     inSubmenu = false,
     parentKey = 'root'
 ): Data {
     const data: Data = [];
+    const curTier = (inGroup || inSubmenu) ? tier + 1 : tier;
 
     React.Children.forEach(children, (child: React.ReactElement<any>, key) => {
         if (!isReactElement(child)) {
@@ -86,7 +88,7 @@ export function transformReactNodeToData(
             case MenuItem:
                 data.push({
                     ...attributes,
-                    tier,
+                    tier: curTier,
                     type: 'item',
                     content,
                     extras: computedIconAndText(content)
@@ -96,22 +98,22 @@ export function transformReactNodeToData(
             case MenuGroup:
                 data.push({
                     ...attributes,
-                    tier,
+                    tier: curTier,
                     type: 'group',
-                    data: transformReactNodeToData(content, tier + 1)
+                    data: transformReactNodeToData(content, curTier, true, false, parentKey)
                 } as Group);
                 break;
 
             case MenuSubmenu:
                 data.push({
                     ...attributes,
-                    tier,
+                    tier: curTier,
                     type: 'submenu',
                     extras: computedIconAndText((attributes as MenuSubmenuProps).title),
                     inSubmenu,
                     parentKey,
                     collapseKey: key,
-                    data: transformReactNodeToData(content, tier + 1, true, `${parentKey}-${key}`)
+                    data: transformReactNodeToData(content, curTier, false, true, `${parentKey}-${key}`)
                 } as Submenu);
                 break;
         }
@@ -134,11 +136,30 @@ export function hasActiveRecord(data: Data, activeIndex: React.ReactText) {
     });
 }
 
-function collectCollapse(data: Data): CollapseManager {
+function collectCollapse(data: Data, activeIndex: React.ReactText, parentData: Data = null): CollapseManager {
     let manager = {};
     const appendToManager = (parentKey: string, collapseKey: number) => {
         if (!hasProperty(manager, parentKey)) {
             manager[parentKey] = [];
+        }
+
+        if (parentKey !== 'root') {
+            const travelParentCollapse = (pdata: Data) => {
+                if (!Array.isArray(pdata)) {
+                    return;
+                }
+                pdata.forEach((item) => {
+                    if (item.type === 'submenu') {
+                        if (`${item.parentKey}-${item.collapseKey}` === parentKey) {
+                            appendToManager(item.parentKey, item.collapseKey);
+                        }
+
+                        travelParentCollapse(item.data);
+                    }
+                });
+            };
+
+            travelParentCollapse(parentData);
         }
 
         manager[parentKey].push(collapseKey);
@@ -149,14 +170,22 @@ function collectCollapse(data: Data): CollapseManager {
             return;
         }
 
-        if (record.open) {
+        let hasActiveIndex = false;
+
+        if (isExist(activeIndex)) {
+            hasActiveIndex = record.data.some((item: Item) => {
+                return item.type === 'item' && activeIndex === item.index;
+            });
+        }
+
+        if (record.open || hasActiveIndex) {
             appendToManager(record.parentKey, record.collapseKey);
         }
 
         if (record.data.length > 0) {
             manager = {
                 ...manager,
-                ...collectCollapse(record.data)
+                ...collectCollapse(record.data, activeIndex, data)
             };
         }
     });
@@ -164,8 +193,8 @@ function collectCollapse(data: Data): CollapseManager {
     return manager;
 }
 
-export function initCollapseManager(data: Data, accordion: boolean): CollapseManager {
-    const manager = collectCollapse(data);
+export function initCollapseManager(data: Data, accordion: boolean, activeIndex: React.ReactText): CollapseManager {
+    const manager = collectCollapse(data, activeIndex);
 
     if (accordion) {
         for (const parentKey in manager) {
