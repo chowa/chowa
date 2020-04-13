@@ -84,7 +84,14 @@ class Menu extends React.PureComponent<MenuProps, MenuState> {
 
     public componentDidUpdate(preProps: MenuProps & { children: React.ReactNode }) {
         if (preProps.activeIndex !== this.props.activeIndex && this.state.selfActiveIndex !== this.props.activeIndex) {
-            this.setState({ selfActiveIndex: this.props.activeIndex });
+            this.setState({
+                selfActiveIndex: this.props.activeIndex,
+                collapseManager: initCollapseManager(
+                    this.state.renderData,
+                    this.props.accordion,
+                    this.props.activeIndex
+                )
+            });
         }
 
         if (!isEqual(preProps.children, this.props.children) || this.props.mode !== preProps.mode) {
