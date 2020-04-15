@@ -138,13 +138,18 @@ class Anchor extends React.PureComponent<AnchorProps, AnchorState> {
                 <ul className={preClass('anchor')}>
                     {
                         links.map((link, key) => {
-                            const { title, href, target } = link;
+                            const { title, href, target, className: anchorClass, style: anchorStyle } = link;
                             const realHref = anchorTops[key] === 99999 ? href : `#${href}`;
+                            const itemClass = classNames({
+                                [preClass('anchor-link')]: true,
+                                [anchorClass]: isExist(anchorClass)
+                            });
 
                             return (
                                 <li
                                     key={key}
-                                    className={preClass('anchor-link')}
+                                    className={itemClass}
+                                    style={anchorStyle}
                                     onClick={onSelect ? onSelect.bind(this, link) : null}>
                                     <a href={realHref} title={title} target={target}>{ title }</a>
                                 </li>
