@@ -69,12 +69,11 @@ export function computedIconAndText(children: React.ReactNode) {
 export function transformReactNodeToData(
     children: React.ReactNode,
     tier = 1,
-    inGroup = false,
     inSubmenu = false,
     parentKey = 'root'
 ): Data {
     const data: Data = [];
-    const curTier = (inGroup || inSubmenu) ? tier + 1 : tier;
+    const curTier = inSubmenu ? tier + 1 : tier;
 
     React.Children.forEach(children, (child: React.ReactElement<any>, key) => {
         if (!isReactElement(child)) {
@@ -100,7 +99,7 @@ export function transformReactNodeToData(
                     ...attributes,
                     tier: curTier,
                     type: 'group',
-                    data: transformReactNodeToData(content, curTier, true, false, `${parentKey}-${key}`)
+                    data: transformReactNodeToData(content, curTier, false, `${parentKey}-${key}`)
                 } as Group);
                 break;
 
@@ -113,7 +112,7 @@ export function transformReactNodeToData(
                     inSubmenu,
                     parentKey,
                     collapseKey: key,
-                    data: transformReactNodeToData(content, curTier, false, true, `${parentKey}-${key}`)
+                    data: transformReactNodeToData(content, curTier, true, `${parentKey}-${key}`)
                 } as Submenu);
                 break;
         }
