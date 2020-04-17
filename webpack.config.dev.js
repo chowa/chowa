@@ -69,7 +69,8 @@ module.exports = webapckMerge(webpackBaseConfig, {
                 collapseWhitespace: true
             }
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/)
     ],
     optimization: {
         splitChunks: {

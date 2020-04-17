@@ -100,7 +100,7 @@ export function transformReactNodeToData(
                     ...attributes,
                     tier: curTier,
                     type: 'group',
-                    data: transformReactNodeToData(content, curTier, true, false, parentKey)
+                    data: transformReactNodeToData(content, curTier, true, false, `${parentKey}-${key}`)
                 } as Group);
                 break;
 

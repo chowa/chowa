@@ -4,8 +4,7 @@ const webapckMerge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const pkg = require('./package.json');
 
 const banner = `
@@ -77,17 +76,21 @@ module.exports = webapckMerge(webpackBaseConfig, {
         }]
     },
     optimization: {
+        minimize: true,
         minimizer: [
-            new UglifyJsPlugin({
+            new TerserPlugin({
                 cache: true,
                 parallel: true,
                 extractComments: false,
-                uglifyOptions: {
+                terserOptions: {
                     ecma: 6,
                     warnings: false,
                     keep_classnames: true,
                     keep_fnames: true,
-                    mangle: true
+                    mangle: true,
+                    output: {
+                        comments: false
+                    }
                 }
             })
         ]
