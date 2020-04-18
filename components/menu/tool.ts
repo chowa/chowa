@@ -135,30 +135,11 @@ export function hasActiveRecord(data: Data, activeIndex: React.ReactText) {
     });
 }
 
-function collectCollapse(data: Data, activeIndex: React.ReactText, parentData: Data = null): CollapseManager {
+function collectCollapse(data: Data, activeIndex: React.ReactText): CollapseManager {
     let manager = {};
     const appendToManager = (parentKey: string, collapseKey: number) => {
         if (!hasProperty(manager, parentKey)) {
             manager[parentKey] = [];
-        }
-
-        if (parentKey !== 'root') {
-            const travelParentCollapse = (pdata: Data) => {
-                if (!Array.isArray(pdata)) {
-                    return;
-                }
-                pdata.forEach((item) => {
-                    if (item.type === 'submenu') {
-                        if (`${item.parentKey}-${item.collapseKey}` === parentKey) {
-                            appendToManager(item.parentKey, item.collapseKey);
-                        }
-
-                        travelParentCollapse(item.data);
-                    }
-                });
-            };
-
-            travelParentCollapse(parentData);
         }
 
         manager[parentKey].push(collapseKey);
@@ -169,7 +150,7 @@ function collectCollapse(data: Data, activeIndex: React.ReactText, parentData: D
             return;
         }
 
-        const hasActiveIndex = isExist(activeIndex) && hasActiveRecord(data, activeIndex);
+        const hasActiveIndex = isExist(activeIndex) && hasActiveRecord(record.data, activeIndex);
 
         if (record.open || hasActiveIndex) {
             appendToManager(record.parentKey, record.collapseKey);
@@ -178,7 +159,7 @@ function collectCollapse(data: Data, activeIndex: React.ReactText, parentData: D
         if (record.data.length > 0) {
             manager = {
                 ...manager,
-                ...collectCollapse(record.data, activeIndex, data)
+                ...collectCollapse(record.data, activeIndex)
             };
         }
     });
