@@ -169,13 +169,7 @@ function collectCollapse(data: Data, activeIndex: React.ReactText, parentData: D
             return;
         }
 
-        let hasActiveIndex = false;
-
-        if (isExist(activeIndex)) {
-            hasActiveIndex = record.data.some((item: Item) => {
-                return item.type === 'item' && activeIndex === item.index;
-            });
-        }
+        const hasActiveIndex = isExist(activeIndex) && hasActiveRecord(data, activeIndex);
 
         if (record.open || hasActiveIndex) {
             appendToManager(record.parentKey, record.collapseKey);
