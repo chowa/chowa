@@ -146,13 +146,13 @@ function collectCollapse(data: Data, activeIndex: React.ReactText): CollapseMana
     };
 
     data.forEach((record) => {
-        if (record.type !== 'submenu') {
+        if (record.type === 'item') {
             return;
         }
 
         const hasActiveIndex = isExist(activeIndex) && hasActiveRecord(record.data, activeIndex);
 
-        if (record.open || hasActiveIndex) {
+        if (record.type === 'submenu' && (record.open || hasActiveIndex)) {
             appendToManager(record.parentKey, record.collapseKey);
         }
 
