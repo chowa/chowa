@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { preClass, isExist } from '../utils';
+import { preClass, isExist, omitProps } from '../utils';
 import Tooltip from '../tooltip';
 import { Item, tierSpace } from './tool';
 import { RcordBaseProps } from './menu-record-dispatch';
@@ -14,9 +14,10 @@ interface WrapperProps extends Pick<RcordBaseProps, 'setActiveIndex'>, Pick<Item
 
 const Wrapper: React.SFC<WrapperProps> = (props) => {
     const { style, className, disabled, index, setActiveIndex, children } = props;
+    const otherProps = omitProps(props, ['style', 'className', 'disabled', 'index', 'setActiveIndex']);
 
     return (
-        <li style={style} className={className}>
+        <li style={style} className={className} {...otherProps}>
             <div
                 className={preClass('menu-item-inner')}
                 onClick={disabled ? null : setActiveIndex.bind(this, index)}>
