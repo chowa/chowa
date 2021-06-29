@@ -32,7 +32,7 @@ export interface UploadProps {
     defaultValue?: StorageFile[];
     value?: StorageFile[];
     onChange?: (storageFiles: StorageFile[]) => void;
-    onBeforeUpload?: (file: File) => boolean;
+    onBeforeUpload?: (file: File) => Promise<any> | boolean;
     onProgress?: (file: File, e: ProgressEvent) => void;
     onSuccess?: (file: File, e: XMLHttpRequest) => void;
     onError?: (file: File, e: ProgressEvent) => void;
@@ -40,6 +40,7 @@ export interface UploadProps {
     onExtError?: (file: File) => void;
     onSizeError?: (file: File) => void;
     formatter?: (uploadFile: UploadFile) => React.ReactNode;
+    showUploadList?: boolean;
 }
 
 export interface UploadState {
@@ -73,7 +74,8 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
         onError: PropTypes.func,
         onExtError: PropTypes.func,
         onSizeError: PropTypes.func,
-        formatter: PropTypes.func
+        formatter: PropTypes.func,
+        showUploadList: PropTypes.bool
     };
 
     public static defaultProps = {
@@ -82,7 +84,8 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
         capture: false,
         multiple: false,
         accept: '*',
-        directory: true
+        directory: true,
+        showUploadList: false
     };
 
     private InputEle: HTMLInputElement;
@@ -178,7 +181,7 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
         e.target.value = null;
     }
 
-    private appendUploadFile(file: File) {
+    private async appendUploadFile(file: File) {
         const { onBeforeUpload, exts, size, onExtError, onSizeError } = this.props;
 
         if (isExist(exts) && !exts.includes(computedFileExt(file))) {
@@ -195,11 +198,20 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
             return;
         }
 
-        if (onBeforeUpload && !onBeforeUpload(file)) {
-            return;
+        if (!onBeforeUpload) {
+            return this.request.exec(file);
         }
 
-        this.request.exec(file);
+        const before = onBeforeUpload(file);
+
+        if (before instanceof Promise) {
+            before.then(() => {
+                this.request.exec(file);
+            });
+        }
+        else if (before === true) {
+            this.request.exec(file);
+        }
     }
 
     private removeFile(index: number) {
@@ -219,7 +231,20 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
     }
 
     public render() {
-        const { className, style, mode, disabled, accept, multiple, name, capture, formatter, directory } = this.props;
+        const {
+            className,
+            children,
+            style,
+            mode,
+            disabled,
+            accept,
+            multiple,
+            name,
+            capture,
+            formatter,
+            directory,
+            showUploadList
+        } = this.props;
         const { uploadFiles } = this.state;
 
         const componentClass = classNames({
@@ -241,37 +266,46 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
                         this.InputEle = ele;
                     }}/>
                 {
-                    mode === 'select' &&
+                    !children && mode === 'select' &&
                     <UploadSelect disabled={disabled} triggerUpload={this.chooseFile}/>
                 }
                 {
-                    mode === 'drag' &&
+                    !children && mode === 'drag' &&
                     <UploadDrag
                         appendUploadFile={this.appendUploadFile}
                         disabled={disabled}
                         triggerUpload={this.chooseFile}
                         directory={directory}/>
                 }
-                <ul className={preClass('upload-file-list')}>
-                    {
-                        uploadFiles.map((uploadFile, key) => {
-                            const { name, progress, status, uuid } = uploadFile;
+                {
+                    children &&
+                    <div onClick={this.chooseFile}>
+                        { children }
+                    </div>
+                }
+                {
+                    showUploadList &&
+                    <ul className={preClass('upload-file-list')}>
+                        {
+                            uploadFiles.map((uploadFile, key) => {
+                                const { name, progress, status, uuid } = uploadFile;
 
-                            if (formatter) {
-                                return formatter(uploadFile);
-                            }
+                                if (formatter) {
+                                    return formatter(uploadFile);
+                                }
 
-                            return (
-                                <UploadFileItem
-                                    key={uuid}
-                                    name={name}
-                                    progress={progress}
-                                    status={status}
-                                    onRemove={this.removeFile.bind(this, key)}/>
-                            );
-                        })
-                    }
-                </ul>
+                                return (
+                                    <UploadFileItem
+                                        key={uuid}
+                                        name={name}
+                                        progress={progress}
+                                        status={status}
+                                        onRemove={this.removeFile.bind(this, key)}/>
+                                );
+                            })
+                        }
+                    </ul>
+                }
             </div>
         );
     }

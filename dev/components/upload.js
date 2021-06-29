@@ -41,6 +41,11 @@ class TreeDev extends Component {
                 <Upload
                     action="http://www.mocky.io/v2/5e144ac52d00002b00166e92"
                     value={augment}
+                    onBeforeUpload={(file) => {
+                        return new Promise((resolve, reject) => {
+                            resolve();
+                        })
+                    }}
                     onChange={this.onAugmentChange}/>
 
                 <Upload

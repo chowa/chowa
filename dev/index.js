@@ -59,11 +59,11 @@ import * as ReactDom from 'react-dom';
 // import TagDev from './components/tag';
 // import TimePickerDev from './components/time-picker';
 // import TimelineDev from './components/timeline';
-import TooltipDev from './components/tooltip';
+// import TooltipDev from './components/tooltip';
 // import TransferDev from './components/transfer';
 // import TreeDev from './components/tree';
 // import TypographyDev from './components/typography';
-// import UploadDev from './components/upload';
+import UploadDev from './components/upload';
 
 class Develop extends Component {
 
@@ -128,12 +128,12 @@ class Develop extends Component {
                 <TabsDev/>
                 <TagDev/>
                 <TimePickerDev/>
-                <TimelineDev/>*/}
+                <TimelineDev/>
                 <TooltipDev/>
-                {/*<TransferDev/>
+                <TransferDev/>
                 <TreeDev/>
-                <TypographyDev/>
-                <UploadDev/>*/}
+                <TypographyDev/>*/}
+                <UploadDev/>
             </section>
         );
     }

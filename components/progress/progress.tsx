@@ -153,6 +153,7 @@ class Progress extends React.PureComponent<ProgressProps, any> {
         };
         const fillClass = classNames({
             [preClass('progress-circle-fill')]: true,
+            // bug fix
             [preClass('progress-circle-gradient')]: storkeColor && typeof storkeColor !== 'string'
         });
 
