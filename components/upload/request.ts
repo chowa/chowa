@@ -30,15 +30,15 @@ class Request {
 
         xhr.addEventListener('error', this.onErrorHandler.bind(this, uuid));
         xhr.addEventListener('readystatechange', this.onReadystateChangeHandler.bind(this, uuid));
-        xhr.addEventListener('progress', this.onProgressHandler.bind(this, uuid));
-
-        fd.append(name, file);
+        xhr.upload.addEventListener('progress', this.onProgressHandler.bind(this, uuid));
 
         if (isExist(data)) {
             Object.keys(data).forEach((key) => {
                 fd.append(key, data[key]);
             });
         }
+
+        fd.append(name, file);
 
         if (isExist(headers)) {
             Object.keys(headers).forEach((key) => {

@@ -168,6 +168,9 @@ class Upload extends React.PureComponent<UploadProps, UploadState> {
     }
 
     private chooseFile() {
+        if (this.props.disabled) {
+            return;
+        }
         this.InputEle.click();
     }
 
